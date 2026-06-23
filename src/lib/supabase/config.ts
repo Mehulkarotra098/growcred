@@ -1,0 +1,13 @@
+export const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
+export const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "";
+export const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
+export const proofStorageBucket =
+  process.env.SUPABASE_STORAGE_BUCKET ?? "tree-proof-media";
+
+export function isSupabaseBrowserConfigured() {
+  return Boolean(supabaseUrl && supabaseAnonKey);
+}
+
+export function isSupabaseAdminConfigured() {
+  return Boolean(supabaseUrl && supabaseServiceRoleKey);
+}
