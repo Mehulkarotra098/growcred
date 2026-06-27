@@ -15,6 +15,7 @@ import {
 import { LivingBackdrop } from "@/components/living-backdrop";
 import { SectionHeader } from "@/components/section-header";
 import { GROWCRED_ASSETS } from "@/lib/assets";
+import { TREECOIN_DISCLAIMER } from "@/lib/copy";
 import { careGuideSteps } from "@/lib/mock-data";
 
 export const metadata: Metadata = {
@@ -78,8 +79,7 @@ export default function LearnPage() {
             align="center"
           />
           <p className="mx-auto mt-6 max-w-3xl rounded-[1.25rem] bg-lime/20 p-4 text-center text-xs font-bold leading-6 text-forest/70">
-            TreeCoin is an in-app reward point during MVP and is not a tradable
-            financial asset.
+            {TREECOIN_DISCLAIMER}
           </p>
           <div className="mt-10 grid gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div className="overflow-hidden rounded-[2rem] border border-forest/10 bg-white p-3 shadow-2xl shadow-forest/10">
@@ -88,6 +88,8 @@ export default function LearnPage() {
                 alt="GrowCred tree care guide visual explaining native planting and survival care"
                 width={1536}
                 height={1024}
+                priority
+                sizes="(min-width: 1024px) 50vw, 92vw"
                 className="aspect-[4/3] w-full rounded-[1.5rem] object-cover"
               />
             </div>

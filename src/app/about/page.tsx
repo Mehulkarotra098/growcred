@@ -72,6 +72,8 @@ export default function AboutPage() {
             alt="GrowCred app landing visual with logo, TreeCoin reward, and verified tree care direction"
             width={1536}
             height={1024}
+            priority
+            sizes="(min-width: 1024px) 1180px, 92vw"
             className="w-full object-cover"
           />
         </div>

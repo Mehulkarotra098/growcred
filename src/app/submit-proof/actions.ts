@@ -53,7 +53,7 @@ export async function submitProofAction(
   if (issues.length > 0) {
     return {
       ok: false,
-      mode: "demo",
+      mode: "preview",
       message: "Please fix the proof details before submitting.",
       issues,
     };
@@ -63,10 +63,10 @@ export async function submitProofAction(
   if (!supabase) {
     return {
       ok: true,
-      mode: "demo",
+      mode: "preview",
       message: "Your proof is ready for review.",
-      treeId: `demo-tree-${randomUUID()}`,
-      proofSubmissionId: `demo-proof-${randomUUID()}`,
+      treeId: `preview-tree-${randomUUID()}`,
+      proofSubmissionId: `preview-proof-${randomUUID()}`,
       status: "under_review",
     };
   }

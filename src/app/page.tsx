@@ -30,6 +30,7 @@ import { StatusPill } from "@/components/status-pill";
 import { TreeCard } from "@/components/tree-card";
 import { brandAssets } from "@/lib/brand-assets";
 import { GROWCRED_ASSETS } from "@/lib/assets";
+import { TREECOIN_DISCLAIMER } from "@/lib/copy";
 import { badges, challenges, trees, users } from "@/lib/mock-data";
 
 const impactStats = [
@@ -172,7 +173,7 @@ export default function Home() {
               <DashboardCard
                 label="Reward type"
                 value="In-app"
-                detail="TreeCoin is an in-app reward point during MVP and is not a tradable financial asset."
+                detail={TREECOIN_DISCLAIMER}
                 icon={Coins}
               />
               <DashboardCard

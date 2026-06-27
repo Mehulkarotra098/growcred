@@ -26,6 +26,7 @@ import { StatusPill } from "@/components/status-pill";
 import { TreeCard } from "@/components/tree-card";
 import { brandAssets } from "@/lib/brand-assets";
 import { GROWCRED_ASSETS } from "@/lib/assets";
+import { TREECOIN_DISCLAIMER } from "@/lib/copy";
 import {
   badges,
   careReminders,
@@ -81,6 +82,18 @@ export default function DashboardPage() {
           </Link>
         </div>
 
+        <div className="mt-8 grid gap-5 lg:grid-cols-[1fr_0.82fr_0.82fr]">
+          <ProgressPanel
+            title="Progress to next badge"
+            label="Tree Hero"
+            value={`${user.verifiedTrees}/${nextBadgeTarget} verified trees`}
+            progress={nextBadgeProgress}
+            detail="Keep submitting care proof to unlock stronger badge status."
+          />
+          <NextRewardCard />
+          <CareStreakCard />
+        </div>
+
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-5">
           <DashboardCard
             label="Total TreeCoins"
@@ -120,20 +133,10 @@ export default function DashboardPage() {
             alt="GrowCred dashboard showcase for TreeCoins, verified trees, care streaks, and impact tracking"
             width={1536}
             height={1024}
+            priority
+            sizes="(min-width: 1024px) 1180px, 92vw"
             className="aspect-[16/8] w-full rounded-[1.75rem] object-cover"
           />
-        </div>
-
-        <div className="mt-8 grid gap-5 lg:grid-cols-[1fr_0.82fr_0.82fr]">
-          <ProgressPanel
-            title="Progress to next badge"
-            label="Tree Hero"
-            value={`${user.verifiedTrees}/${nextBadgeTarget} verified trees`}
-            progress={nextBadgeProgress}
-            detail="Keep submitting care proof to unlock stronger badge status."
-          />
-          <NextRewardCard />
-          <CareStreakCard />
         </div>
 
         <div className="mt-12 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
@@ -204,8 +207,7 @@ export default function DashboardPage() {
                 ))}
               </div>
               <p className="mt-4 rounded-[1.25rem] bg-lime/20 p-4 text-xs font-bold leading-6 text-forest/70">
-                TreeCoin is an in-app reward point during MVP and is not a
-                tradable financial asset.
+                {TREECOIN_DISCLAIMER}
               </p>
             </div>
 

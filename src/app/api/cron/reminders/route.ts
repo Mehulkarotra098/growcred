@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
   if (!supabase) {
     return NextResponse.json({
       ok: true,
-      mode: "demo",
+      mode: "preview",
       queued: careReminders.filter((reminder) => reminder.status === "scheduled"),
     });
   }

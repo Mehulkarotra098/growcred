@@ -14,7 +14,7 @@ export function AuthPanel() {
   const [name, setName] = useState("");
   const [currentEmail, setCurrentEmail] = useState(() => {
     if (typeof window === "undefined" || isSupabaseBrowserConfigured()) return "";
-    return localStorage.getItem("growcred-demo-email") ?? "";
+    return localStorage.getItem("growcred-preview-email") ?? "";
   });
   const [message, setMessage] = useState("");
   const configured = isSupabaseBrowserConfigured();
@@ -33,7 +33,7 @@ export function AuthPanel() {
     setMessage("");
 
     if (!configured) {
-      localStorage.setItem("growcred-demo-email", email);
+      localStorage.setItem("growcred-preview-email", email);
       setCurrentEmail(email);
       setMessage("Sign in to track your impact.");
       return;
@@ -67,7 +67,7 @@ export function AuthPanel() {
   async function signOut() {
     const supabase = getBrowserSupabaseClient();
     if (supabase) await supabase.auth.signOut();
-    localStorage.removeItem("growcred-demo-email");
+    localStorage.removeItem("growcred-preview-email");
     setCurrentEmail("");
     setMessage("Signed out.");
   }

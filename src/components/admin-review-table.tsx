@@ -275,17 +275,17 @@ export function AdminReviewTable({
             </table>
           </div>
 
-          <div className="grid gap-4 p-4 xl:hidden">
+          <div className="grid gap-3 p-3 xl:hidden">
             {filteredRows.map((row) => (
               <article
                 key={row.submission.id}
-                className="rounded-[1.5rem] border border-forest/10 bg-white/70 p-4"
+                className="rounded-[1.35rem] border border-forest/10 bg-white/75 p-3 shadow-sm shadow-forest/5"
               >
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <UserCell row={row} />
                   <StatusPill status={row.status} />
                 </div>
-                <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                <div className="mt-3 grid gap-3 sm:grid-cols-2">
                   <TreeCell row={row} />
                   <LocationCell row={row} />
                   <div>
@@ -298,23 +298,36 @@ export function AdminReviewTable({
                   </div>
                   <FraudFlags flags={row.review.fraudFlags} />
                 </div>
-                <div className="mt-4">
-                  <EvidenceCell row={row} />
+                <div className="mt-3 rounded-[1.15rem] bg-off-white p-3">
+                  <EvidenceCell row={row} compact />
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setSelectedId(row.submission.id)}
-                  className="mt-4 w-full rounded-full bg-forest px-4 py-3 text-sm font-black text-white transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
-                >
-                  Open review actions
-                </button>
+                <div className="mt-3 grid grid-cols-2 gap-2">
+                  {reviewActions.map((action) => (
+                    <button
+                      key={action.label}
+                      type="button"
+                      disabled={isPending}
+                      onClick={() => {
+                        setSelectedId(row.submission.id);
+                        handleReview(row, action);
+                      }}
+                      className={cn(
+                        "inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full px-3 py-2 text-[0.72rem] font-black leading-tight transition disabled:cursor-wait disabled:opacity-65 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
+                        action.className,
+                      )}
+                    >
+                      <action.icon aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
+                      <span>{action.label}</span>
+                    </button>
+                  ))}
+                </div>
               </article>
             ))}
           </div>
         </div>
 
         {selectedRow ? (
-          <aside className="living-card rounded-[2rem] p-5 xl:sticky xl:top-28 xl:self-start">
+          <aside className="living-card hidden rounded-[2rem] p-5 xl:sticky xl:top-28 xl:block xl:self-start">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-sm font-black uppercase tracking-[0.14em] text-leaf">

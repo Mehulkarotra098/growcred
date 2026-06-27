@@ -33,6 +33,7 @@ import { submitProofAction } from "@/app/submit-proof/actions";
 import type { ProofSubmissionResult } from "@/lib/types";
 import { brandAssets } from "@/lib/brand-assets";
 import { GROWCRED_ASSETS } from "@/lib/assets";
+import { TREECOIN_DISCLAIMER } from "@/lib/copy";
 import { cn } from "@/lib/utils";
 import { StatusPill } from "./status-pill";
 
@@ -387,8 +388,7 @@ export function ProofUploadForm() {
               milestones. The strongest proof shows the same tree over time.
             </p>
             <p className="mt-5 rounded-[1.25rem] bg-white/10 p-4 text-xs font-bold leading-6 text-white/68">
-              TreeCoin is an in-app reward point during MVP and is not a
-              tradable financial asset.
+              {TREECOIN_DISCLAIMER}
             </p>
           </div>
         </div>
@@ -403,7 +403,7 @@ export function ProofUploadForm() {
       className="living-card rounded-[2.25rem] p-4 sm:p-6 lg:p-8"
     >
       <div className="grid gap-6 lg:grid-cols-[15rem_1fr]">
-        <aside className="rounded-[1.75rem] border border-forest/10 bg-white/70 p-4">
+        <aside className="order-2 rounded-[1.75rem] border border-forest/10 bg-white/70 p-4 lg:order-none">
           <Image
             src={GROWCRED_ASSETS.states.noProofs}
             alt="Empty proof submissions illustration"
@@ -484,7 +484,7 @@ export function ProofUploadForm() {
           </ol>
         </aside>
 
-        <div className="min-w-0">
+        <div className="order-1 min-w-0 lg:order-none">
           <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
             <div>
               <p className="text-sm font-black uppercase tracking-[0.14em] text-leaf">
@@ -751,8 +751,7 @@ export function ProofUploadForm() {
                       </div>
                     </div>
                     <p className="mt-4 text-xs font-bold leading-6 text-forest/60">
-                      TreeCoin is an in-app reward point during MVP and is not a
-                      tradable financial asset.
+                      {TREECOIN_DISCLAIMER}
                     </p>
                   </div>
                 </div>

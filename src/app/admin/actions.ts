@@ -17,7 +17,7 @@ export async function reviewProofAction(input: ReviewProofInput) {
   if (!supabase) {
     return {
       ok: true,
-      mode: "demo" as const,
+      mode: "preview" as const,
       message: "Review decision noted for this proof.",
     };
   }

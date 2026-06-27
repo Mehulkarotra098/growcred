@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { brandAssets } from "@/lib/brand-assets";
+import { TREECOIN_DISCLAIMER } from "@/lib/copy";
 import { FadeIn } from "./motion";
 
 const rewards = [
@@ -49,7 +50,7 @@ export function RewardTable() {
         ))}
       </div>
       <p className="border-t border-forest/10 bg-lime/20 px-5 py-4 text-sm font-bold leading-6 text-forest">
-        TreeCoin is an in-app reward point during MVP and is not a tradable financial asset.
+        {TREECOIN_DISCLAIMER}
       </p>
     </FadeIn>
   );

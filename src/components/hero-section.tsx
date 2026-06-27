@@ -104,6 +104,7 @@ export function HeroSection() {
                 width={1600}
                 height={1000}
                 priority
+                sizes="(min-width: 1024px) 52vw, 92vw"
                 className="aspect-[16/10] w-full rounded-[2rem] object-cover"
               />
               <svg
@@ -120,7 +121,7 @@ export function HeroSection() {
                   className="proof-path opacity-80"
                 />
               </svg>
-              <div className="absolute left-5 top-5 hidden rounded-2xl bg-white/92 px-4 py-3 shadow-lg shadow-forest/10 backdrop-blur sm:block">
+              <div className="brand-lockup-shell absolute left-5 top-5 hidden rounded-2xl px-4 py-3 backdrop-blur sm:block">
                 <Image
                   src={brandAssets.logoLockup}
                   alt="GrowCred - Plant. Prove. Protect."

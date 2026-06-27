@@ -75,26 +75,29 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
             <Metric label="Progress" value={`${featured.progress}%`} detail="Verified path" />
           </div>
         </div>
-        <div className="rounded-[1.75rem] bg-white/10 p-3">
+        <div className="order-first rounded-[1.75rem] bg-white/10 p-3 lg:order-none">
           {featuredBanner ? (
             <Image
               src={featuredBanner}
               alt={`${featured.title} GrowCred challenge banner`}
               width={1536}
               height={1024}
+              priority
+              loading="eager"
+              sizes="(min-width: 1024px) 38vw, 92vw"
               className="mb-4 aspect-[16/9] w-full rounded-[1.35rem] object-cover"
             />
           ) : null}
           <div className="flex items-start justify-between gap-4">
             <p className="text-sm font-black text-lime">Proof needed</p>
-            <Image
-              src={brandAssets.betterTogether}
-              alt=""
-              aria-hidden="true"
-              width={260}
-              height={180}
-              className="hidden h-auto w-24 shrink-0 sm:block"
-            />
+              <Image
+                src={brandAssets.betterTogether}
+                alt=""
+                aria-hidden="true"
+                width={260}
+                height={180}
+                className="hidden h-auto w-24 shrink-0 object-contain sm:block"
+              />
           </div>
           <p className="mt-3 text-lg font-black">{featured.proofNeeded}</p>
           <div className="mt-5 h-3 rounded-full bg-white/15">
@@ -169,6 +172,8 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
                 alt={`${challenge.title} GrowCred challenge banner`}
                 width={1536}
                 height={1024}
+                loading={challenge.id === featured.id ? "eager" : "lazy"}
+                sizes="(min-width: 1280px) 31vw, (min-width: 768px) 48vw, 92vw"
                 className="aspect-[16/9] w-full object-cover"
               />
             ) : null}
@@ -253,11 +258,11 @@ function Metric({
   detail: string;
 }) {
   return (
-    <div className="rounded-[1.25rem] bg-white/10 p-4">
+    <div className="rounded-[1.25rem] bg-white/10 p-3 sm:p-4">
       <p className="text-xs font-black uppercase tracking-[0.12em] text-white/55">
         {label}
       </p>
-      <p className="mt-2 text-2xl font-black text-lime">{value}</p>
+      <p className="mt-2 text-xl font-black text-lime sm:text-2xl">{value}</p>
       <p className="text-xs font-bold text-white/60">{detail}</p>
     </div>
   );

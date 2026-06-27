@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { brandAssets } from "@/lib/brand-assets";
+import { BRAND_SLOGAN, BRAND_TAGLINE, TREECOIN_DISCLAIMER } from "@/lib/copy";
 import { LogoMark } from "./logo-mark";
 
 const footerLinks = [
@@ -9,7 +10,7 @@ const footerLinks = [
   { href: "/#rewards", label: "Rewards" },
   { href: "/challenges", label: "Challenges" },
   { href: "/learn", label: "Learn" },
-  { href: "mailto:hello@growcred.local", label: "Contact" },
+  { href: "mailto:hello@growcred.app", label: "Contact" },
 ];
 
 export function Footer() {
@@ -20,11 +21,10 @@ export function Footer() {
         <div>
           <LogoMark showWordmark size="sm" />
           <p className="mt-4 max-w-md text-sm font-bold leading-6 text-forest/65">
-            Plant. Prove. Protect. Grow good. Earn green.
+            {BRAND_TAGLINE} {BRAND_SLOGAN}
           </p>
           <p className="mt-4 max-w-xl text-xs font-semibold leading-6 text-forest/50">
-            TreeCoin is an in-app reward point during MVP and is not a tradable
-            financial asset.
+            {TREECOIN_DISCLAIMER}
           </p>
           <div className="mt-5 flex items-center gap-3">
             <Image

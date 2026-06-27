@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { LogoMark } from "./logo-mark";
 import { ThemeToggle } from "./theme-toggle";
@@ -21,12 +21,29 @@ const navItems = [
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const isActivePath = (href: string) => !href.includes("#") && pathname === href;
+
+  useEffect(() => {
+    if (!open) return;
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setOpen(false);
+    }
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
     <header className="sticky top-0 z-50 border-b border-forest/10 bg-off-white/80 backdrop-blur-2xl">
       <nav
         aria-label="Primary navigation"
-        className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8"
+        className="mx-auto flex max-w-[90rem] items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8"
       >
         <Link
           href="/"
@@ -37,31 +54,36 @@ export function Header() {
         </Link>
 
         <div className="hidden items-center gap-1 xl:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "rounded-full px-3 py-2 text-sm font-extrabold text-forest/70 transition hover:bg-white hover:text-forest hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
-                pathname === item.href && "bg-white text-forest",
-              )}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {navItems.map((item) => {
+            const isActive = isActivePath(item.href);
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={isActive ? "page" : undefined}
+                className={cn(
+                  "whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-extrabold text-forest/70 transition hover:bg-white hover:text-forest hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
+                  isActive && "bg-white text-forest",
+                )}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </div>
 
         <div className="hidden items-center gap-3 xl:flex">
           <ThemeToggle />
           <Link
             href="/auth"
-            className="rounded-full border border-forest/10 bg-white/80 px-5 py-3 text-sm font-black text-forest transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+            className="whitespace-nowrap rounded-full border border-forest/10 bg-white/80 px-4 py-3 text-sm font-black text-forest transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
           >
             Sign in
           </Link>
           <Link
             href="/submit-proof"
-            className="kinetic-border rounded-full bg-forest px-5 py-3 text-sm font-black text-white shadow-lg shadow-forest/15 transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+            className="kinetic-border whitespace-nowrap rounded-full bg-forest px-4 py-3 text-sm font-black text-white shadow-lg shadow-forest/15 transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
           >
             Start Planting
           </Link>
@@ -86,7 +108,19 @@ export function Header() {
       </nav>
 
       {open ? (
-        <div className="border-t border-forest/10 bg-off-white/95 px-4 py-4 shadow-xl shadow-forest/5 xl:hidden">
+        <>
+          <button
+            type="button"
+            aria-label="Close navigation menu overlay"
+            onClick={() => setOpen(false)}
+            className="fixed inset-0 top-[4.55rem] z-40 bg-forest/25 backdrop-blur-sm xl:hidden"
+          />
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mobile navigation"
+          className="fixed inset-x-4 top-[5.1rem] z-50 max-h-[calc(100vh-6rem)] overflow-y-auto rounded-[1.75rem] border border-forest/10 bg-off-white/95 px-4 py-4 shadow-2xl shadow-forest/20 xl:hidden"
+        >
           <div className="mx-auto grid max-w-7xl gap-2">
             <div className="flex items-center justify-between rounded-2xl bg-white/70 p-3">
               <span className="text-sm font-black text-forest">
@@ -94,16 +128,24 @@ export function Header() {
               </span>
               <ThemeToggle />
             </div>
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="rounded-2xl px-4 py-3 text-sm font-black text-forest transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {navItems.map((item) => {
+              const isActive = isActivePath(item.href);
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={isActive ? "page" : undefined}
+                  onClick={() => setOpen(false)}
+                  className={cn(
+                    "rounded-2xl px-4 py-3 text-sm font-black text-forest transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
+                    isActive && "bg-white shadow-sm",
+                  )}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
             <Link
               href="/auth"
               onClick={() => setOpen(false)}
@@ -120,6 +162,7 @@ export function Header() {
             </Link>
           </div>
         </div>
+        </>
       ) : null}
     </header>
   );

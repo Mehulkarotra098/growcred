@@ -11,6 +11,6 @@ export async function GET() {
     supabasePublicConfigured: isSupabaseBrowserConfigured(),
     supabaseAdminConfigured: isSupabaseAdminConfigured(),
     proofStorageBucket,
-    mode: isSupabaseBrowserConfigured() ? "supabase-ready" : "demo",
+    mode: isSupabaseBrowserConfigured() ? "supabase-ready" : "preview",
   });
 }

@@ -127,7 +127,7 @@ export interface CareReminder {
 
 export interface ProofSubmissionResult {
   ok: boolean;
-  mode: "demo" | "supabase";
+  mode: "preview" | "supabase";
   message: string;
   treeId?: string;
   proofSubmissionId?: string;

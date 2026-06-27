@@ -6,6 +6,7 @@ import { CommunityHub } from "@/components/community-hub";
 import { LivingBackdrop } from "@/components/living-backdrop";
 import { SectionHeader } from "@/components/section-header";
 import { GROWCRED_ASSETS } from "@/lib/assets";
+import { TREECOIN_DISCLAIMER } from "@/lib/copy";
 import {
   challengeStandings,
   cityStandings,
@@ -36,6 +37,7 @@ export default function CommunityPage() {
             aria-hidden="true"
             width={360}
             height={240}
+            loading="eager"
             className="h-auto w-36 sm:w-44"
           />
           <Image
@@ -70,8 +72,7 @@ export default function CommunityPage() {
           challenges={challengeStandings}
         />
         <p className="mx-auto mt-8 max-w-3xl rounded-[1.25rem] bg-lime/20 p-4 text-center text-xs font-bold leading-6 text-forest/70">
-          TreeCoin is an in-app reward point during MVP and is not a tradable
-          financial asset.
+          {TREECOIN_DISCLAIMER}
         </p>
         <div className="mt-10 grid gap-5 md:grid-cols-3">
           {[

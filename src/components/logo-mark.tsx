@@ -15,7 +15,7 @@ const markSizeClassName = {
 };
 
 const lockupSizeClassName = {
-  sm: "h-11 w-auto max-w-[13rem]",
+  sm: "h-10 w-auto max-w-[11.5rem]",
   md: "h-14 w-auto max-w-[17rem]",
   lg: "h-20 w-auto max-w-[24rem]",
 };
