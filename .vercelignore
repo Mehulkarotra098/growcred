@@ -1,0 +1,12 @@
+.next
+node_modules
+.git
+.codex
+.agents
+.env*
+!.env.example
+*.log
+*.tsbuildinfo
+coverage
+public/assets/growcred/03_genz_sticker_pack
+public/assets/growcred/processed/stickers/*.png
