@@ -53,7 +53,7 @@ export function Header() {
           <LogoMark showWordmark size="sm" />
         </Link>
 
-        <div className="hidden items-center gap-1 xl:flex">
+        <div className="hidden items-center gap-1 2xl:flex">
           {navItems.map((item) => {
             const isActive = isActivePath(item.href);
 
@@ -73,7 +73,7 @@ export function Header() {
           })}
         </div>
 
-        <div className="hidden items-center gap-3 xl:flex">
+        <div className="hidden items-center gap-3 2xl:flex">
           <ThemeToggle />
           <Link
             href="/auth"
@@ -89,7 +89,7 @@ export function Header() {
           </Link>
         </div>
 
-        <div className="flex items-center gap-2 xl:hidden">
+        <div className="flex items-center gap-2 2xl:hidden">
           {!open ? <ThemeToggle compact /> : null}
           <button
             type="button"
@@ -113,13 +113,13 @@ export function Header() {
             type="button"
             aria-label="Close navigation menu overlay"
             onClick={() => setOpen(false)}
-            className="fixed inset-0 top-[4.55rem] z-40 bg-forest/25 backdrop-blur-sm xl:hidden"
+            className="fixed inset-0 top-[4.55rem] z-40 bg-forest/25 backdrop-blur-sm 2xl:hidden"
           />
         <div
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"
-          className="fixed inset-x-4 top-[5.1rem] z-50 max-h-[calc(100vh-6rem)] overflow-y-auto rounded-[1.75rem] border border-forest/10 bg-off-white/95 px-4 py-4 shadow-2xl shadow-forest/20 xl:hidden"
+          className="fixed inset-x-4 top-[5.1rem] z-50 max-h-[calc(100vh-6rem)] overflow-y-auto rounded-[1.75rem] border border-forest/10 bg-off-white/95 px-4 py-4 shadow-2xl shadow-forest/20 2xl:hidden"
         >
           <div className="mx-auto grid max-w-7xl gap-2">
             <div className="flex items-center justify-between rounded-2xl bg-white/70 p-3">

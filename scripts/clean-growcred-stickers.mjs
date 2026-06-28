@@ -138,6 +138,52 @@ async function cleanImageFile({
   ]);
 }
 
+async function createDarkWordmarkVariant() {
+  const inputPath = path.join(brandOutputDir, "01_growcred_full_logo_wordmark.png");
+  const source = sharp(inputPath).ensureAlpha();
+  const { data, info } = await source.raw().toBuffer({ resolveWithObject: true });
+  const output = Buffer.from(data);
+  const emblemGuardX = Math.round(info.width * 0.255);
+
+  for (let offset = 0; offset < output.length; offset += 4) {
+    const pixel = offset / 4;
+    const x = pixel % info.width;
+    if (x < emblemGuardX) continue;
+
+    const red = output[offset];
+    const green = output[offset + 1];
+    const blue = output[offset + 2];
+    const alpha = output[offset + 3];
+    if (alpha === 0) continue;
+
+    const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue;
+    if (luminance < 98 && green < 126) {
+      output[offset] = 246;
+      output[offset + 1] = 255;
+      output[offset + 2] = 244;
+    }
+  }
+
+  const darkImage = sharp(output, {
+    raw: {
+      width: info.width,
+      height: info.height,
+      channels: 4,
+    },
+  });
+
+  await Promise.all([
+    darkImage
+      .clone()
+      .png({ compressionLevel: 9, palette: true })
+      .toFile(path.join(brandOutputDir, "01_growcred_full_logo_wordmark_dark.png")),
+    darkImage
+      .clone()
+      .webp({ quality: 90, alphaQuality: 94 })
+      .toFile(path.join(brandOutputDir, "01_growcred_full_logo_wordmark_dark.webp")),
+  ]);
+}
+
 await fs.mkdir(outputDir, { recursive: true });
 await fs.mkdir(brandOutputDir, { recursive: true });
 
@@ -154,6 +200,7 @@ await Promise.all(
 const brandFiles = [
   "01_growcred_full_logo_wordmark.png",
   "02_growcred_logo_emblem.png",
+  "03_treecoin_gold_medallion.png",
 ];
 
 await Promise.all(
@@ -168,6 +215,8 @@ await Promise.all(
   ),
 );
 
+await createDarkWordmarkVariant();
+
 console.log(
-  `Cleaned ${files.length} GrowCred stickers into ${outputDir} and ${brandFiles.length} brand assets into ${brandOutputDir}`,
+  `Cleaned ${files.length} GrowCred stickers into ${outputDir} and ${brandFiles.length} brand assets plus dark logo variants into ${brandOutputDir}`,
 );

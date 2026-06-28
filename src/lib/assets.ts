@@ -7,8 +7,9 @@ const CLEAN_STICKERS = `${GROWCRED_BASE}/processed/stickers`;
 export const GROWCRED_ASSETS = {
   brand: {
     logoWordmark: `${CLEAN_BRAND}/01_growcred_full_logo_wordmark.png`,
+    logoWordmarkDark: `${CLEAN_BRAND}/01_growcred_full_logo_wordmark_dark.png`,
     logoEmblem: `${CLEAN_BRAND}/02_growcred_logo_emblem.png`,
-    treeCoin: `${FIRST_BATCH}/03_treecoin_gold_medallion.png`,
+    treeCoin: `${CLEAN_BRAND}/03_treecoin_gold_medallion.webp`,
   },
   site: {
     heroLanding: `${FIRST_BATCH}/04_homepage_hero_app_landing.png`,
