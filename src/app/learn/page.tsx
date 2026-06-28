@@ -70,7 +70,7 @@ export default function LearnPage() {
   return (
     <>
       <section className="px-4 py-14 sm:px-6 lg:px-8">
-        <div className="relative isolate mx-auto max-w-7xl">
+        <div className="product-page-shell relative isolate mx-auto max-w-7xl rounded-[2rem] p-4 sm:p-6 lg:rounded-[2.5rem] lg:p-8">
           <LivingBackdrop />
           <SectionHeader
             eyebrow="Tree care guide"
@@ -135,7 +135,7 @@ export default function LearnPage() {
 
       <section className="bg-white/70 px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+          <div className="product-page-shell grid gap-10 rounded-[2rem] p-4 sm:p-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:rounded-[2.5rem] lg:p-8">
           <div className="lg:sticky lg:top-28">
             <SectionHeader
               eyebrow="90-day care path"

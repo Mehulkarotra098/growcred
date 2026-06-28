@@ -17,8 +17,8 @@ export default function SubmitProofPage() {
   return (
     <section className="relative isolate px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
       <LivingBackdrop />
-      <div className="mx-auto grid max-w-7xl gap-7 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
-        <div className="lg:sticky lg:top-28">
+      <div className="product-page-shell mx-auto grid max-w-7xl gap-7 rounded-[2rem] p-4 sm:p-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-start lg:rounded-[2.5rem] lg:p-8">
+        <div className="product-page-rail rounded-[1.75rem] p-4 sm:p-6 lg:sticky lg:top-28">
           <SectionHeader
             eyebrow="Submit Proof"
             title="Plant real trees. Prove your impact."

@@ -114,6 +114,7 @@ export function AuthPanel() {
             Name
             <input
               required
+              autoComplete="name"
               value={name}
               onChange={(event) => setName(event.target.value)}
               className="min-h-12 rounded-2xl border border-forest/15 bg-off-white px-4 text-sm font-bold text-forest focus:outline-none"
@@ -128,6 +129,7 @@ export function AuthPanel() {
             <input
               required
               type="email"
+              autoComplete="email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
               className="min-h-12 w-full bg-transparent text-sm font-bold text-forest placeholder:text-forest/35 focus:outline-none"
@@ -140,6 +142,7 @@ export function AuthPanel() {
           <input
             required
             type="password"
+            autoComplete={mode === "sign-in" ? "current-password" : "new-password"}
             minLength={6}
             value={password}
             onChange={(event) => setPassword(event.target.value)}
@@ -163,7 +166,7 @@ export function AuthPanel() {
       <p className="mt-5 rounded-[1.25rem] bg-aqua/10 p-4 text-sm font-bold leading-6 text-forest/70">
         {configured
           ? "Sign in to track your impact, proof status, care reminders, and TreeCoin progress."
-          : "Preview the proof flow now. Sign in to track your impact when account saving is connected."}
+          : "Preview the proof flow now. Sign in to track your impact."}
       </p>
       {message ? (
         <p className="mt-4 text-sm font-black text-forest">{message}</p>

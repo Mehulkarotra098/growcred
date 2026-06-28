@@ -508,6 +508,36 @@ body::after {
   background: rgba(234, 255, 236, 0.075);
 }
 
+.product-page-shell {
+  border: 1px solid rgba(13, 43, 30, 0.1);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(163, 255, 18, 0.16), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(250, 253, 247, 0.88));
+  box-shadow: 0 26px 86px rgba(13, 43, 30, 0.1);
+  backdrop-filter: blur(18px);
+}
+
+[data-theme="dark"] .product-page-shell {
+  border-color: rgba(163, 255, 18, 0.16);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(163, 255, 18, 0.13), transparent 32%),
+    radial-gradient(circle at 92% 6%, rgba(0, 212, 216, 0.1), transparent 28%),
+    linear-gradient(180deg, rgba(8, 31, 22, 0.96), rgba(4, 18, 13, 0.96));
+  box-shadow: 0 36px 120px rgba(0, 0, 0, 0.46);
+}
+
+.product-page-rail {
+  border: 1px solid rgba(13, 43, 30, 0.08);
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.78);
+}
+
+[data-theme="dark"] .product-page-rail {
+  border-color: rgba(163, 255, 18, 0.12);
+  background: rgba(234, 255, 236, 0.07);
+  box-shadow: inset 0 1px 0 rgba(234, 255, 236, 0.08);
+}
+
 [data-theme="dark"] .dashboard-app-shell .text-forest\/72,
 [data-theme="dark"] .dashboard-app-shell .text-forest\/65,
 [data-theme="dark"] .dashboard-app-shell .text-forest\/62,
@@ -525,6 +555,20 @@ body::after {
   color: rgba(234, 255, 236, 0.62) !important;
 }
 
+[data-theme="dark"] .product-page-shell .text-forest\/72,
+[data-theme="dark"] .product-page-shell .text-forest\/70,
+[data-theme="dark"] .product-page-shell .text-forest\/65,
+[data-theme="dark"] .product-page-shell .text-forest\/62,
+[data-theme="dark"] .product-page-shell .text-forest\/60,
+[data-theme="dark"] .product-page-shell .text-forest\/55,
+[data-theme="dark"] .product-page-shell .text-forest\/50 {
+  color: rgba(234, 255, 236, 0.76) !important;
+}
+
+[data-theme="dark"] .product-page-shell .text-forest\/45 {
+  color: rgba(234, 255, 236, 0.62) !important;
+}
+
 .impact-ring {
   background:
     conic-gradient(#0a8f3f calc(var(--progress) * 1%), rgba(13, 43, 30, 0.09) 0),
@@ -535,22 +579,6 @@ body::after {
   background:
     conic-gradient(#a3ff12 calc(var(--progress) * 1%), rgba(234, 255, 236, 0.12) 0),
     linear-gradient(180deg, rgba(8, 33, 23, 0.96), rgba(4, 18, 13, 0.96));
-}
-
-.tree-portrait {
-  background:
-    radial-gradient(circle at 50% 18%, rgba(163, 255, 18, 0.92), transparent 24%),
-    radial-gradient(circle at 38% 30%, rgba(34, 197, 94, 0.82), transparent 25%),
-    radial-gradient(circle at 62% 32%, rgba(0, 212, 216, 0.32), transparent 24%),
-    linear-gradient(180deg, rgba(208, 250, 209, 0.92) 0 58%, rgba(139, 94, 52, 0.24) 58% 100%);
-}
-
-[data-theme="dark"] .tree-portrait {
-  background:
-    radial-gradient(circle at 50% 18%, rgba(163, 255, 18, 0.76), transparent 24%),
-    radial-gradient(circle at 38% 30%, rgba(34, 197, 94, 0.68), transparent 25%),
-    radial-gradient(circle at 62% 32%, rgba(0, 212, 216, 0.22), transparent 24%),
-    linear-gradient(180deg, rgba(10, 48, 32, 0.96) 0 58%, rgba(139, 94, 52, 0.3) 58% 100%);
 }
 
 @keyframes living-shimmer {

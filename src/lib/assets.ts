@@ -3,6 +3,7 @@ const FIRST_BATCH = `${GROWCRED_BASE}/01_first_batch_site_assets`;
 const SECOND_BATCH = `${GROWCRED_BASE}/02_second_batch_individual_assets`;
 const CLEAN_BRAND = `${GROWCRED_BASE}/processed/brand`;
 const CLEAN_STICKERS = `${GROWCRED_BASE}/processed/stickers`;
+const GENERATED_ASSETS = `${GROWCRED_BASE}/generated`;
 
 export const GROWCRED_ASSETS = {
   brand: {
@@ -47,5 +48,10 @@ export const GROWCRED_ASSETS = {
     nativeTreesOnly: `${CLEAN_STICKERS}/native_trees_only_eco_sticker.webp`,
     trackVerifyGrow: `${CLEAN_STICKERS}/track_verify_grow_sticker_design.webp`,
     beTheChange: `${CLEAN_STICKERS}/be_the_change_sticker_design.webp`,
+  },
+  treeThumbnails: {
+    mango: `${GENERATED_ASSETS}/tree-mango-thumb.webp`,
+    neem: `${GENERATED_ASSETS}/tree-neem-thumb.webp`,
+    gulmohar: `${GENERATED_ASSETS}/tree-gulmohar-thumb.webp`,
   },
 } as const;

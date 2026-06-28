@@ -127,7 +127,14 @@ export function HeroSection() {
                   alt="GrowCred - Plant. Prove. Protect."
                   width={2048}
                   height={640}
-                  className="h-auto w-48"
+                  className="theme-logo-light h-auto w-48 object-contain"
+                />
+                <Image
+                  src={brandAssets.logoLockupDark}
+                  alt="GrowCred - Plant. Prove. Protect."
+                  width={2048}
+                  height={640}
+                  className="theme-logo-dark h-auto w-48 object-contain"
                 />
               </div>
               <div className="absolute bottom-5 left-5 max-w-[16rem] rounded-[1.5rem] border border-forest/10 bg-white/92 p-4 shadow-xl shadow-forest/10 backdrop-blur">

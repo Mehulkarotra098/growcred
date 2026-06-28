@@ -14,7 +14,7 @@ export default function ChallengesPage() {
   return (
     <section className="relative isolate px-4 py-14 sm:px-6 lg:px-8">
       <LivingBackdrop />
-      <div className="mx-auto max-w-7xl">
+      <div className="product-page-shell mx-auto max-w-7xl rounded-[2rem] p-4 sm:p-6 lg:rounded-[2.5rem] lg:p-8">
         <SectionHeader
           eyebrow="Grow missions"
           title="Challenges that make care social."

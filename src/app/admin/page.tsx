@@ -43,7 +43,7 @@ export default function AdminPage() {
   return (
     <section className="relative isolate px-4 py-14 sm:px-6 lg:px-8">
       <LivingBackdrop />
-      <div className="mx-auto max-w-7xl">
+      <div className="product-page-shell mx-auto max-w-7xl rounded-[2rem] p-4 sm:p-6 lg:rounded-[2.5rem] lg:p-8">
         <SectionHeader
           eyebrow="Verification desk"
           title="Verification should feel trustworthy."
@@ -53,7 +53,7 @@ export default function AdminPage() {
           {adminStats.map(({ icon: Icon, label, value }) => (
             <article
               key={label}
-              className="rounded-[1.25rem] border border-forest/10 bg-white/75 p-4 shadow-sm shadow-forest/5"
+              className="dashboard-panel rounded-[1.25rem] p-4"
             >
               <div className="flex items-center justify-between gap-2">
                 <p className="text-xs font-black uppercase tracking-[0.1em] text-forest/50">

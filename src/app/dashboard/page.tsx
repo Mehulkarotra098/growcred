@@ -28,6 +28,7 @@ import type { Badge, ProofStatus } from "@/lib/types";
 import { LivingBackdrop } from "@/components/living-backdrop";
 import { LogoMark } from "@/components/logo-mark";
 import { StatusPill } from "@/components/status-pill";
+import { GROWCRED_ASSETS } from "@/lib/assets";
 import { brandAssets } from "@/lib/brand-assets";
 import { TREECOIN_DISCLAIMER } from "@/lib/copy";
 import {
@@ -97,28 +98,32 @@ const treeRows = [
     species: "Mangifera indica",
     status: "verified",
     coins: 50,
-    accent: "mango",
+    image: GROWCRED_ASSETS.treeThumbnails.mango,
+    imageAlt: "Healthy mango tree in a bright garden",
   },
   {
     name: "Neem Tree",
     species: "Azadirachta indica",
     status: "verified",
     coins: 50,
-    accent: "neem",
+    image: GROWCRED_ASSETS.treeThumbnails.neem,
+    imageAlt: "Healthy neem tree in a bright garden",
   },
   {
     name: "Gulmohar",
     species: "Delonix regia",
     status: "under_review",
     coins: 25,
-    accent: "gulmohar",
+    image: GROWCRED_ASSETS.treeThumbnails.gulmohar,
+    imageAlt: "Flowering gulmohar tree in a bright garden",
   },
 ] satisfies Array<{
   name: string;
   species: string;
   status: ProofStatus;
   coins: number;
-  accent: "mango" | "neem" | "gulmohar";
+  image: string;
+  imageAlt: string;
 }>;
 
 const communityStats = [
@@ -435,7 +440,15 @@ function MyTreesPanel() {
               index > 0 && "border-t border-forest/10",
             )}
           >
-            <TreePortrait accent={tree.accent} />
+            <div className="relative h-20 overflow-hidden rounded-[1.35rem] bg-lime/15 ring-1 ring-forest/10">
+              <Image
+                src={tree.image}
+                alt={tree.imageAlt}
+                fill
+                sizes="(max-width: 640px) 100vw, 5rem"
+                className="object-cover"
+              />
+            </div>
             <div className="min-w-0">
               <p className="font-black text-forest">{tree.name}</p>
               <p className="mt-1 text-sm font-bold italic text-forest/55">
@@ -469,25 +482,6 @@ function MyTreesPanel() {
         Add New Tree
       </Link>
     </section>
-  );
-}
-
-function TreePortrait({ accent }: { accent: "mango" | "neem" | "gulmohar" }) {
-  return (
-    <div
-      className={cn(
-        "tree-portrait relative h-20 overflow-hidden rounded-[1.35rem] ring-1 ring-forest/10",
-        accent === "gulmohar" && "saturate-[1.25]",
-        accent === "neem" && "hue-rotate-[8deg]",
-      )}
-      aria-hidden="true"
-    >
-      <span className="absolute bottom-2 left-1/2 h-9 w-2 -translate-x-1/2 rounded-full bg-earth" />
-      <span className="absolute bottom-9 left-1/2 h-10 w-14 -translate-x-1/2 rounded-full bg-leaf/85 blur-[1px]" />
-      {accent === "gulmohar" ? (
-        <span className="absolute left-8 top-5 h-4 w-4 rounded-full bg-orange-400 shadow-[24px_2px_0_rgba(251,146,60,0.9),12px_16px_0_rgba(251,146,60,0.85)]" />
-      ) : null}
-    </div>
   );
 }
 
