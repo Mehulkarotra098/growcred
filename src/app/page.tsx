@@ -183,13 +183,21 @@ export default function Home() {
                 icon={BadgeCheck}
               />
             </div>
-            <Link
-              href="/submit-proof"
-              className="mt-6 inline-flex items-center gap-2 rounded-full bg-forest px-5 py-3 text-sm font-black text-white transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
-            >
-              Submit Proof
-              <ArrowRight aria-hidden="true" className="h-4 w-4" />
-            </Link>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/submit-proof"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-5 py-3 text-sm font-black text-white transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+              >
+                Submit Proof
+                <ArrowRight aria-hidden="true" className="h-4 w-4" />
+              </Link>
+              <Link
+                href="/treecoin"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-forest/10 bg-white px-5 py-3 text-sm font-black text-forest transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+              >
+                Explore TreeCoin
+              </Link>
+            </div>
           </div>
           <RewardTable />
         </div>

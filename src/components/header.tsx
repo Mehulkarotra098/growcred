@@ -10,7 +10,7 @@ import { ThemeToggle } from "./theme-toggle";
 
 const navItems = [
   { href: "/#how-it-works", label: "How it Works" },
-  { href: "/#rewards", label: "Rewards" },
+  { href: "/treecoin", label: "TreeCoin" },
   { href: "/challenges", label: "Challenges" },
   { href: "/learn", label: "Learn" },
   { href: "/community", label: "Community" },

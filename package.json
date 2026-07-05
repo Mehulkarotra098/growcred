@@ -8,7 +8,11 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "assets:stickers": "node scripts/clean-growcred-stickers.mjs"
+    "assets:stickers": "node scripts/clean-growcred-stickers.mjs",
+    "treecoin:create": "node scripts/create-solana-treecoin.mjs",
+    "treecoin:create:local": "node scripts/create-solana-treecoin.mjs --cluster localnet --rpc-url http://127.0.0.1:8899",
+    "treecoin:mint:local": "node scripts/mint-solana-treecoin.mjs --cluster localnet --rpc-url http://127.0.0.1:8899",
+    "treecoin:mint": "node scripts/mint-solana-treecoin.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.0",
@@ -22,6 +26,8 @@
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
+    "@solana/spl-token": "^0.4.14",
+    "@solana/web3.js": "^1.98.4",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

@@ -62,6 +62,30 @@ export interface TreeCoinLedger {
   createdAt: string;
 }
 
+export type TreeCoinMintStatus =
+  | "recipient_needed"
+  | "queued"
+  | "minted"
+  | "failed"
+  | "cancelled";
+
+export interface TreeCoinMintRequest {
+  id: string;
+  ledgerId: string;
+  userId: string;
+  proofSubmissionId: string;
+  recipientAddress?: string;
+  amount: number;
+  proofHash: string;
+  status: TreeCoinMintStatus;
+  network: "localnet" | "devnet" | "mainnet-beta";
+  mintAddress?: string;
+  recipientTokenAccount?: string;
+  transactionSignature?: string;
+  createdAt: string;
+  mintedAt?: string;
+}
+
 export interface Challenge {
   id: string;
   title: string;

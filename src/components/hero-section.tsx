@@ -52,17 +52,17 @@ export function HeroSection() {
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
             </Link>
             <Link
-              href="/#how-it-works"
+              href="/treecoin"
               className="inline-flex items-center justify-center rounded-full border border-forest/15 bg-white px-6 py-4 text-sm font-black text-forest shadow-sm transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
             >
-              See the Proof Loop
+              Explore TreeCoin
             </Link>
           </div>
           <div className="mt-7 grid gap-3 sm:grid-cols-3">
             {[
               ["01", "Plant with permission"],
               ["02", "Upload proof"],
-              ["03", "Care until it survives"],
+              ["03", "Unlock rewards"],
             ].map(([step, label]) => (
               <div
                 key={step}

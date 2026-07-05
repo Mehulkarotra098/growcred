@@ -22,6 +22,9 @@ export function RewardTable() {
           <h3 className="mt-1 text-2xl font-black">
             Earn for verified care.
           </h3>
+          <p className="mt-2 max-w-md text-sm font-bold leading-6 text-white/68">
+            Whole-point rewards released only after GrowCred verification.
+          </p>
         </div>
         <Image
           src={brandAssets.treeCoin}

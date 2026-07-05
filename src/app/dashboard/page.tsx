@@ -24,7 +24,7 @@ import {
   Trophy,
   Users,
 } from "lucide-react";
-import type { Badge, ProofStatus } from "@/lib/types";
+import type { Badge, CareReminder, ProofStatus } from "@/lib/types";
 import { LivingBackdrop } from "@/components/living-backdrop";
 import { LogoMark } from "@/components/logo-mark";
 import { StatusPill } from "@/components/status-pill";
@@ -133,25 +133,10 @@ const communityStats = [
   { label: "Cities active", value: "25", icon: Globe2 },
 ] as const;
 
-const reminderRows = [
-  {
-    label: "Water your Neem Tree",
-    time: "Tomorrow, 9:00 AM",
-    icon: Droplets,
-    tone: "aqua",
-  },
-  {
-    label: "Check soil health",
-    time: "In 2 days",
-    icon: CalendarCheck,
-    tone: "earth",
-  },
-  {
-    label: "Add mulch to Mango Tree",
-    time: "In 5 days",
-    icon: Leaf,
-    tone: "lime",
-  },
+const reminderMeta = [
+  { label: "Tomorrow, 9 AM", icon: Droplets, tone: "aqua" },
+  { label: "In 3 days", icon: CalendarCheck, tone: "earth" },
+  { label: "This week", icon: Leaf, tone: "lime" },
 ] as const;
 
 export default function DashboardPage() {
@@ -643,9 +628,13 @@ function BadgeToken({ badge, unlocked }: { badge: Badge; unlocked: boolean }) {
 }
 
 function CareRemindersPanel() {
-  const scheduledCount = careReminders.filter(
-    (reminder) => reminder.status === "scheduled",
-  ).length;
+  const scheduledReminders = careReminders
+    .filter(
+      (reminder) =>
+        reminder.userId === "user-1" && reminder.status === "scheduled",
+    )
+    .slice(0, 3);
+  const nextReminder = scheduledReminders[0];
 
   return (
     <section className="dashboard-panel rounded-[2rem] p-5">
@@ -655,39 +644,83 @@ function CareRemindersPanel() {
             Care Reminders
           </p>
           <h2 className="mt-1 text-xl font-black text-forest">
-            {scheduledCount + 1} upcoming actions
+            {scheduledReminders.length} upcoming actions
           </h2>
         </div>
         <Bell aria-hidden="true" className="h-6 w-6 text-leaf" />
       </div>
 
-      <div className="mt-5 grid gap-3">
-        {reminderRows.map((reminder) => (
-          <div
-            key={reminder.label}
-            className="dashboard-soft-tile flex items-center gap-3 rounded-[1.35rem] p-3"
-          >
-            <span
-              className={cn(
-                "grid h-10 w-10 shrink-0 place-items-center rounded-full",
-                reminder.tone === "aqua" && "bg-aqua/12 text-aqua",
-                reminder.tone === "earth" && "bg-earth/12 text-earth",
-                reminder.tone === "lime" && "bg-lime/25 text-forest",
-              )}
-            >
-              <reminder.icon aria-hidden="true" className="h-5 w-5" />
+      {nextReminder ? (
+        <div className="mt-5 overflow-hidden rounded-[1.55rem] border border-leaf/18 bg-gradient-to-br from-forest via-[#075226] to-[#02180f] p-4 text-white shadow-lg shadow-forest/12">
+          <div className="flex items-start gap-3">
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-lime text-forest">
+              <Droplets aria-hidden="true" className="h-5 w-5" />
             </span>
             <div className="min-w-0">
-              <p className="truncate text-sm font-black text-forest">
-                {reminder.label}
+              <p className="text-[0.68rem] font-black uppercase tracking-[0.14em] text-lime">
+                Next care action
               </p>
-              <p className="mt-1 truncate text-xs font-bold text-forest/55">
-                {reminder.time}
+              <h3 className="mt-1 text-base font-black">
+                Water {nextReminder.treeNickname}
+              </h3>
+              <p className="mt-2 line-clamp-2 text-xs font-bold leading-5 text-white/68">
+                {nextReminder.message}
               </p>
             </div>
           </div>
-        ))}
+          <div className="mt-4 grid grid-cols-2 gap-2 text-xs font-black">
+            <span className="rounded-full bg-white/12 px-3 py-2">
+              Tomorrow, 9 AM
+            </span>
+            <span className="rounded-full bg-white/12 px-3 py-2 capitalize">
+              {formatReminderChannel(nextReminder.channel)}
+            </span>
+          </div>
+        </div>
+      ) : null}
+
+      <div className="mt-4 grid gap-2.5">
+        {scheduledReminders.map((reminder, index) => {
+          const meta = reminderMeta[index] ?? reminderMeta[reminderMeta.length - 1];
+          const Icon = meta.icon;
+
+          return (
+            <div
+              key={reminder.id}
+              className="dashboard-soft-tile grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-[1.25rem] p-3"
+            >
+              <span
+                className={cn(
+                  "grid h-10 w-10 shrink-0 place-items-center rounded-full",
+                  meta.tone === "aqua" && "bg-aqua/12 text-aqua",
+                  meta.tone === "earth" && "bg-earth/12 text-earth",
+                  meta.tone === "lime" && "bg-lime/25 text-forest",
+                )}
+              >
+                <Icon aria-hidden="true" className="h-5 w-5" />
+              </span>
+              <div className="min-w-0">
+                <p className="truncate text-sm font-black text-forest">
+                  {formatReminderTitle(reminder, index)}
+                </p>
+                <p className="mt-1 truncate text-xs font-bold text-forest/55">
+                  {reminder.treeNickname}
+                </p>
+              </div>
+              <span className="rounded-full bg-lime/20 px-3 py-1.5 text-[0.68rem] font-black text-forest">
+                {meta.label}
+              </span>
+            </div>
+          );
+        })}
       </div>
+
+      {scheduledReminders.length === 0 ? (
+        <div className="mt-5 rounded-[1.35rem] border border-dashed border-leaf/25 bg-lime/10 p-4 text-sm font-bold leading-6 text-forest/62">
+          No care reminders are waiting. Add a tree or upload proof to create
+          the next care milestone.
+        </div>
+      ) : null}
 
       <Link
         href="/submit-proof"
@@ -698,6 +731,22 @@ function CareRemindersPanel() {
       </Link>
     </section>
   );
+}
+
+function formatReminderTitle(reminder: CareReminder, index: number) {
+  if (index === 0) {
+    return "Water check";
+  }
+
+  if (reminder.message.toLowerCase().includes("proof")) {
+    return "Care proof window";
+  }
+
+  return "Tree health check";
+}
+
+function formatReminderChannel(channel: CareReminder["channel"]) {
+  return channel === "in_app" ? "in app" : channel;
 }
 
 function TreeCoinActionPanel({

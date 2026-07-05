@@ -42,10 +42,10 @@ function getMetadataBase() {
 
 export const metadata: Metadata = {
   metadataBase: getMetadataBase(),
-  title: "GrowCred — Plant. Prove. Protect.",
+  title: "GrowCred - Plant. Prove. Protect.",
   description: SEO_DESCRIPTION,
   openGraph: {
-    title: "GrowCred — Plant. Prove. Protect.",
+    title: "GrowCred - Plant. Prove. Protect.",
     description: SEO_DESCRIPTION,
     siteName: "GrowCred",
     images: [

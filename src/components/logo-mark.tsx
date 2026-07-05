@@ -54,6 +54,7 @@ export function LogoMark({
           aria-hidden="true"
           width={2048}
           height={640}
+          preload={size === "sm"}
           sizes={size === "lg" ? "24rem" : size === "md" ? "17rem" : "11.5rem"}
           className={cn(
             "theme-logo-dark object-contain",

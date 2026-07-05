@@ -204,10 +204,10 @@ export function AdminReviewTable({
         ) : null}
       </div>
 
-      <div className="grid gap-6 xl:grid-cols-[1fr_24rem]">
-        <div className="living-card overflow-hidden rounded-[2rem]">
-          <div className="hidden min-w-full overflow-x-auto xl:block">
-            <table className="min-w-full border-collapse text-left">
+      <div className="grid gap-6 2xl:grid-cols-[minmax(0,1fr)_24rem]">
+        <div className="living-card min-w-0 overflow-hidden rounded-[2rem]">
+          <div className="hidden max-w-full overflow-x-auto xl:block">
+            <table className="min-w-[76rem] border-collapse text-left">
               <thead className="forest-panel text-sm font-black text-white">
                 <tr>
                   <th scope="col" className="px-5 py-4">
@@ -327,7 +327,7 @@ export function AdminReviewTable({
         </div>
 
         {selectedRow ? (
-          <aside className="living-card hidden rounded-[2rem] p-5 xl:sticky xl:top-28 xl:block xl:self-start">
+          <aside className="living-card hidden rounded-[2rem] p-5 2xl:sticky 2xl:top-28 2xl:block 2xl:self-start">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-sm font-black uppercase tracking-[0.14em] text-leaf">

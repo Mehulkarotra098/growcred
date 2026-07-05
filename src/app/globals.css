@@ -538,6 +538,40 @@ body::after {
   box-shadow: inset 0 1px 0 rgba(234, 255, 236, 0.08);
 }
 
+[data-theme="dark"] .product-page-shell .bg-white\/86,
+[data-theme="dark"] .product-page-shell .bg-white\/88,
+[data-theme="dark"] .product-page-shell .bg-white\/84,
+[data-theme="dark"] .product-page-shell .bg-white\/82,
+[data-theme="dark"] .product-page-shell .bg-white\/78,
+[data-theme="dark"] .product-page-shell .bg-white\/74,
+[data-theme="dark"] .product-page-shell .bg-white\/72 {
+  background-color: rgba(9, 31, 23, 0.82);
+}
+
+[data-theme="dark"] .product-page-shell .bg-white {
+  background-color: rgba(234, 255, 236, 0.08) !important;
+}
+
+[data-theme="dark"] .product-page-shell .bg-off-white\/72 {
+  background-color: rgba(234, 255, 236, 0.07);
+}
+
+[data-theme="dark"] .product-page-shell .bg-lime\/28,
+[data-theme="dark"] .product-page-shell .bg-lime\/24,
+[data-theme="dark"] .product-page-shell .bg-lime\/22,
+[data-theme="dark"] .product-page-shell .bg-lime\/20,
+[data-theme="dark"] .product-page-shell .bg-lime\/16 {
+  background-color: rgba(163, 255, 18, 0.14);
+}
+
+[data-theme="dark"] .product-page-shell .bg-aqua\/10 {
+  background-color: rgba(34, 230, 233, 0.12);
+}
+
+[data-theme="dark"] .product-page-shell .border-forest\/8 {
+  border-color: rgba(163, 255, 18, 0.1);
+}
+
 [data-theme="dark"] .dashboard-app-shell .text-forest\/72,
 [data-theme="dark"] .dashboard-app-shell .text-forest\/65,
 [data-theme="dark"] .dashboard-app-shell .text-forest\/62,
@@ -560,13 +594,23 @@ body::after {
 [data-theme="dark"] .product-page-shell .text-forest\/65,
 [data-theme="dark"] .product-page-shell .text-forest\/62,
 [data-theme="dark"] .product-page-shell .text-forest\/60,
+[data-theme="dark"] .product-page-shell .text-forest\/58,
 [data-theme="dark"] .product-page-shell .text-forest\/55,
 [data-theme="dark"] .product-page-shell .text-forest\/50 {
   color: rgba(234, 255, 236, 0.76) !important;
 }
 
+[data-theme="dark"] .product-page-shell .text-forest\/40,
 [data-theme="dark"] .product-page-shell .text-forest\/45 {
   color: rgba(234, 255, 236, 0.62) !important;
+}
+
+[data-theme="dark"] .product-page-shell .text-forest {
+  color: #eaffec !important;
+}
+
+[data-theme="dark"] .product-page-shell .text-leaf {
+  color: #a3ff12 !important;
 }
 
 .impact-ring {

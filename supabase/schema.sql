@@ -76,6 +76,23 @@ create table if not exists public.treecoin_ledger (
   created_at timestamptz not null default now()
 );
 
+create table if not exists public.treecoin_mint_requests (
+  id uuid primary key default gen_random_uuid(),
+  ledger_id uuid not null references public.treecoin_ledger(id) on delete cascade,
+  user_id uuid not null references public.profiles(id) on delete cascade,
+  proof_submission_id uuid not null references public.proof_submissions(id) on delete cascade,
+  recipient_address text,
+  amount integer not null check (amount > 0),
+  proof_hash text not null unique,
+  status text not null default 'recipient_needed',
+  network text not null default 'devnet',
+  mint_address text,
+  recipient_token_account text,
+  transaction_signature text,
+  created_at timestamptz not null default now(),
+  minted_at timestamptz
+);
+
 create table if not exists public.admin_reviews (
   id uuid primary key default gen_random_uuid(),
   proof_submission_id uuid not null references public.proof_submissions(id) on delete cascade,
@@ -114,11 +131,14 @@ create index if not exists trees_user_id_idx on public.trees(user_id);
 create index if not exists proof_submissions_status_idx on public.proof_submissions(status);
 create index if not exists proof_submissions_user_id_idx on public.proof_submissions(user_id);
 create index if not exists care_reminders_due_idx on public.care_reminders(status, due_at);
+create index if not exists treecoin_mint_requests_status_idx on public.treecoin_mint_requests(status);
+create index if not exists treecoin_mint_requests_user_id_idx on public.treecoin_mint_requests(user_id);
 
 alter table public.profiles enable row level security;
 alter table public.trees enable row level security;
 alter table public.proof_submissions enable row level security;
 alter table public.treecoin_ledger enable row level security;
+alter table public.treecoin_mint_requests enable row level security;
 alter table public.admin_reviews enable row level security;
 alter table public.care_reminders enable row level security;
 alter table public.notification_outbox enable row level security;
@@ -148,6 +168,10 @@ create policy "users manage their proof submissions"
 
 create policy "users read their ledger"
   on public.treecoin_ledger for select
+  using (auth.uid() = user_id);
+
+create policy "users read their mint requests"
+  on public.treecoin_mint_requests for select
   using (auth.uid() = user_id);
 
 create policy "users read their reminders"

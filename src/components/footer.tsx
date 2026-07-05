@@ -7,7 +7,7 @@ import { LogoMark } from "./logo-mark";
 const footerLinks = [
   { href: "/about", label: "About" },
   { href: "/#how-it-works", label: "How it Works" },
-  { href: "/#rewards", label: "Rewards" },
+  { href: "/treecoin", label: "TreeCoin" },
   { href: "/challenges", label: "Challenges" },
   { href: "/learn", label: "Learn" },
   { href: "mailto:hello@growcred.app", label: "Contact" },
