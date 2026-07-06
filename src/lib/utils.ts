@@ -34,10 +34,10 @@ export function statusLabel(status: ProofStatus) {
 export function statusClassName(status: ProofStatus) {
   const classes: Record<ProofStatus, string> = {
     draft: "bg-slate-100 text-slate-700 ring-slate-200",
-    submitted: "bg-aqua/10 text-forest ring-aqua/30",
-    under_review: "bg-lime/35 text-forest ring-lime/60",
-    verified: "bg-leaf/15 text-forest ring-leaf/40",
-    needs_more_info: "bg-aqua/15 text-forest ring-aqua/50",
+    submitted: "bg-cyan-50 text-cyan-800 ring-cyan-200",
+    under_review: "bg-lime/40 text-[#0d2b1e] ring-lime/70",
+    verified: "bg-emerald-50 text-emerald-800 ring-emerald-200",
+    needs_more_info: "bg-cyan-50 text-cyan-800 ring-cyan-200",
     rejected: "bg-red-50 text-red-700 ring-red-200",
   };
 

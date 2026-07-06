@@ -18,11 +18,11 @@ export default function AdminPage() {
       <div className="product-page-shell mx-auto max-w-7xl rounded-[2rem] p-4 sm:p-6 lg:rounded-[2.5rem] lg:p-8">
         <SectionHeader
           eyebrow="Verification desk"
-          title="Verification should feel trustworthy."
-          description="Review evidence, status, fraud flags, and care commitments before approving TreeCoin rewards."
+          title="Review proof with a clear decision trail."
+          description="Review evidence, status, fraud flags, and care commitments before approval."
         />
         <AdminQueueStats />
-        <p className="mt-6 rounded-[1.25rem] bg-lime/20 p-4 text-sm font-bold leading-6 text-forest/70">
+        <p className="relaxed-copy mt-6 rounded-[1.25rem] bg-lime/20 p-4 text-sm font-bold leading-6 text-forest/70">
           {TREECOIN_DISCLAIMER}
         </p>
         <div className="mt-10">

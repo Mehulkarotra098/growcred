@@ -78,7 +78,7 @@ export default function LearnPage() {
             description="A fast guide for planting correctly, keeping trees alive, and earning TreeCoins with trustworthy proof."
             align="center"
           />
-          <p className="mx-auto mt-6 max-w-3xl rounded-[1.25rem] bg-lime/20 p-4 text-center text-xs font-bold leading-6 text-forest/70">
+          <p className="relaxed-copy mx-auto mt-6 max-w-3xl rounded-[1.25rem] bg-lime/20 p-4 text-center text-sm font-bold leading-6 text-forest/70">
             {TREECOIN_DISCLAIMER}
           </p>
           <div className="mt-10 grid gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">

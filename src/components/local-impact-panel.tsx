@@ -49,6 +49,7 @@ export function LocalImpactPanel() {
   const recentTree = recentProof
     ? state.trees.find((tree) => tree.id === recentProof.treeId)
     : userTrees[0];
+  const firstName = user.name.split(" ")[0] ?? "Your";
 
   return (
     <section className="dashboard-panel rounded-[1.75rem] p-4 sm:p-5">
@@ -57,8 +58,8 @@ export function LocalImpactPanel() {
           <p className="text-xs font-black uppercase tracking-[0.14em] text-leaf">
             Proof to reward
           </p>
-          <h2 className="mt-1 text-2xl font-black text-forest">
-            {user.name}&apos;s proof and TreeCoins
+          <h2 className="mt-1 max-w-full text-xl font-black leading-tight text-forest sm:text-2xl">
+            {firstName}&apos;s proof and TreeCoins
           </h2>
           <p className="mt-2 max-w-3xl text-sm font-bold leading-6 text-forest/62">
             Upload a tree photo, wait for review, and verified TreeCoins appear
@@ -151,7 +152,7 @@ export function LocalImpactPanel() {
         </article>
       </div>
 
-      <p className="mt-4 rounded-[1.15rem] bg-lime/16 p-3 text-xs font-bold leading-5 text-forest/62">
+      <p className="relaxed-copy mt-4 rounded-[1.15rem] bg-lime/16 p-3 text-sm font-bold leading-6 text-forest/62">
         {TREECOIN_DISCLAIMER}
       </p>
     </section>

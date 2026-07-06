@@ -9,7 +9,7 @@ export function LeaderboardTable({ users }: LeaderboardTableProps) {
   const sorted = [...users].sort((a, b) => b.totalTreeCoins - a.totalTreeCoins);
 
   return (
-    <div className="living-card overflow-hidden rounded-[2rem]">
+    <div className="living-card overflow-hidden rounded-[1.75rem]">
       <div className="hidden md:block">
         <div className="forest-panel grid grid-cols-[72px_1.3fr_1fr_1fr_1fr_1fr] gap-4 px-5 py-4 text-sm font-black text-white">
           <span>Rank</span>
@@ -46,7 +46,7 @@ export function LeaderboardTable({ users }: LeaderboardTableProps) {
         {sorted.map((user, index) => (
           <article
             key={user.id}
-            className="rounded-[1.5rem] border border-forest/10 bg-white/70 p-4"
+            className="rounded-[1.25rem] border border-forest/10 bg-white/70 p-4"
           >
             <div className="flex items-start justify-between gap-3">
               <div>
@@ -117,7 +117,9 @@ function MobileMetric({ label, value }: { label: string; value: string }) {
       <p className="text-[0.65rem] font-black uppercase tracking-[0.1em] text-forest/45">
         {label}
       </p>
-      <p className="mt-1 truncate text-sm font-black text-forest">{value}</p>
+      <p className="mt-1 break-words text-sm font-black leading-5 text-forest">
+        {value}
+      </p>
     </div>
   );
 }

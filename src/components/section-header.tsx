@@ -50,8 +50,8 @@ export function SectionHeader({
         <p
           className={
             isDark
-              ? "mt-4 text-base leading-7 text-white/70 sm:text-lg"
-              : "mt-4 text-base leading-7 text-forest/70 sm:text-lg"
+              ? "relaxed-copy mt-4 text-base leading-7 text-white/70 sm:text-lg"
+              : "relaxed-copy mt-4 text-base leading-7 text-forest/70 sm:text-lg"
           }
         >
           {description}

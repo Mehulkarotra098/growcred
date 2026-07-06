@@ -60,7 +60,7 @@ export default function AboutPage() {
           <SectionHeader
             eyebrow="What it looks like"
             title="A community that submits proof and comes back."
-            description="GrowCred should feel like people are already planting, reviewing, and caring for trees together."
+            description="People plant, upload proof, receive review decisions, and keep caring for the same trees over time."
           />
           <div className="mt-8">
             <HumanActivityStrip />

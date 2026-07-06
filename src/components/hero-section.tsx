@@ -11,6 +11,7 @@ import { HumanProofBoard } from "./human-proof-board";
 import { LivingBackdrop } from "./living-backdrop";
 import { FadeIn } from "./motion";
 import { StickerBadge } from "./sticker-badge";
+import { BRAND_TAGLINE, SUPPORTING_LINE } from "@/lib/copy";
 
 const trustNotes = [
   ["Human review", "Proof is checked for context, permission, and care intent."],
@@ -29,26 +30,22 @@ export function HeroSection() {
   return (
     <section className="relative isolate overflow-hidden px-4 pb-12 pt-10 sm:px-6 sm:pb-16 sm:pt-14 lg:px-8">
       <LivingBackdrop />
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-        <FadeIn className="max-w-3xl lg:pt-24">
-          <div className="flex flex-wrap gap-2">
-            <StickerBadge>Real tree proof</StickerBadge>
-            <StickerBadge>Care reminders</StickerBadge>
-            <StickerBadge>Reward-only TreeCoins</StickerBadge>
-          </div>
+      <div className="mx-auto grid max-w-7xl gap-9 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+        <FadeIn className="max-w-3xl lg:py-14">
+          <StickerBadge>GrowCred community</StickerBadge>
 
           <p className="mt-8 inline-flex items-center gap-2 text-sm font-black uppercase tracking-[0.18em] text-leaf">
             <Sparkles aria-hidden="true" className="h-4 w-4" />
-            Plant. Prove. Protect.
+            {BRAND_TAGLINE}
           </p>
 
-          <h1 className="mt-4 max-w-4xl text-5xl font-black tracking-tight text-forest sm:text-6xl lg:text-7xl">
+          <h1 className="mt-4 max-w-4xl text-5xl font-black leading-[0.95] tracking-tight text-forest sm:text-6xl lg:text-7xl">
             Grow good. Earn green.
           </h1>
 
           <p className="mt-6 max-w-2xl text-lg font-semibold leading-8 text-forest/72 sm:text-xl">
-            GrowCred helps people plant responsibly, upload proof a reviewer can
-            trust, and keep coming back until the tree survives.
+            {SUPPORTING_LINE} Plant responsibly, upload proof a reviewer can
+            trust, and return with care updates until the tree survives.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -73,10 +70,10 @@ export function HeroSection() {
         </FadeIn>
       </div>
 
-      <div className="mx-auto mt-8 grid max-w-7xl gap-3 lg:mt-7 lg:grid-cols-[0.9fr_1.1fr]">
+      <div className="mx-auto mt-8 grid max-w-7xl gap-3 lg:mt-7 lg:grid-cols-[0.92fr_1.08fr]">
         <div className="grid gap-3 sm:grid-cols-3">
           {trustNotes.map(([title, text]) => (
-            <article key={title} className="human-card rounded-[1.35rem] p-4">
+            <article key={title} className="human-card rounded-[1.2rem] p-4">
               <p className="text-sm font-black text-forest">{title}</p>
               <p className="mt-2 text-xs font-bold leading-5 text-forest/58">
                 {text}

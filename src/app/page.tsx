@@ -117,8 +117,8 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <SectionHeader
             eyebrow="Recent activity"
-            title="Make the impact feel lived-in."
-            description="Visitors should see people submitting, waiting, getting verified, and returning for care."
+            title="See the movement already growing."
+            description="People submit proof, wait for review, earn rewards, and return with care updates."
           />
           <div className="mt-8">
             <HumanActivityStrip />
@@ -155,9 +155,8 @@ export default function Home() {
                 Review happens before reward.
               </h3>
               <p className="mt-4 max-w-xl text-sm font-semibold leading-7 text-white/72">
-                The product should feel serious because people can only earn
-                TreeCoins after evidence, permission, species fit, and care
-                intent are checked.
+                TreeCoins unlock only after evidence, permission, species fit,
+                and care intent are checked by review.
               </p>
               <p className="mt-6 rounded-[1.25rem] border border-lime/24 bg-lime/10 p-4 text-xs font-bold leading-6 text-white/76">
                 {TREECOIN_DISCLAIMER}
@@ -310,7 +309,7 @@ export default function Home() {
           <SectionHeader
             eyebrow="Dashboard preview"
             title="Track proof, reminders, rewards, and care."
-            description="The dashboard should feel like a place users return to, not a one-time certificate page."
+            description="Return for care reminders, survival milestones, badges, and verified reward progress."
           />
           <div className="mt-10 grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-start">
             <div className="grid gap-5 sm:grid-cols-2">

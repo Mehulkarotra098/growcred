@@ -52,7 +52,7 @@ export function RewardTable() {
           </div>
         ))}
       </div>
-      <p className="border-t border-forest/10 bg-lime/20 px-5 py-4 text-sm font-bold leading-6 text-forest">
+      <p className="relaxed-copy border-t border-forest/10 bg-lime/20 px-5 py-4 text-sm font-bold leading-6 text-forest">
         {TREECOIN_DISCLAIMER}
       </p>
     </FadeIn>

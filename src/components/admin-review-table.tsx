@@ -51,6 +51,7 @@ const filters: Array<{ label: string; value: QueueFilter }> = [
 
 const reviewActions: Array<{
   label: string;
+  shortLabel: string;
   decision: ProofStatus;
   note: string;
   icon: typeof CheckCircle2;
@@ -58,6 +59,7 @@ const reviewActions: Array<{
 }> = [
   {
     label: "Approve",
+    shortLabel: "Approve",
     decision: "verified",
     note: "Approved after evidence, permission, and care commitment review.",
     icon: CheckCircle2,
@@ -65,6 +67,7 @@ const reviewActions: Array<{
   },
   {
     label: "Reject",
+    shortLabel: "Reject",
     decision: "rejected",
     note: "Rejected because the proof does not meet verification standards.",
     icon: XCircle,
@@ -72,6 +75,7 @@ const reviewActions: Array<{
   },
   {
     label: "Request more info",
+    shortLabel: "More info",
     decision: "needs_more_info",
     note: "Requested clearer evidence or missing planting context.",
     icon: MessageSquare,
@@ -79,6 +83,7 @@ const reviewActions: Array<{
   },
   {
     label: "Mark for field verification",
+    shortLabel: "Field check",
     decision: "under_review",
     note: "Marked for field verification before a final reward decision.",
     icon: MapPinned,
@@ -239,7 +244,7 @@ export function AdminReviewTable({
       </div>
 
       <div className="grid gap-6 2xl:grid-cols-[minmax(0,1fr)_24rem]">
-        <div className="living-card min-w-0 overflow-hidden rounded-[2rem]">
+        <div className="living-card min-w-0 overflow-hidden rounded-[1.75rem]">
           <div className="hidden max-w-full overflow-x-auto xl:block">
             <table className="min-w-[76rem] border-collapse text-left">
               <thead className="forest-panel text-sm font-black text-white">
@@ -313,11 +318,14 @@ export function AdminReviewTable({
             {filteredRows.map((row) => (
               <article
                 key={row.submission.id}
-                className="rounded-[1.35rem] border border-forest/10 bg-white/75 p-3 shadow-sm shadow-forest/5"
+                className="rounded-[1.25rem] border border-forest/10 bg-white/75 p-3 shadow-sm shadow-forest/5"
               >
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <UserCell row={row} />
                   <StatusPill status={row.status} />
+                </div>
+                <div className="mt-3 rounded-[1rem] bg-off-white/72 p-3">
+                  <EvidenceCell row={row} compact />
                 </div>
                 <div className="mt-3 grid gap-3 sm:grid-cols-2">
                   <TreeCell row={row} />
@@ -332,9 +340,6 @@ export function AdminReviewTable({
                   </div>
                   <FraudFlags flags={row.review.fraudFlags} />
                 </div>
-                <div className="mt-3 rounded-[1.15rem] bg-off-white p-3">
-                  <EvidenceCell row={row} compact />
-                </div>
                 <div className="mt-3 grid grid-cols-2 gap-2">
                   {reviewActions.map((action) => (
                     <button
@@ -346,12 +351,12 @@ export function AdminReviewTable({
                         handleReview(row, action);
                       }}
                       className={cn(
-                        "inline-flex min-h-11 items-center justify-center gap-1.5 rounded-full px-3 py-2 text-[0.72rem] font-black leading-tight transition disabled:cursor-wait disabled:opacity-65 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
+                        "inline-flex min-h-10 items-center justify-center gap-1.5 rounded-xl px-3 py-2 text-[0.72rem] font-black leading-tight transition disabled:cursor-wait disabled:opacity-65 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
                         action.className,
                       )}
                     >
                       <action.icon aria-hidden="true" className="h-3.5 w-3.5 shrink-0" />
-                      <span>{action.label}</span>
+                      <span>{action.shortLabel}</span>
                     </button>
                   ))}
                 </div>
@@ -442,13 +447,13 @@ export function AdminReviewTable({
 
 function UserCell({ row }: { row: ReviewRow }) {
   return (
-    <div className="flex items-center gap-3">
+    <div className="flex min-w-0 items-center gap-3">
       <span className="grid h-10 w-10 place-items-center rounded-full bg-lime/35 text-sm font-black text-forest">
         {row.user.avatarUrl}
       </span>
-      <div>
+      <div className="min-w-0">
         <p className="font-black text-forest">{row.user.name}</p>
-        <p className="text-xs font-bold text-forest/50">{row.user.email}</p>
+        <p className="break-all text-xs font-bold text-forest/50">{row.user.email}</p>
       </div>
     </div>
   );

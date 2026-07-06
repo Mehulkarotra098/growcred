@@ -121,7 +121,7 @@ const proofQueue = [
 
 export default function TreeCoinPage() {
   return (
-    <main className="product-page-shell treecoin-launch-shell px-4 py-8 sm:px-6 lg:px-8">
+    <section className="product-page-shell treecoin-launch-shell px-4 py-8 sm:px-6 lg:px-8">
       <section className="mx-auto grid max-w-7xl gap-5 xl:grid-cols-[1.02fr_0.98fr] xl:items-stretch">
         <div className="relative overflow-hidden rounded-[2.25rem] border border-forest/10 bg-white/88 p-6 shadow-2xl shadow-forest/8 sm:p-8 lg:p-10">
           <div
@@ -241,8 +241,8 @@ export default function TreeCoinPage() {
               TreeCoin is ready to explain clearly.
             </p>
             <p className="mt-2 text-sm font-bold leading-6 text-forest/64">
-              Visitors can understand the rule in seconds: submit real proof,
-              pass verification, then earn TreeCoins inside GrowCred.
+              The rule is simple: submit real proof, pass verification, then
+              earn TreeCoins inside GrowCred.
             </p>
           </div>
         </article>
@@ -254,7 +254,7 @@ export default function TreeCoinPage() {
                 Live reward feel
               </p>
               <h2 className="text-2xl font-black text-forest">
-                Make visitors feel people are already growing.
+                See recent reward activity from the GrowCred community.
               </h2>
             </div>
             <Link
@@ -342,8 +342,8 @@ export default function TreeCoinPage() {
                 {BRAND_SLOGAN}
               </h2>
               <p className="mt-4 text-sm font-bold leading-7 text-white/72">
-                Users should understand the reward instantly: clear proof,
-                trusted review, then visible TreeCoins in their GrowCred record.
+                Clear proof, trusted review, and visible TreeCoins in the
+                GrowCred record.
               </p>
               <div className="mt-6 grid gap-3">
                 {proofQueue.map(([label, status, detail]) => (
@@ -435,7 +435,7 @@ export default function TreeCoinPage() {
           </div>
         </div>
       </section>
-    </main>
+    </section>
   );
 }
 

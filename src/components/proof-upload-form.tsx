@@ -343,9 +343,9 @@ export function ProofUploadForm() {
   }
 
   if (result?.ok) {
-    return (
-      <section className="living-card rounded-[2.25rem] p-6 sm:p-8">
-        <div className="grid gap-8 lg:grid-cols-[1fr_0.72fr] lg:items-center">
+  return (
+    <section className="living-card rounded-[1.75rem] p-5 sm:p-7">
+        <div className="grid gap-6 lg:grid-cols-[1fr_0.72fr] lg:items-center">
           <div>
             <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-lime/45 text-forest">
               <CheckCircle2 aria-hidden="true" className="h-7 w-7" />
@@ -359,7 +359,7 @@ export function ProofUploadForm() {
               approved.
             </p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-[1.5rem] border border-lime/50 bg-lime/20 p-5">
+              <div className="rounded-[1.25rem] border border-lime/40 bg-lime/16 p-5">
                 <p className="text-sm font-black uppercase tracking-[0.12em] text-forest/55">
                   Status
                 </p>
@@ -371,7 +371,7 @@ export function ProofUploadForm() {
                   verification.
                 </p>
               </div>
-              <div className="rounded-[1.5rem] border border-leaf/20 bg-white/70 p-5">
+              <div className="rounded-[1.25rem] border border-leaf/20 bg-white/70 p-5">
                 <div className="flex items-center gap-3">
                   <Image
                     src={brandAssets.treeCoin}
@@ -411,7 +411,7 @@ export function ProofUploadForm() {
               </button>
             </div>
           </div>
-          <div className="forest-panel rounded-[2rem] p-6 text-white">
+          <div className="forest-panel rounded-[1.5rem] p-6 text-white">
             <p className="text-sm font-black uppercase tracking-[0.14em] text-lime">
               Next action
             </p>
@@ -435,11 +435,11 @@ export function ProofUploadForm() {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="living-card rounded-[2.25rem] p-4 sm:p-6 lg:p-8"
+      className="living-card rounded-[1.75rem] p-4 sm:p-6 lg:p-7"
     >
-      <div className="grid gap-6 lg:grid-cols-[15rem_1fr]">
-        <aside className="order-2 rounded-[1.75rem] border border-forest/10 bg-white/70 p-4 lg:order-none">
-          <div className="flex items-center gap-3 rounded-[1.25rem] bg-lime/25 p-4">
+      <div className="grid gap-6 xl:grid-cols-[17rem_minmax(0,1fr)]">
+        <aside className="order-2 rounded-[1.4rem] border border-forest/10 bg-white/70 p-4 xl:order-none">
+          <div className="flex items-center gap-3 rounded-[1.1rem] bg-lime/18 p-4">
             <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-forest shadow-sm">
               <ShieldCheck aria-hidden="true" className="h-5 w-5" />
             </span>
@@ -512,7 +512,7 @@ export function ProofUploadForm() {
           </ol>
         </aside>
 
-        <div className="order-1 min-w-0 lg:order-none">
+        <div className="order-1 min-w-0 xl:order-none">
           <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
             <div>
               <p className="text-sm font-black uppercase tracking-[0.14em] text-leaf">
@@ -551,9 +551,9 @@ export function ProofUploadForm() {
             </div>
           ) : null}
 
-          <div className="grid gap-6">
+          <div className="grid gap-5">
             <StepPanel active={activeStep === 0}>
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid gap-4 lg:grid-cols-2">
                 <TextField
                   label="Tree nickname"
                   name="nickname"
@@ -621,7 +621,7 @@ export function ProofUploadForm() {
             </StepPanel>
 
             <StepPanel active={activeStep === 2}>
-              <div className="grid gap-5 lg:grid-cols-[1fr_0.85fr]">
+              <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_0.85fr]">
                 <div className="grid gap-4">
                   <TextField
                     label="GPS coordinates optional"
@@ -646,7 +646,7 @@ export function ProofUploadForm() {
                     </p>
                   ) : null}
                 </div>
-                <div className="rounded-[1.5rem] border border-aqua/20 bg-aqua/10 p-5">
+                <div className="rounded-[1.25rem] border border-aqua/20 bg-aqua/10 p-5">
                   <Info aria-hidden="true" className="h-5 w-5 text-forest" />
                   <h3 className="mt-3 text-lg font-black text-forest">
                     Permission matters.
@@ -676,7 +676,7 @@ export function ProofUploadForm() {
             </StepPanel>
 
             <StepPanel active={activeStep === 3}>
-              <div className="grid gap-5 lg:grid-cols-[1fr_0.9fr]">
+              <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_0.9fr]">
                 <label className="grid gap-2 text-sm font-black text-forest">
                   Notes optional
                   <textarea
@@ -686,10 +686,10 @@ export function ProofUploadForm() {
                     onChange={(event) => updateValue("notes", event.target.value)}
                     rows={7}
                     placeholder="Add care plan, permission context, landmark, or anything the reviewer should know."
-                    className="min-h-40 resize-y rounded-[1.5rem] border border-forest/15 bg-off-white px-4 py-3 text-sm font-bold leading-6 text-forest placeholder:text-forest/35 focus:outline-none focus:ring-2 focus:ring-leaf/40"
+                    className="min-h-40 resize-y rounded-[1.25rem] border border-forest/15 bg-off-white px-4 py-3 text-sm font-bold leading-6 text-forest placeholder:text-forest/35 focus:outline-none focus:ring-2 focus:ring-leaf/40"
                   />
                 </label>
-                <div className="forest-panel rounded-[1.75rem] p-5 text-white">
+                <div className="forest-panel rounded-[1.35rem] p-5 text-white">
                   <Sparkles aria-hidden="true" className="h-6 w-6 text-lime" />
                   <h3 className="mt-4 text-2xl font-black">
                     Protect it after the upload.
@@ -720,8 +720,8 @@ export function ProofUploadForm() {
             </StepPanel>
 
             <StepPanel active={activeStep === 4}>
-              <div className="grid gap-5 lg:grid-cols-[1fr_0.82fr]">
-                <div className="rounded-[1.75rem] border border-forest/10 bg-white/70 p-5">
+              <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_0.82fr]">
+                <div className="rounded-[1.35rem] border border-forest/10 bg-white/70 p-5">
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div>
                       <p className="text-sm font-black uppercase tracking-[0.12em] text-leaf">
@@ -737,7 +737,7 @@ export function ProofUploadForm() {
                     {reviewRows.map(([key, label]) => (
                       <div
                         key={key}
-                        className="grid gap-1 rounded-[1.25rem] bg-off-white p-4 sm:grid-cols-[10rem_1fr]"
+                        className="grid gap-1 rounded-[1.1rem] bg-off-white p-4 sm:grid-cols-[10rem_1fr]"
                       >
                         <dt className="text-xs font-black uppercase tracking-[0.1em] text-forest/45">
                           {label}
@@ -757,7 +757,7 @@ export function ProofUploadForm() {
                     required
                   />
                   <EvidenceSummary label="Video evidence" file={files.video} />
-                  <div className="rounded-[1.5rem] bg-lime/25 p-5">
+                  <div className="rounded-[1.25rem] bg-lime/18 p-5">
                     <div className="flex items-center gap-3">
                       <Image
                         src={brandAssets.treeCoin}
@@ -834,7 +834,7 @@ function StepPanel({
   children: ReactNode;
 }) {
   return (
-    <section hidden={!active} className="rounded-[1.75rem] bg-white/55 p-4 sm:p-5">
+    <section hidden={!active} className="rounded-[1.35rem] bg-white/55 p-4 sm:p-5">
       {children}
     </section>
   );
@@ -866,11 +866,12 @@ function TextField({
       {label}
       <span
         className={cn(
-          "flex min-h-12 items-center gap-3 rounded-2xl border bg-off-white px-4",
+          "grid min-h-[3.35rem] grid-cols-[auto_minmax(0,1fr)] items-center gap-3 rounded-[1.1rem] border bg-off-white px-4",
+          !icon && "grid-cols-1",
           error ? "border-red-300 ring-2 ring-red-100" : "border-forest/15",
         )}
       >
-        {icon ? <span className="text-leaf">{icon}</span> : null}
+        {icon ? <span className="shrink-0 text-leaf">{icon}</span> : null}
         <input
           aria-label={label}
           name={name}
@@ -880,7 +881,7 @@ function TextField({
           placeholder={placeholder}
           aria-invalid={Boolean(error)}
           aria-describedby={error ? errorId : undefined}
-          className="min-h-12 w-full bg-transparent text-sm font-bold text-forest placeholder:text-forest/35 focus:outline-none"
+          className="min-h-[3.25rem] w-full min-w-0 bg-transparent text-sm font-bold text-forest placeholder:text-forest/35 focus:outline-none"
         />
       </span>
       {error ? <FieldError id={errorId}>{error}</FieldError> : null}
@@ -944,7 +945,7 @@ function UploadCard({
         onDragOver={(event) => event.preventDefault()}
         onDrop={handleDrop}
         className={cn(
-          "group grid min-h-72 cursor-pointer place-items-center rounded-[1.75rem] border-2 border-dashed bg-off-white p-5 text-center transition hover:border-leaf hover:bg-lime/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
+          "group grid min-h-64 cursor-pointer place-items-center rounded-[1.35rem] border-2 border-dashed bg-off-white p-5 text-center transition hover:border-leaf hover:bg-lime/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
           error ? "border-red-300 ring-2 ring-red-100" : "border-forest/15",
         )}
       >
@@ -985,11 +986,11 @@ function UploadCard({
       </label>
 
       {file ? (
-        <div className="mt-3 overflow-hidden rounded-[1.25rem] bg-white/75 p-3 text-sm font-bold text-forest ring-1 ring-forest/10">
+        <div className="mt-3 overflow-hidden rounded-[1.15rem] bg-white/75 p-3 text-sm font-bold text-forest ring-1 ring-forest/10">
           <div className="grid gap-3">
             <FilePreview file={file} label={title} />
             <div className="min-w-0">
-              <p className="truncate font-black">{file.name}</p>
+              <p className="break-all font-black">{file.name}</p>
               <p className="mt-1 text-xs font-bold text-forest/52">
                 {formatFileSize(file.size)}
               </p>
@@ -1005,7 +1006,7 @@ function UploadCard({
           </div>
         </div>
       ) : (
-        <div className="mt-3 rounded-[1.25rem] bg-white/70 p-3 text-sm font-bold text-forest/55">
+        <div className="mt-3 rounded-[1.15rem] bg-white/70 p-3 text-sm font-bold text-forest/55">
           Image/video preview appears here after upload.
         </div>
       )}
@@ -1060,7 +1061,7 @@ function ConsentBox({
   return (
     <label
       className={cn(
-        "flex cursor-pointer items-start gap-3 rounded-[1.25rem] border bg-white/70 p-4 transition hover:bg-lime/15",
+        "flex cursor-pointer items-start gap-3 rounded-[1.15rem] border bg-white/70 p-4 transition hover:bg-lime/15",
         error ? "border-red-300 ring-2 ring-red-100" : "border-forest/10",
       )}
     >
@@ -1084,7 +1085,7 @@ function ConsentBox({
 
 function ProofTips() {
   return (
-    <div className="mt-5 rounded-[1.75rem] border border-lime/40 bg-lime/15 p-5">
+    <div className="mt-5 rounded-[1.35rem] border border-lime/40 bg-lime/14 p-5">
       <div className="flex items-center gap-2">
         <Camera aria-hidden="true" className="h-5 w-5 text-forest" />
         <h3 className="text-lg font-black text-forest">Proof quality tips</h3>
@@ -1111,7 +1112,7 @@ function EvidenceSummary({
   required?: boolean;
 }) {
   return (
-    <div className="rounded-[1.5rem] border border-forest/10 bg-white/70 p-5">
+    <div className="rounded-[1.25rem] border border-forest/10 bg-white/70 p-5">
       <div className="flex items-start justify-between gap-3">
         <div>
           <p className="text-sm font-black text-forest">{label}</p>
@@ -1125,7 +1126,7 @@ function EvidenceSummary({
           <Circle aria-hidden="true" className="h-5 w-5 text-forest/25" />
         )}
       </div>
-      <p className="mt-3 truncate text-sm font-bold text-forest/65">
+      <p className="mt-3 break-words text-sm font-bold text-forest/65">
         {file ? `${file.name} - ${formatFileSize(file.size)}` : "No file added"}
       </p>
     </div>

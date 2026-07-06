@@ -13,10 +13,10 @@ export const metadata: Metadata = {
 
 export default function SubmitProofPage() {
   return (
-    <section className="relative isolate px-4 py-7 sm:px-6 sm:py-14 lg:px-8">
+    <section className="relative isolate px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
       <LivingBackdrop />
-      <div className="product-page-shell mx-auto grid max-w-7xl gap-5 rounded-[2rem] p-4 sm:gap-7 sm:p-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-start lg:rounded-[2.5rem] lg:p-8">
-        <div className="product-page-rail rounded-[1.75rem] p-4 sm:p-6 lg:sticky lg:top-28">
+      <div className="product-page-shell mx-auto grid max-w-7xl gap-5 rounded-[1.75rem] p-4 sm:gap-7 sm:p-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-start lg:rounded-[2rem] lg:p-7">
+        <div className="product-page-rail rounded-[1.4rem] p-4 sm:p-6 lg:sticky lg:top-28">
           <span className="inline-flex rounded-full bg-lime/35 px-4 py-2 text-sm font-black text-forest">
             Submit Proof
           </span>
@@ -27,10 +27,10 @@ export default function SubmitProofPage() {
             Upload clear evidence, confirm legal planting, and commit to caring
             for the tree over time.
           </p>
-          <div className="mt-6 hidden lg:block">
+          <div className="mt-6 hidden xl:block">
             <ProofPacketMini />
           </div>
-          <div className="mt-5 hidden gap-3 sm:mt-8 sm:gap-4 lg:grid">
+          <div className="mt-5 hidden gap-3 sm:mt-7 sm:gap-3 lg:grid">
             {[
               [Sprout, "Native or locally suitable tree"],
               [Camera, "Photo proof with enough context"],
@@ -40,7 +40,7 @@ export default function SubmitProofPage() {
             ].map(([Icon, label]) => (
               <div
                 key={label as string}
-                className="living-card flex items-center gap-3 rounded-[1.25rem] p-4"
+                className="living-card flex items-center gap-3 rounded-[1.15rem] p-4"
               >
                 <span className="grid h-10 w-10 place-items-center rounded-full bg-lime/35 text-forest">
                   <Icon aria-hidden="true" className="h-5 w-5" />
@@ -51,7 +51,7 @@ export default function SubmitProofPage() {
               </div>
             ))}
           </div>
-          <p className="mt-5 hidden rounded-[1.25rem] bg-lime/20 p-4 text-xs font-bold leading-6 text-forest/70 lg:block">
+          <p className="mt-5 hidden rounded-[1.15rem] bg-lime/16 p-4 text-xs font-bold leading-6 text-forest/70 lg:block">
             {TREECOIN_DISCLAIMER}
           </p>
         </div>

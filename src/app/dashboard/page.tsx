@@ -219,7 +219,7 @@ function DashboardSidebar() {
 
       <nav
         aria-label="Dashboard navigation"
-        className="-mx-1 mt-5 flex gap-2 overflow-x-auto pb-1 lg:mx-0 lg:grid lg:overflow-visible lg:pb-0"
+        className="no-scrollbar -mx-1 mt-5 flex gap-2 overflow-x-auto pb-1 lg:mx-0 lg:grid lg:overflow-visible lg:pb-0"
       >
         {dashboardNav.map((item) => {
           const isActive = "active" in item && item.active;
@@ -278,7 +278,7 @@ function DashboardTopbar() {
           </p>
         </div>
 
-        <div className="grid gap-3 sm:grid-cols-3 xl:w-[38rem] xl:min-w-0">
+        <div className="grid gap-3 sm:grid-cols-[0.85fr_1.15fr_1.05fr] xl:w-[42rem] xl:min-w-0">
           <TopChip
             icon={Flame}
             label="Day streak"
@@ -287,7 +287,7 @@ function DashboardTopbar() {
           />
           <TopChip
             icon={CalendarCheck}
-            label="Next reminder"
+            label="Reminder"
             value="Tomorrow, 9 AM"
             tone="leaf"
           />
@@ -320,10 +320,10 @@ function TopChip({
         <Icon aria-hidden="true" className="h-5 w-5" />
       </span>
       <div className="min-w-0">
-        <p className="truncate text-xs font-black uppercase tracking-[0.1em] text-forest/45">
+        <p className="text-[0.68rem] font-black uppercase leading-4 tracking-[0.06em] text-forest/45">
           {label}
         </p>
-        <p className="mt-1 truncate text-sm font-black text-forest">{value}</p>
+        <p className="mt-1 text-sm font-black leading-5 text-forest">{value}</p>
       </div>
     </div>
   );
@@ -339,8 +339,8 @@ function ProfileChip() {
         GC
       </span>
       <div className="min-w-0">
-        <p className="truncate text-sm font-black text-forest">Green Champion</p>
-        <p className="mt-1 truncate text-xs font-bold text-leaf">Level 3 Planter</p>
+        <p className="text-sm font-black leading-5 text-forest">Green Champion</p>
+        <p className="mt-0.5 text-xs font-bold leading-4 text-leaf">Level 3 Planter</p>
       </div>
       <ArrowRight aria-hidden="true" className="ml-auto h-4 w-4 shrink-0 text-forest/45" />
     </Link>

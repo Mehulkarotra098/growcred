@@ -22,7 +22,7 @@ export default function ChallengesPage() {
           align="center"
         />
         <ChallengeHub challenges={challenges} />
-        <p className="mx-auto mt-8 max-w-3xl rounded-[1.25rem] bg-lime/20 p-4 text-center text-xs font-bold leading-6 text-forest/70">
+        <p className="relaxed-copy mx-auto mt-8 max-w-3xl rounded-[1.25rem] bg-lime/20 p-4 text-center text-sm font-bold leading-6 text-forest/70">
           {TREECOIN_DISCLAIMER}
         </p>
       </div>
