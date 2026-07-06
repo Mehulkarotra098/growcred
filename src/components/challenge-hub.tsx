@@ -33,6 +33,12 @@ const challengeBanners: Record<string, string> = {
   "challenge-3": GROWCRED_ASSETS.site.challengeBanners.friendsGreen,
 };
 
+const challengeStickers: Record<string, string> = {
+  "challenge-1": GROWCRED_ASSETS.stickers.birthdayTreeReward,
+  "challenge-2": GROWCRED_ASSETS.stickers.plantToday,
+  "challenge-3": GROWCRED_ASSETS.stickers.betterTogether,
+};
+
 interface ChallengeHubProps {
   challenges: Challenge[];
 }
@@ -66,13 +72,21 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
             {featured.description}
           </p>
           <div className="mt-6 grid gap-3 sm:grid-cols-3">
-            <Metric label="Reward" value={`+${featured.reward}`} detail="TreeCoins" />
+            <Metric
+              label="Reward"
+              value={`+${featured.reward}`}
+              detail="TreeCoins"
+            />
             <Metric
               label="Participants"
               value={formatNumber(featured.participants)}
               detail={featured.teamType}
             />
-            <Metric label="Progress" value={`${featured.progress}%`} detail="Verified path" />
+            <Metric
+              label="Progress"
+              value={`${featured.progress}%`}
+              detail="Verified path"
+            />
           </div>
         </div>
         <div className="order-first rounded-[1.75rem] bg-white/10 p-3 lg:order-none">
@@ -90,14 +104,14 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
           ) : null}
           <div className="flex items-start justify-between gap-4">
             <p className="text-sm font-black text-lime">Proof needed</p>
-              <Image
-                src={brandAssets.betterTogether}
-                alt=""
-                aria-hidden="true"
-                width={260}
-                height={180}
-                className="hidden h-auto w-24 shrink-0 object-contain sm:block"
-              />
+            <Image
+              src={brandAssets.betterTogether}
+              alt=""
+              aria-hidden="true"
+              width={260}
+              height={180}
+              className="float-soft hidden h-auto w-24 shrink-0 object-contain sm:block"
+            />
           </div>
           <p className="mt-3 text-lg font-black">{featured.proofNeeded}</p>
           <div className="mt-5 h-3 rounded-full bg-white/15">
@@ -108,7 +122,9 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
           </div>
           <button
             type="button"
-            onClick={() => setJoined((current) => ({ ...current, [featured.id]: true }))}
+            onClick={() =>
+              setJoined((current) => ({ ...current, [featured.id]: true }))
+            }
             className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-lime px-5 py-3 text-sm font-black text-forest transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime"
           >
             {joined[featured.id] ? "Joined" : "Join Featured Mission"}
@@ -122,7 +138,7 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
       </section>
 
       <div className="flex flex-wrap items-center gap-2">
-        <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-black text-forest shadow-sm ring-1 ring-forest/10">
+        <span className="inline-flex items-center gap-2 rounded-full bg-white/78 px-4 py-2 text-sm font-black text-forest shadow-sm ring-1 ring-forest/10">
           <Filter aria-hidden="true" className="h-4 w-4 text-leaf" />
           Filter
         </span>
@@ -136,7 +152,7 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
               "rounded-full px-4 py-2 text-sm font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
               activeFilter === filter.value
                 ? "bg-forest text-white"
-                : "border border-forest/10 bg-white text-forest hover:bg-lime/25",
+                : "border border-forest/10 bg-white/78 text-forest hover:bg-lime/25",
             )}
           >
             {filter.label}
@@ -161,88 +177,110 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
               Try another mission type to find a GrowCred challenge.
             </p>
           </div>
-        ) : filteredChallenges.map((challenge) => (
-          <article
-            key={challenge.id}
-            className="living-card flex min-h-[24rem] flex-col overflow-hidden rounded-[2rem]"
-          >
-            {challengeBanners[challenge.id] ? (
-              <Image
-                src={challengeBanners[challenge.id]}
-                alt={`${challenge.title} GrowCred challenge banner`}
-                width={1536}
-                height={1024}
-                loading={challenge.id === featured.id ? "eager" : "lazy"}
-                sizes="(min-width: 1280px) 31vw, (min-width: 768px) 48vw, 92vw"
-                className="aspect-[16/9] w-full object-cover"
-              />
-            ) : null}
-            <div className="flex flex-1 flex-col p-6">
-            <div className="flex items-start justify-between gap-4">
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-lime/45 text-forest">
-                <Trophy aria-hidden="true" className="h-6 w-6" />
-              </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-leaf/15 px-3 py-1 text-xs font-black text-forest">
-                <Image
-                  src={brandAssets.treeCoin}
-                  alt=""
-                  aria-hidden="true"
-                  width={28}
-                  height={28}
-                  className="h-5 w-5"
-                />
-                +{challenge.reward} TreeCoins
-              </span>
-            </div>
-            <h3 className="mt-5 text-xl font-black text-forest">
-              {challenge.title}
-            </h3>
-            <p className="mt-3 flex-1 text-sm leading-6 text-forest/70">
-              {challenge.description}
-            </p>
-            <div className="mt-5 grid gap-3 rounded-[1.5rem] bg-off-white p-4 text-sm font-bold text-forest/70">
-              <p className="flex items-center gap-2">
-                <Users aria-hidden="true" className="h-4 w-4 text-leaf" />
-                {formatNumber(challenge.participants)} participants
-              </p>
-              <p className="flex items-center gap-2">
-                <CalendarDays aria-hidden="true" className="h-4 w-4 text-leaf" />
-                Ends {formatDate(challenge.endDate)}
-              </p>
-              <p className="font-black text-forest">{challenge.proofNeeded}</p>
-            </div>
-            <div className="mt-5">
-              <div className="flex justify-between text-xs font-black text-forest/60">
-                <span>Progress</span>
-                <span>{challenge.progress}%</span>
-              </div>
-              <div className="mt-2 h-2.5 rounded-full bg-forest/10">
-                <div
-                  className="h-2.5 rounded-full bg-leaf"
-                  style={{ width: `${challenge.progress}%` }}
-                />
-              </div>
-            </div>
-            <button
-              type="button"
-              onClick={() => setJoined((current) => ({ ...current, [challenge.id]: true }))}
-              className={cn(
-                "mt-6 inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
-                joined[challenge.id]
-                  ? "bg-lime text-forest"
-                  : "bg-forest text-white hover:bg-leaf",
-              )}
+        ) : (
+          filteredChallenges.map((challenge) => (
+            <article
+              key={challenge.id}
+              className="living-card flex min-h-[24rem] flex-col overflow-hidden rounded-[2rem]"
             >
-              {joined[challenge.id] ? "Joined" : "Join Challenge"}
-              {joined[challenge.id] ? (
-                <CheckCircle2 aria-hidden="true" className="h-4 w-4" />
-              ) : (
-                <ArrowRight aria-hidden="true" className="h-4 w-4" />
-              )}
-            </button>
-            </div>
-          </article>
-        ))}
+              {challengeBanners[challenge.id] ? (
+                <Image
+                  src={challengeBanners[challenge.id]}
+                  alt={`${challenge.title} GrowCred challenge banner`}
+                  width={1536}
+                  height={1024}
+                  loading={challenge.id === featured.id ? "eager" : "lazy"}
+                  sizes="(min-width: 1280px) 31vw, (min-width: 768px) 48vw, 92vw"
+                  className="aspect-[16/9] w-full object-cover"
+                />
+              ) : null}
+              <div className="flex flex-1 flex-col p-6">
+                <div className="flex items-start justify-between gap-4">
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-lime/45 text-forest">
+                    <Trophy aria-hidden="true" className="h-6 w-6" />
+                  </span>
+                  {challengeStickers[challenge.id] ? (
+                    <Image
+                      src={challengeStickers[challenge.id]}
+                      alt=""
+                      aria-hidden="true"
+                      width={160}
+                      height={160}
+                      className="float-soft hidden h-14 w-14 object-contain sm:block"
+                    />
+                  ) : null}
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-leaf/15 px-3 py-1 text-xs font-black text-forest">
+                    <Image
+                      src={brandAssets.treeCoin}
+                      alt=""
+                      aria-hidden="true"
+                      width={28}
+                      height={28}
+                      className="h-5 w-5"
+                    />
+                    +{challenge.reward} TreeCoins
+                  </span>
+                </div>
+                <h3 className="mt-5 text-xl font-black text-forest">
+                  {challenge.title}
+                </h3>
+                <p className="mt-3 flex-1 text-sm leading-6 text-forest/70">
+                  {challenge.description}
+                </p>
+                <div className="mt-5 grid gap-3 rounded-[1.5rem] bg-off-white p-4 text-sm font-bold text-forest/70">
+                  <p className="flex items-center gap-2">
+                    <Users aria-hidden="true" className="h-4 w-4 text-leaf" />
+                    {formatNumber(challenge.participants)} participants
+                  </p>
+                  <p className="flex items-center gap-2">
+                    <CalendarDays
+                      aria-hidden="true"
+                      className="h-4 w-4 text-leaf"
+                    />
+                    Ends {formatDate(challenge.endDate)}
+                  </p>
+                  <p className="font-black text-forest">
+                    {challenge.proofNeeded}
+                  </p>
+                </div>
+                <div className="mt-5">
+                  <div className="flex justify-between text-xs font-black text-forest/60">
+                    <span>Progress</span>
+                    <span>{challenge.progress}%</span>
+                  </div>
+                  <div className="mt-2 h-2.5 rounded-full bg-forest/10">
+                    <div
+                      className="h-2.5 rounded-full bg-leaf"
+                      style={{ width: `${challenge.progress}%` }}
+                    />
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setJoined((current) => ({
+                      ...current,
+                      [challenge.id]: true,
+                    }))
+                  }
+                  className={cn(
+                    "mt-6 inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
+                    joined[challenge.id]
+                      ? "bg-lime text-forest"
+                      : "bg-forest text-white hover:bg-leaf",
+                  )}
+                >
+                  {joined[challenge.id] ? "Joined" : "Join Challenge"}
+                  {joined[challenge.id] ? (
+                    <CheckCircle2 aria-hidden="true" className="h-4 w-4" />
+                  ) : (
+                    <ArrowRight aria-hidden="true" className="h-4 w-4" />
+                  )}
+                </button>
+              </div>
+            </article>
+          ))
+        )}
       </div>
     </div>
   );

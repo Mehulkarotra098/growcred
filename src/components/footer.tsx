@@ -33,7 +33,7 @@ export function Footer() {
               aria-hidden="true"
               width={86}
               height={86}
-              className="h-14 w-14"
+              className="h-14 w-14 object-contain"
             />
             <Image
               src={brandAssets.betterTogether}
@@ -41,7 +41,7 @@ export function Footer() {
               aria-hidden="true"
               width={180}
               height={120}
-              className="h-auto w-28"
+              className="h-auto w-28 object-contain"
             />
           </div>
         </div>

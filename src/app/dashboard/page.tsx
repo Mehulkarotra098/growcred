@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import type { Badge, CareReminder, ProofStatus } from "@/lib/types";
 import { LivingBackdrop } from "@/components/living-backdrop";
+import { LocalImpactPanel } from "@/components/local-impact-panel";
 import { LogoMark } from "@/components/logo-mark";
 import { StatusPill } from "@/components/status-pill";
 import { GROWCRED_ASSETS } from "@/lib/assets";
@@ -159,6 +160,10 @@ export default function DashboardPage() {
             <div className="dashboard-main-surface min-w-0">
               <DashboardTopbar />
 
+              <div className="px-4 pt-4 sm:px-5 xl:px-6">
+                <LocalImpactPanel />
+              </div>
+
               <div className="grid gap-5 p-4 sm:p-5 xl:grid-cols-[minmax(0,1fr)_21rem] xl:p-6">
                 <section
                   aria-label="Dashboard stats"
@@ -254,15 +259,6 @@ function DashboardSidebar() {
         >
           Join a Mission
         </Link>
-        <Image
-          src={brandAssets.betterTogether}
-          alt=""
-          aria-hidden="true"
-          width={220}
-          height={160}
-          sizes="11rem"
-          className="ml-auto mt-2 h-auto w-32 object-contain"
-        />
       </div>
     </aside>
   );

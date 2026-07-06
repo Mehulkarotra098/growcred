@@ -2,6 +2,10 @@
 
 import { FormEvent, useEffect, useState } from "react";
 import { LogIn, LogOut, Mail, UserPlus } from "lucide-react";
+import {
+  signOutLocalAccount,
+  upsertLocalAccount,
+} from "@/lib/local-growcred";
 import { isSupabaseBrowserConfigured } from "@/lib/supabase/config";
 import { getBrowserSupabaseClient } from "@/lib/supabase/browser";
 
@@ -33,9 +37,13 @@ export function AuthPanel() {
     setMessage("");
 
     if (!configured) {
-      localStorage.setItem("growcred-preview-email", email);
-      setCurrentEmail(email);
-      setMessage("Sign in to track your impact.");
+      const user = upsertLocalAccount({ name, email });
+      setCurrentEmail(user.email);
+      setMessage(
+        mode === "sign-in"
+          ? "Signed in. Your local GrowCred impact is ready."
+          : "Account created. You can now upload proof and track TreeCoins.",
+      );
       return;
     }
 
@@ -67,7 +75,7 @@ export function AuthPanel() {
   async function signOut() {
     const supabase = getBrowserSupabaseClient();
     if (supabase) await supabase.auth.signOut();
-    localStorage.removeItem("growcred-preview-email");
+    signOutLocalAccount();
     setCurrentEmail("");
     setMessage("Signed out.");
   }
@@ -113,6 +121,7 @@ export function AuthPanel() {
           <label className="grid gap-2 text-sm font-black text-forest">
             Name
             <input
+              aria-label="Name"
               required
               autoComplete="name"
               value={name}
@@ -127,6 +136,7 @@ export function AuthPanel() {
           <span className="flex min-h-12 items-center gap-3 rounded-2xl border border-forest/15 bg-off-white px-4">
             <Mail aria-hidden="true" className="h-5 w-5 text-leaf" />
             <input
+              aria-label="Email"
               required
               type="email"
               autoComplete="email"
@@ -140,6 +150,7 @@ export function AuthPanel() {
         <label className="grid gap-2 text-sm font-black text-forest">
           Password
           <input
+            aria-label="Password"
             required
             type="password"
             autoComplete={mode === "sign-in" ? "current-password" : "new-password"}

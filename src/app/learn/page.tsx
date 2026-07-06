@@ -93,14 +93,14 @@ export default function LearnPage() {
                 className="aspect-[4/3] w-full rounded-[1.5rem] object-cover"
               />
             </div>
-            <div className="hidden grid-cols-2 gap-4 sm:grid">
+            <div className="grid gap-4 sm:grid-cols-2">
               <Image
                 src={GROWCRED_ASSETS.stickers.nativeTreesOnly}
                 alt=""
                 aria-hidden="true"
                 width={720}
                 height={720}
-                className="h-auto w-full max-w-44 justify-self-end object-contain"
+                className="float-soft hidden h-auto w-full max-w-44 justify-self-end object-contain sm:block"
               />
               <Image
                 src={GROWCRED_ASSETS.stickers.proofBeatsPromises}
@@ -108,8 +108,19 @@ export default function LearnPage() {
                 aria-hidden="true"
                 width={720}
                 height={720}
-                className="h-auto w-full max-w-44 object-contain"
+                className="float-soft-delay hidden h-auto w-full max-w-44 object-contain sm:block"
               />
+              {[
+                "Do not plant on protected or unsafe public land.",
+                "Show the sapling and the surroundings in proof photos.",
+              ].map((item) => (
+                <div
+                  key={item}
+                  className="rounded-[1.5rem] border border-forest/10 bg-white/72 p-5 text-sm font-black leading-6 text-forest sm:col-span-2"
+                >
+                  {item}
+                </div>
+              ))}
             </div>
           </div>
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">

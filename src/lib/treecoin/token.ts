@@ -36,7 +36,7 @@ export const TREECOIN_REWARD_RULES = [
   {
     title: "Stays with verified impact",
     description:
-      "TreeCoin uses a Solana Token-2022 non-transferable setup validated locally first.",
+      "TreeCoins stay tied to the GrowCred proof record that earned them.",
   },
   {
     title: "Approved by review",

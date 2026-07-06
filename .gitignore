@@ -30,7 +30,11 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 .codex/
+.codex-*
 .secrets/
+
+# local verification artifacts and chain receipts
+/artifacts/
 
 # env files (can opt-in for committing if needed)
 .env*

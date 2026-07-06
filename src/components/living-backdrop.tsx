@@ -32,8 +32,6 @@ export function LivingBackdrop() {
           }
         />
       ))}
-      <div className="root-line bottom-[9%] left-[8%] rotate-[8deg]" />
-      <div className="root-line bottom-[14%] right-[2%] rotate-[-12deg]" />
     </div>
   );
 }

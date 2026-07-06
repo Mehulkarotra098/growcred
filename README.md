@@ -33,24 +33,24 @@ npm.cmd run build
 npm.cmd audit --omit=dev
 ```
 
-## TreeCoin On Solana
+## TreeCoin Technical Reward Foundation
 
-TreeCoin is set up as a Solana Token-2022 reward token on devnet first, with
-localnet support for offline development.
+TreeCoin is implemented in the app as a reward point first. The repository also
+keeps optional devnet/localnet scripts for testing a controlled technical reward
+mint later.
 
-The current token foundation is built for reward distribution, not market speculation:
+The current reward foundation is built for verified care records:
 
 - `TreeCoin` / `TREE`
 - whole reward points with `0` decimals
-- Solana Token-2022
 - devnet-first setup
-- non-transferable reward-token configuration
-- minting controlled by the local GrowCred reward authority
-- GrowCred queue rows and mint receipts include a proof hash for auditability
+- non-transferable reward configuration
+- reward release controlled by GrowCred verification
+- GrowCred queue rows and reward receipts include a proof hash for auditability
 
 TreeCoin is an in-app reward point during MVP and is not a tradable financial asset.
 
-Create the devnet TreeCoin mint:
+Create a devnet reward mint for technical testing:
 
 ```powershell
 npm.cmd run treecoin:create
@@ -60,7 +60,7 @@ The script does the setup work:
 
 - creates a local devnet authority keypair in `.secrets/`
 - requests devnet SOL for setup fees
-- creates the Token-2022 mint with the non-transferable extension
+- creates the non-transferable reward mint
 - writes the public mint artifact to `artifacts/treecoin/solana-devnet.json`
 
 Mint a test reward after the mint exists:
@@ -131,7 +131,7 @@ Backend-ready surfaces:
 - `/auth` supports Supabase Auth when credentials are configured.
 - `/submit-proof` uses a server action and can upload media to Supabase Storage.
 - `/admin` review actions can persist through the service-role server action.
-- Approved TreeCoin ledger entries can be queued in `treecoin_mint_requests` for Solana devnet reward minting.
+- Approved TreeCoin ledger entries can be queued in `treecoin_mint_requests` for controlled devnet reward testing.
 - `/api/cron/reminders` can queue due care reminders into `notification_outbox`.
 - `/api/health/backend` reports backend connection readiness for technical checks.
 
@@ -148,6 +148,6 @@ The script writes clean transparent sticker PNG/WebP files into `public/assets/g
 ## Product Guardrails
 
 - GrowCred is the public brand.
-- TreeCoin appears as a verified reward point and controlled reward-token foundation.
+- TreeCoin appears as a verified in-app reward point.
 - Do not add financial-product mechanics or speculative reward language.
 - Use clear proof, permission, local suitability, and care commitment language wherever reward decisions appear.

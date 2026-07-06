@@ -1,7 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, BadgeCheck, Camera, ShieldCheck } from "lucide-react";
-import { brandAssets } from "@/lib/brand-assets";
 import { FadeIn } from "./motion";
 
 export function CTASection() {
@@ -9,25 +7,7 @@ export function CTASection() {
     <section className="px-4 py-16 sm:px-6 lg:px-8">
       <FadeIn className="mx-auto max-w-6xl overflow-hidden rounded-[2.25rem] shadow-2xl shadow-forest/20">
         <div className="forest-panel relative grid gap-8 p-8 text-white sm:p-12 lg:grid-cols-[1fr_auto] lg:items-center">
-          <div className="absolute right-8 top-8 hidden lg:block">
-            <Image
-              src={brandAssets.earnGreen}
-              alt=""
-              aria-hidden="true"
-              width={150}
-              height={150}
-              className="float-soft h-24 w-24"
-            />
-          </div>
           <div>
-            <Image
-              src={brandAssets.betterTogether}
-              alt=""
-              aria-hidden="true"
-              width={220}
-              height={150}
-              className="mb-5 h-auto w-36"
-            />
             <p className="text-sm font-black uppercase tracking-[0.16em] text-lime">
               Plant. Prove. Protect.
             </p>

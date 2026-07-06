@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { HeartHandshake, ShieldCheck, Sprout, Trees } from "lucide-react";
 import { CTASection } from "@/components/cta-section";
+import { HumanActivityStrip } from "@/components/human-proof-board";
 import { LivingBackdrop } from "@/components/living-backdrop";
 import { SectionHeader } from "@/components/section-header";
-import { brandAssets } from "@/lib/brand-assets";
-import { GROWCRED_ASSETS } from "@/lib/assets";
 
 export const metadata: Metadata = {
   title: "About | GrowCred",
@@ -38,14 +36,6 @@ export default function AboutPage() {
             <h2 className="mt-4 text-3xl font-black">
               To make tree care rewarding, social, and verifiable.
             </h2>
-            <Image
-              src={brandAssets.earthHeart}
-              alt=""
-              aria-hidden="true"
-              width={220}
-              height={220}
-              className="mt-6 h-auto w-28"
-            />
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {[
                 [Sprout, "Plant"],
@@ -66,16 +56,15 @@ export default function AboutPage() {
       </section>
 
       <section className="px-4 pb-16 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-forest/10 bg-white shadow-2xl shadow-forest/10">
-          <Image
-            src={GROWCRED_ASSETS.site.heroLanding}
-            alt="GrowCred app landing visual with logo, TreeCoin reward, and verified tree care direction"
-            width={1536}
-            height={1024}
-            priority
-            sizes="(min-width: 1024px) 1180px, 92vw"
-            className="w-full object-cover"
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            eyebrow="What it looks like"
+            title="A community that submits proof and comes back."
+            description="GrowCred should feel like people are already planting, reviewing, and caring for trees together."
           />
+          <div className="mt-8">
+            <HumanActivityStrip />
+          </div>
         </div>
       </section>
 

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState, useTransition } from "react";
+import { useEffect, useMemo, useState, useTransition } from "react";
 import {
   AlertTriangle,
   Camera,
@@ -15,6 +15,12 @@ import {
 } from "lucide-react";
 import { reviewProofAction } from "@/app/admin/actions";
 import type { AdminReview, ProofStatus, ProofSubmission, Tree, User } from "@/lib/types";
+import {
+  getLocalGrowCredState,
+  reviewLocalProof,
+  subscribeToLocalGrowCred,
+  type LocalGrowCredState,
+} from "@/lib/local-growcred";
 import { cn, formatDate } from "@/lib/utils";
 import { StatusPill } from "./status-pill";
 
@@ -94,17 +100,34 @@ export function AdminReviewTable({
 }: AdminReviewTableProps) {
   const [activeFilter, setActiveFilter] = useState<QueueFilter>("pending");
   const [selectedId, setSelectedId] = useState(submissions[0]?.id ?? "");
-  const [localStatuses, setLocalStatuses] = useState<Record<string, ProofStatus>>({});
+  const [queueState, setQueueState] = useState<LocalGrowCredState>({
+    users,
+    trees,
+    proofSubmissions: submissions,
+    adminReviews: reviews,
+    treeCoinLedger: [],
+  });
   const [actionMessage, setActionMessage] = useState("");
   const [isPending, startTransition] = useTransition();
 
+  useEffect(() => {
+    function syncQueue() {
+      const nextState = getLocalGrowCredState();
+      setQueueState(nextState);
+      setSelectedId((current) => current || nextState.proofSubmissions[0]?.id || "");
+    }
+
+    syncQueue();
+    return subscribeToLocalGrowCred(syncQueue);
+  }, []);
+
   const rows = useMemo(() => {
-    return submissions
+    return queueState.proofSubmissions
       .map((submission) => {
-        const tree = trees.find((item) => item.id === submission.treeId);
-        const user = users.find((item) => item.id === submission.userId);
+        const tree = queueState.trees.find((item) => item.id === submission.treeId);
+        const user = queueState.users.find((item) => item.id === submission.userId);
         const review =
-          reviews.find((item) => item.proofSubmissionId === submission.id) ??
+          queueState.adminReviews.find((item) => item.proofSubmissionId === submission.id) ??
           ({
             id: `review-${submission.id}`,
             proofSubmissionId: submission.id,
@@ -121,11 +144,11 @@ export function AdminReviewTable({
           submission,
           tree,
           user,
-          status: localStatuses[submission.id] ?? submission.status,
+          status: submission.status,
         };
       })
       .filter(Boolean) as ReviewRow[];
-  }, [localStatuses, reviews, submissions, trees, users]);
+  }, [queueState]);
 
   const filteredRows = rows.filter((row) => {
     if (activeFilter === "all") return true;
@@ -139,21 +162,32 @@ export function AdminReviewTable({
   function handleReview(row: ReviewRow, action: (typeof reviewActions)[number]) {
     setActionMessage("");
     startTransition(async () => {
-      const result = await reviewProofAction({
+      const localResult = reviewLocalProof({
         proofSubmissionId: row.submission.id,
         decision: action.decision,
         notes: action.note,
         fraudFlags: row.review.fraudFlags,
       });
 
-      if (result.ok) {
-        setLocalStatuses((current) => ({
-          ...current,
-          [row.submission.id]: action.decision,
-        }));
+      if (localResult.ok) {
+        setQueueState(localResult.state);
       }
 
-      setActionMessage(result.message);
+      let serverMessage = "";
+
+      try {
+        const serverResult = await reviewProofAction({
+          proofSubmissionId: row.submission.id,
+          decision: action.decision,
+          notes: action.note,
+          fraudFlags: row.review.fraudFlags,
+        });
+        serverMessage = serverResult.message;
+      } catch {
+        serverMessage = "Review saved in this browser.";
+      }
+
+      setActionMessage(localResult.ok ? localResult.message : serverMessage);
     });
   }
 
@@ -349,6 +383,7 @@ export function AdminReviewTable({
                   src={selectedRow.submission.photoUrl}
                   alt={`${selectedRow.tree.nickname} proof evidence preview`}
                   fill
+                  unoptimized={selectedRow.submission.photoUrl.startsWith("data:")}
                   sizes="384px"
                   className="object-cover"
                 />
@@ -458,6 +493,7 @@ function EvidenceCell({
           src={row.submission.photoUrl}
           alt={`${row.tree.nickname} proof thumbnail`}
           fill
+          unoptimized={row.submission.photoUrl.startsWith("data:")}
           sizes="64px"
           className="object-cover"
         />

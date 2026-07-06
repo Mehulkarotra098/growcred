@@ -10,7 +10,7 @@ import type {
   ReactNode,
   RefObject,
 } from "react";
-import { useRef, useState, useTransition } from "react";
+import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -32,8 +32,9 @@ import {
 import { submitProofAction } from "@/app/submit-proof/actions";
 import type { ProofSubmissionResult } from "@/lib/types";
 import { brandAssets } from "@/lib/brand-assets";
-import { GROWCRED_ASSETS } from "@/lib/assets";
 import { TREECOIN_DISCLAIMER } from "@/lib/copy";
+import { createLocalProof } from "@/lib/local-growcred";
+import { isSupabaseBrowserConfigured } from "@/lib/supabase/config";
 import { cn } from "@/lib/utils";
 import { StatusPill } from "./status-pill";
 
@@ -128,7 +129,15 @@ export function ProofUploadForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [locationMessage, setLocationMessage] = useState("");
   const [result, setResult] = useState<ProofSubmissionResult | null>(null);
+  const [reviewReady, setReviewReady] = useState(false);
   const [isPending, startTransition] = useTransition();
+
+  useEffect(() => {
+    if (activeStep !== steps.length - 1 || result) return;
+
+    const timer = window.setTimeout(() => setReviewReady(true), 180);
+    return () => window.clearTimeout(timer);
+  }, [activeStep, result]);
 
   function updateValue<Key extends keyof ProofFormValues>(
     key: Key,
@@ -168,12 +177,18 @@ export function ProofUploadForm() {
     if (stepIndex === 1) {
       if (!files.photo) {
         nextErrors.photo = "Upload at least one clear tree photo.";
+      } else if (!files.photo.type.startsWith("image/")) {
+        nextErrors.photo = "Photo evidence must be an image file.";
       } else if (files.photo.size > 15 * 1024 * 1024) {
         nextErrors.photo = "Photo must be 15MB or smaller.";
       }
 
-      if (files.video && files.video.size > 80 * 1024 * 1024) {
-        nextErrors.video = "Video must be 80MB or smaller.";
+      if (files.video) {
+        if (!files.video.type.startsWith("video/")) {
+          nextErrors.video = "Video evidence must be a video file.";
+        } else if (files.video.size > 80 * 1024 * 1024) {
+          nextErrors.video = "Video must be 80MB or smaller.";
+        }
       }
     }
 
@@ -220,22 +235,26 @@ export function ProofUploadForm() {
 
   function goNext() {
     if (!validateStep(activeStep)) return;
+    setReviewReady(false);
     setActiveStep((current) => Math.min(current + 1, steps.length - 1));
   }
 
   function goBack() {
     setErrors({});
+    setReviewReady(false);
     setActiveStep((current) => Math.max(current - 1, 0));
   }
 
   function jumpToStep(index: number) {
     if (index <= activeStep) {
       setErrors({});
+      setReviewReady(false);
       setActiveStep(index);
       return;
     }
 
     if (!validateStep(activeStep)) return;
+    setReviewReady(false);
     setActiveStep(index);
   }
 
@@ -263,17 +282,55 @@ export function ProofUploadForm() {
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    if (activeStep !== steps.length - 1 || !reviewReady) return;
+
     setResult(null);
 
     if (!validateAll()) return;
 
     const form = event.currentTarget;
     startTransition(async () => {
-      const formData = new FormData(form);
-      if (files.photo) formData.set("photo", files.photo, files.photo.name);
-      if (files.video) formData.set("video", files.video, files.video.name);
+      let nextResult: ProofSubmissionResult;
 
-      const nextResult = await submitProofAction(formData);
+      if (isSupabaseBrowserConfigured()) {
+        const formData = new FormData(form);
+        if (files.photo) formData.set("photo", files.photo, files.photo.name);
+        if (files.video) formData.set("video", files.video, files.video.name);
+        nextResult = await submitProofAction(formData);
+      } else {
+        try {
+          const localProof = await createLocalProof({
+            nickname: values.nickname,
+            species: values.species,
+            plantedAt: values.plantedAt,
+            locationName: values.locationName,
+            coordinates: values.coordinates,
+            notes: values.notes,
+            photoFile: files.photo!,
+            videoFile: files.video,
+          });
+
+          nextResult = {
+            ok: true,
+            mode: "preview",
+            message: "Your proof is ready for review.",
+            treeId: localProof.tree.id,
+            proofSubmissionId: localProof.proof.id,
+            status: "under_review",
+          };
+        } catch {
+          nextResult = {
+            ok: false,
+            mode: "preview",
+            message: "We could not save this proof in the browser.",
+            issues: [
+              "Try a smaller photo or clear old browser storage before submitting again.",
+            ],
+          };
+        }
+      }
+
       setResult(nextResult);
 
       if (nextResult.ok) {
@@ -290,13 +347,6 @@ export function ProofUploadForm() {
       <section className="living-card rounded-[2.25rem] p-6 sm:p-8">
         <div className="grid gap-8 lg:grid-cols-[1fr_0.72fr] lg:items-center">
           <div>
-            <Image
-              src={GROWCRED_ASSETS.states.proofSubmitted}
-              alt="GrowCred proof submitted success illustration"
-              width={720}
-              height={720}
-              className="mb-5 h-auto w-36 rounded-[1.5rem] object-contain shadow-lg shadow-forest/10"
-            />
             <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-lime/45 text-forest">
               <CheckCircle2 aria-hidden="true" className="h-7 w-7" />
             </span>
@@ -310,13 +360,6 @@ export function ProofUploadForm() {
             </p>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               <div className="rounded-[1.5rem] border border-lime/50 bg-lime/20 p-5">
-                <Image
-                  src={GROWCRED_ASSETS.states.underReview}
-                  alt="Under review proof status illustration"
-                  width={720}
-                  height={720}
-                  className="mb-4 h-auto w-24 rounded-2xl object-contain"
-                />
                 <p className="text-sm font-black uppercase tracking-[0.12em] text-forest/55">
                   Status
                 </p>
@@ -369,14 +412,6 @@ export function ProofUploadForm() {
             </div>
           </div>
           <div className="forest-panel rounded-[2rem] p-6 text-white">
-            <Image
-              src={GROWCRED_ASSETS.states.underReview}
-              alt=""
-              aria-hidden="true"
-              width={720}
-              height={720}
-              className="mb-5 hidden h-auto w-28 rounded-2xl object-contain sm:block"
-            />
             <p className="text-sm font-black uppercase tracking-[0.14em] text-lime">
               Next action
             </p>
@@ -404,13 +439,6 @@ export function ProofUploadForm() {
     >
       <div className="grid gap-6 lg:grid-cols-[15rem_1fr]">
         <aside className="order-2 rounded-[1.75rem] border border-forest/10 bg-white/70 p-4 lg:order-none">
-          <Image
-            src={GROWCRED_ASSETS.states.noProofs}
-            alt="Empty proof submissions illustration"
-            width={720}
-            height={720}
-            className="mb-4 hidden h-auto w-full rounded-[1.4rem] object-contain sm:block"
-          />
           <div className="flex items-center gap-3 rounded-[1.25rem] bg-lime/25 p-4">
             <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-forest shadow-sm">
               <ShieldCheck aria-hidden="true" className="h-5 w-5" />
@@ -506,13 +534,9 @@ export function ProofUploadForm() {
               className="mb-6 rounded-[1.5rem] border border-red-200 bg-red-50 p-4 text-sm font-bold leading-6 text-red-800"
             >
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start">
-                <Image
-                  src={GROWCRED_ASSETS.states.rejectedProof}
-                  alt="Proof needs attention illustration"
-                  width={720}
-                  height={720}
-                  className="h-auto w-24 shrink-0 rounded-2xl object-contain"
-                />
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-red-100 text-red-700">
+                  <Info aria-hidden="true" className="h-6 w-6" />
+                </span>
                 <div>
                   <p className="font-black">{result.message}</p>
                   {result.issues?.length ? (
@@ -656,6 +680,7 @@ export function ProofUploadForm() {
                 <label className="grid gap-2 text-sm font-black text-forest">
                   Notes optional
                   <textarea
+                    aria-label="Notes optional"
                     name="notes"
                     value={values.notes}
                     onChange={(event) => updateValue("notes", event.target.value)}
@@ -783,7 +808,7 @@ export function ProofUploadForm() {
             ) : (
               <button
                 type="submit"
-                disabled={isPending}
+                disabled={isPending || !reviewReady}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-leaf px-6 py-3 text-sm font-black text-white shadow-xl shadow-leaf/20 transition hover:bg-forest disabled:cursor-wait disabled:opacity-70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
               >
                 {isPending ? (
@@ -847,6 +872,7 @@ function TextField({
       >
         {icon ? <span className="text-leaf">{icon}</span> : null}
         <input
+          aria-label={label}
           name={name}
           type={type}
           value={value}
@@ -929,6 +955,7 @@ function UploadCard({
           type="file"
           accept={accept}
           onChange={handleInputChange}
+          aria-label={`${title} file input`}
           aria-invalid={Boolean(error)}
           aria-describedby={error ? errorId : undefined}
           className="sr-only"
@@ -958,17 +985,24 @@ function UploadCard({
       </label>
 
       {file ? (
-        <div className="mt-3 flex items-center justify-between gap-3 rounded-[1.25rem] bg-white/70 p-3 text-sm font-bold text-forest">
-          <span className="min-w-0 truncate">
-            {file.name} - {formatFileSize(file.size)}
-          </span>
-          <button
-            type="button"
-            onClick={clearFile}
-            className="shrink-0 rounded-full px-3 py-1 text-xs font-black text-forest/60 transition hover:bg-forest/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
-          >
-            Remove
-          </button>
+        <div className="mt-3 overflow-hidden rounded-[1.25rem] bg-white/75 p-3 text-sm font-bold text-forest ring-1 ring-forest/10">
+          <div className="grid gap-3">
+            <FilePreview file={file} label={title} />
+            <div className="min-w-0">
+              <p className="truncate font-black">{file.name}</p>
+              <p className="mt-1 text-xs font-bold text-forest/52">
+                {formatFileSize(file.size)}
+              </p>
+              <button
+                type="button"
+                onClick={clearFile}
+                aria-label={`Remove ${title.toLowerCase()} file`}
+                className="mt-3 rounded-full px-3 py-1 text-xs font-black text-forest/60 transition hover:bg-forest/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+              >
+                Remove
+              </button>
+            </div>
+          </div>
         </div>
       ) : (
         <div className="mt-3 rounded-[1.25rem] bg-white/70 p-3 text-sm font-bold text-forest/55">
@@ -976,6 +1010,34 @@ function UploadCard({
         </div>
       )}
       {error ? <FieldError id={errorId}>{error}</FieldError> : null}
+    </div>
+  );
+}
+
+function FilePreview({ file, label }: { file: File; label: string }) {
+  const previewUrl = useMemo(() => URL.createObjectURL(file), [file]);
+
+  useEffect(() => {
+    return () => URL.revokeObjectURL(previewUrl);
+  }, [previewUrl]);
+
+  if (file.type.startsWith("image/")) {
+    return (
+      <div className="aspect-[16/9] overflow-hidden rounded-2xl bg-off-white ring-1 ring-forest/10">
+        {/* eslint-disable-next-line @next/next/no-img-element -- Local blob previews cannot be optimized by next/image. */}
+        <img
+          src={previewUrl}
+          alt={`${label} preview`}
+          className="h-full w-full object-cover"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid aspect-[16/9] place-items-center rounded-2xl bg-forest text-white ring-1 ring-forest/10">
+      <Film aria-hidden="true" className="h-7 w-7" />
+      <span className="sr-only">{label} preview selected</span>
     </div>
   );
 }
@@ -1003,6 +1065,7 @@ function ConsentBox({
       )}
     >
       <input
+        aria-label={title}
         name={name}
         type="checkbox"
         checked={checked}

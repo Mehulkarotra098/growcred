@@ -17,7 +17,7 @@ import {
 } from "lucide-react";
 import { GROWCRED_ASSETS } from "@/lib/assets";
 import { BRAND_SLOGAN, BRAND_TAGLINE, TREECOIN_DISCLAIMER } from "@/lib/copy";
-import { TREECOIN_REWARD_RULES, TREECOIN_TOKEN } from "@/lib/treecoin/token";
+import { TREECOIN_REWARD_RULES } from "@/lib/treecoin/token";
 
 export const metadata: Metadata = {
   title: "TreeCoin Rewards | GrowCred",
@@ -84,11 +84,11 @@ const activityFeed = [
 ] as const;
 
 const launchChecklist = [
-  ["Token standard", "Solana Token-2022"],
-  ["Decimals", "0 whole-point rewards"],
-  ["Transfer policy", "Non-transferable"],
+  ["Reward standard", "Proof-bound TreeCoin"],
+  ["Decimals", "Whole-point rewards"],
+  ["Release policy", "After verification"],
   ["Reward trigger", "Verified proof approval"],
-  ["Public status", "Public test network next"],
+  ["Public status", "Active in GrowCred rewards"],
 ] as const;
 
 const trustCards = [
@@ -150,7 +150,7 @@ export default function TreeCoinPage() {
             </p>
 
             <div className="mt-5 flex flex-wrap gap-2">
-              {["Solana-ready", "Proof-bound", "Non-transferable", "Care-first"].map(
+              {["Reward-only", "Proof-bound", "Review-approved", "Care-first"].map(
                 (item) => (
                   <span
                     key={item}
@@ -171,7 +171,7 @@ export default function TreeCoinPage() {
                 href="/submit-proof"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-5 py-3 text-sm font-black text-white shadow-lg shadow-forest/15 transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
               >
-                Start Earning
+                Submit Proof
                 <ArrowRight aria-hidden="true" className="h-4 w-4" />
               </Link>
               <Link
@@ -238,11 +238,11 @@ export default function TreeCoinPage() {
 
           <div className="mt-5 rounded-[1.5rem] border border-leaf/15 bg-lime/16 p-4">
             <p className="text-sm font-black text-forest">
-              Local Solana validation is complete.
+              TreeCoin is ready to explain clearly.
             </p>
             <p className="mt-2 text-sm font-bold leading-6 text-forest/64">
-              The next public step is funding the devnet authority, then running
-              the saved mint command for the public test network.
+              Visitors can understand the rule in seconds: submit real proof,
+              pass verification, then earn TreeCoins inside GrowCred.
             </p>
           </div>
         </article>
@@ -364,15 +364,23 @@ export default function TreeCoinPage() {
                 ))}
               </div>
             </div>
-            <div className="relative min-h-[24rem] bg-off-white p-4 sm:p-6">
-              <Image
-                src={GROWCRED_ASSETS.site.dashboardTrackImpact}
-                alt="GrowCred dashboard showing tree impact and TreeCoin rewards"
-                width={1536}
-                height={1024}
-                sizes="(min-width: 1024px) 45vw, 100vw"
-                className="h-full min-h-[22rem] w-full rounded-[1.65rem] object-cover shadow-2xl shadow-forest/10"
-              />
+            <div className="grid content-center gap-3 bg-off-white p-4 sm:p-6">
+              {proofQueue.map(([label, status, detail]) => (
+                <div
+                  key={`queue-${label}`}
+                  className="rounded-[1.35rem] border border-forest/10 bg-white/78 p-4"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <p className="text-sm font-black text-forest">{label}</p>
+                    <span className="rounded-full bg-lime/28 px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.12em] text-forest">
+                      {status}
+                    </span>
+                  </div>
+                  <p className="mt-2 text-xs font-bold leading-5 text-forest/58">
+                    {detail}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </article>
@@ -485,17 +493,17 @@ function LaunchPass() {
         </div>
 
         <div className="mt-5 grid grid-cols-2 gap-3">
-          <PassStat label="Symbol" value={TREECOIN_TOKEN.symbol} />
-          <PassStat label="Chain" value={TREECOIN_TOKEN.chain} />
-          <PassStat label="Standard" value={TREECOIN_TOKEN.tokenProgram} />
-          <PassStat label="Use" value="Reward only" />
+          <PassStat label="Reward" value="TreeCoin" />
+          <PassStat label="Amount" value="+10" />
+          <PassStat label="Release" value="After review" />
+          <PassStat label="Use" value="In app only" />
         </div>
 
         <div className="mt-5 rounded-[1.5rem] border border-lime/20 bg-lime/10 p-4">
           <div className="flex items-start gap-3">
             <CheckCircle2 aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-lime" />
             <p className="text-sm font-bold leading-6 text-white/76">
-              Token setup verified locally: whole-point TreeCoins, Token-2022,
+              Reward setup: whole-point TreeCoins, proof-bound release, and a
               non-transferable reward design.
             </p>
           </div>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Building2, Trophy, Users } from "lucide-react";
 import { CommunityHub } from "@/components/community-hub";
+import { HumanActivityStrip } from "@/components/human-proof-board";
 import { LivingBackdrop } from "@/components/living-backdrop";
 import { SectionHeader } from "@/components/section-header";
 import { GROWCRED_ASSETS } from "@/lib/assets";
@@ -38,7 +39,7 @@ export default function CommunityPage() {
             width={360}
             height={240}
             loading="eager"
-            className="h-auto w-36 sm:w-44"
+            className="float-soft h-auto w-36 sm:w-44"
           />
           <Image
             src={GROWCRED_ASSETS.stickers.smallActionsBigFuture}
@@ -46,24 +47,11 @@ export default function CommunityPage() {
             aria-hidden="true"
             width={220}
             height={220}
-            className="h-auto w-24 sm:w-28"
+            className="float-soft-delay h-auto w-24 sm:w-28"
           />
-          <Image
-            src={GROWCRED_ASSETS.stickers.trackVerifyGrow}
-            alt=""
-            aria-hidden="true"
-            width={220}
-            height={220}
-            className="hidden h-auto w-28 md:block"
-          />
-          <Image
-            src={GROWCRED_ASSETS.stickers.beTheChange}
-            alt=""
-            aria-hidden="true"
-            width={220}
-            height={220}
-            className="hidden h-auto w-28 lg:block"
-          />
+        </div>
+        <div className="mt-8">
+          <HumanActivityStrip />
         </div>
         <CommunityHub
           users={users}

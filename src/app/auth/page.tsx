@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { KeyRound, ShieldCheck, UploadCloud } from "lucide-react";
 import { AuthPanel } from "@/components/auth-panel";
 import { LivingBackdrop } from "@/components/living-backdrop";
-import { SectionHeader } from "@/components/section-header";
+import { StickerBadge } from "@/components/sticker-badge";
 
 export const metadata: Metadata = {
   title: "Sign In | GrowCred",
@@ -15,11 +15,14 @@ export default function AuthPage() {
       <LivingBackdrop />
       <div className="product-page-shell mx-auto grid max-w-7xl gap-8 rounded-[2rem] p-4 sm:p-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-start lg:rounded-[2.5rem] lg:p-8">
         <div className="product-page-rail rounded-[1.75rem] p-4 sm:p-6 lg:sticky lg:top-28">
-          <SectionHeader
-            eyebrow="GrowCred account"
-            title="Sign in to track your impact."
-            description="Keep your trees, proof status, care reminders, badges, and TreeCoins connected to your GrowCred profile."
-          />
+          <StickerBadge className="bg-lime/35">GrowCred account</StickerBadge>
+          <h1 className="mt-5 text-4xl font-black tracking-tight text-forest sm:text-5xl">
+            Sign in to track your impact.
+          </h1>
+          <p className="mt-4 text-base font-bold leading-7 text-forest/70 sm:text-lg">
+            Keep your trees, proof status, care reminders, badges, and
+            TreeCoins connected to your GrowCred profile.
+          </p>
           <div className="mt-8 grid gap-4">
             {[
               [KeyRound, "Secure account access"],

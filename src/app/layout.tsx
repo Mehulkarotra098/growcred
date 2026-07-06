@@ -50,10 +50,10 @@ export const metadata: Metadata = {
     siteName: "GrowCred",
     images: [
       {
-        url: GROWCRED_ASSETS.site.heroLanding,
-        width: 1536,
-        height: 1024,
-        alt: "GrowCred app landing visual for verified tree care",
+        url: GROWCRED_ASSETS.brand.logoWordmark,
+        width: 2048,
+        height: 640,
+        alt: "GrowCred - Plant. Prove. Protect.",
       },
     ],
   },

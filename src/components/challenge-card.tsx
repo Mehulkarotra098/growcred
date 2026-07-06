@@ -41,50 +41,50 @@ export function ChallengeCard({ challenge }: ChallengeCardProps) {
           </div>
         ) : null}
         <div className="flex flex-1 flex-col p-6">
-        <div className="flex items-start justify-between gap-4">
-          <span className="grid h-12 w-12 place-items-center rounded-2xl bg-lime/45 text-forest shadow-inner">
-            <Trophy aria-hidden="true" className="h-6 w-6" />
-          </span>
-          {sticker ? (
-            <Image
-              src={sticker}
-              alt=""
-              aria-hidden="true"
-              width={160}
-              height={160}
-              className="hidden h-14 w-14 object-contain sm:block"
-            />
-          ) : null}
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-leaf/15 px-3 py-1 text-xs font-black text-forest">
-            <Image
-              src={brandAssets.treeCoin}
-              alt=""
-              aria-hidden="true"
-              width={28}
-              height={28}
-              className="h-5 w-5"
-            />
-            +{challenge.reward} TreeCoins
-          </span>
-        </div>
-        <h3 className="mt-5 text-xl font-black text-forest">
-          {challenge.title}
-        </h3>
-        <p className="mt-3 flex-1 text-sm leading-6 text-forest/70">
-          {challenge.description}
-        </p>
-        <div className="mt-6 flex items-center justify-between gap-4">
-          <p className="text-sm font-bold text-forest/55">
-            {formatNumber(challenge.participants)} participants
+          <div className="flex items-start justify-between gap-4">
+            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-lime/45 text-forest shadow-inner">
+              <Trophy aria-hidden="true" className="h-6 w-6" />
+            </span>
+            {sticker ? (
+              <Image
+                src={sticker}
+                alt=""
+                aria-hidden="true"
+                width={160}
+                height={160}
+                className="float-soft hidden h-14 w-14 object-contain sm:block"
+              />
+            ) : null}
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-leaf/15 px-3 py-1 text-xs font-black text-forest">
+              <Image
+                src={brandAssets.treeCoin}
+                alt=""
+                aria-hidden="true"
+                width={28}
+                height={28}
+                className="h-5 w-5"
+              />
+              +{challenge.reward} TreeCoins
+            </span>
+          </div>
+          <h3 className="mt-5 text-xl font-black text-forest">
+            {challenge.title}
+          </h3>
+          <p className="mt-3 flex-1 text-sm leading-6 text-forest/70">
+            {challenge.description}
           </p>
-          <button
-            type="button"
-            className="inline-flex items-center gap-2 rounded-full bg-forest px-4 py-2 text-sm font-black text-white transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
-          >
-            Join
-            <ArrowRight aria-hidden="true" className="h-4 w-4" />
-          </button>
-        </div>
+          <div className="mt-6 flex items-center justify-between gap-4">
+            <p className="text-sm font-bold text-forest/55">
+              {formatNumber(challenge.participants)} participants
+            </p>
+            <button
+              type="button"
+              className="inline-flex items-center gap-2 rounded-full bg-forest px-4 py-2 text-sm font-black text-white transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+            >
+              Join
+              <ArrowRight aria-hidden="true" className="h-4 w-4" />
+            </button>
+          </div>
         </div>
       </article>
     </HoverLift>

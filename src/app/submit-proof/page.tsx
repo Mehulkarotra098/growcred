@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { Camera, CheckCircle2, MapPin, ShieldCheck, Sprout } from "lucide-react";
+import { ProofPacketMini } from "@/components/human-proof-board";
 import { LivingBackdrop } from "@/components/living-backdrop";
 import { ProofUploadForm } from "@/components/proof-upload-form";
-import { SectionHeader } from "@/components/section-header";
-import { GROWCRED_ASSETS } from "@/lib/assets";
 import { TREECOIN_DISCLAIMER } from "@/lib/copy";
 
 export const metadata: Metadata = {
@@ -15,25 +13,22 @@ export const metadata: Metadata = {
 
 export default function SubmitProofPage() {
   return (
-    <section className="relative isolate px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
+    <section className="relative isolate px-4 py-7 sm:px-6 sm:py-14 lg:px-8">
       <LivingBackdrop />
-      <div className="product-page-shell mx-auto grid max-w-7xl gap-7 rounded-[2rem] p-4 sm:p-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-start lg:rounded-[2.5rem] lg:p-8">
+      <div className="product-page-shell mx-auto grid max-w-7xl gap-5 rounded-[2rem] p-4 sm:gap-7 sm:p-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-start lg:rounded-[2.5rem] lg:p-8">
         <div className="product-page-rail rounded-[1.75rem] p-4 sm:p-6 lg:sticky lg:top-28">
-          <SectionHeader
-            eyebrow="Submit Proof"
-            title="Plant real trees. Prove your impact."
-            description="Upload clear evidence, confirm legal planting, and commit to caring for the tree over time."
-          />
-          <div className="mt-6 overflow-hidden rounded-[2rem] border border-forest/10 bg-white p-2 shadow-xl shadow-forest/10 sm:p-3 lg:shadow-2xl">
-            <Image
-              src={GROWCRED_ASSETS.onboarding.plantProveProtect}
-              alt="GrowCred onboarding visual showing Plant, Prove, Protect steps"
-              width={1024}
-              height={1024}
-              priority
-              sizes="(min-width: 1024px) 36vw, 92vw"
-              className="aspect-[16/9] max-h-36 w-full rounded-[1.5rem] object-cover object-top sm:max-h-72 lg:aspect-square lg:max-h-none"
-            />
+          <span className="inline-flex rounded-full bg-lime/35 px-4 py-2 text-sm font-black text-forest">
+            Submit Proof
+          </span>
+          <h1 className="mt-5 text-3xl font-black tracking-tight text-forest sm:text-4xl">
+            Plant real trees. Prove your impact.
+          </h1>
+          <p className="mt-4 text-base font-bold leading-7 text-forest/68">
+            Upload clear evidence, confirm legal planting, and commit to caring
+            for the tree over time.
+          </p>
+          <div className="mt-6 hidden lg:block">
+            <ProofPacketMini />
           </div>
           <div className="mt-5 hidden gap-3 sm:mt-8 sm:gap-4 lg:grid">
             {[

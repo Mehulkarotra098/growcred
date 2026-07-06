@@ -53,5 +53,10 @@ export const GROWCRED_ASSETS = {
     mango: `${GENERATED_ASSETS}/tree-mango-thumb.webp`,
     neem: `${GENERATED_ASSETS}/tree-neem-thumb.webp`,
     gulmohar: `${GENERATED_ASSETS}/tree-gulmohar-thumb.webp`,
+    peepal: `${GENERATED_ASSETS}/tree-peepal-thumb.webp`,
+    jamun: `${GENERATED_ASSETS}/tree-jamun-thumb.webp`,
+    tamarind: `${GENERATED_ASSETS}/tree-tamarind-thumb.webp`,
+    indianAlmond: `${GENERATED_ASSETS}/tree-indian-almond-thumb.webp`,
+    banyan: `${GENERATED_ASSETS}/tree-banyan-thumb.webp`,
   },
 } as const;
