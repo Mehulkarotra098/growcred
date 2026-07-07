@@ -13,17 +13,17 @@ export const metadata: Metadata = {
 
 export default function SubmitProofPage() {
   return (
-    <section className="relative isolate px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <section className="relative isolate px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
       <LivingBackdrop />
-      <div className="product-page-shell mx-auto grid max-w-7xl gap-5 rounded-[1.75rem] p-4 sm:gap-7 sm:p-6 lg:grid-cols-[0.78fr_1.22fr] lg:items-start lg:rounded-[2rem] lg:p-7">
-        <div className="product-page-rail rounded-[1.4rem] p-4 sm:p-6 lg:sticky lg:top-28">
+      <div className="product-page-shell mx-auto grid max-w-7xl gap-5 rounded-[1.75rem] p-4 sm:gap-7 sm:p-6 lg:grid-cols-[0.74fr_1.26fr] lg:items-start lg:rounded-[2rem] lg:p-7">
+        <div className="product-page-rail rounded-[1.4rem] p-4 sm:p-5 lg:sticky lg:top-28 lg:p-6">
           <span className="inline-flex rounded-full bg-lime/35 px-4 py-2 text-sm font-black text-forest">
             Submit Proof
           </span>
-          <h1 className="mt-5 text-3xl font-black tracking-tight text-forest sm:text-4xl">
+          <h1 className="mt-4 text-3xl font-black tracking-tight text-forest sm:text-4xl">
             Plant real trees. Prove your impact.
           </h1>
-          <p className="mt-4 text-base font-bold leading-7 text-forest/68">
+          <p className="mt-3 text-base font-bold leading-7 text-forest/68">
             Upload clear evidence, confirm legal planting, and commit to caring
             for the tree over time.
           </p>

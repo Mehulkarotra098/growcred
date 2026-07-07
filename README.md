@@ -33,6 +33,26 @@ npm.cmd run build
 npm.cmd audit --omit=dev
 ```
 
+## Clean Local Review
+
+If CSS or assets look broken on `localhost:3000`, first make sure a stale Next
+server is not serving an old `.next` build. Do not run `npm.cmd run build` while
+`next dev` or `next start` is still serving this same project.
+
+Recommended review reset:
+
+```powershell
+# Stop only GrowCred Next/npm/node processes on ports 3000 or 3100 first.
+# Then remove .next, rebuild, and start one review server.
+Remove-Item -LiteralPath .next -Recurse -Force
+npm.cmd run build
+npm.cmd run start -- -p 3000
+```
+
+Before sharing a link, open `http://localhost:3000`, check the browser Network
+tab, and confirm every `/_next/static/**/*.css` file returns `200` with non-empty
+CSS content.
+
 ## TreeCoin Technical Reward Foundation
 
 TreeCoin is implemented in the app as a reward point first. The repository also

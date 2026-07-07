@@ -435,7 +435,7 @@ export function ProofUploadForm() {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="living-card rounded-[1.75rem] p-4 sm:p-6 lg:p-7"
+      className="living-card min-w-0 rounded-[1.75rem] p-4 sm:p-6 lg:p-7"
     >
       <div className="grid gap-6 xl:grid-cols-[17rem_minmax(0,1fr)]">
         <aside className="order-2 rounded-[1.4rem] border border-forest/10 bg-white/70 p-4 xl:order-none">
@@ -553,7 +553,7 @@ export function ProofUploadForm() {
 
           <div className="grid gap-5">
             <StepPanel active={activeStep === 0}>
-              <div className="grid gap-4 lg:grid-cols-2">
+              <div className="grid gap-4 xl:grid-cols-2">
                 <TextField
                   label="Tree nickname"
                   name="nickname"
@@ -862,16 +862,16 @@ function TextField({
   const errorId = `${name}-error`;
 
   return (
-    <label className="grid gap-2 text-sm font-black text-forest">
+    <label className="grid min-w-0 gap-2 text-sm font-black text-forest">
       {label}
       <span
         className={cn(
-          "grid min-h-[3.35rem] grid-cols-[auto_minmax(0,1fr)] items-center gap-3 rounded-[1.1rem] border bg-off-white px-4",
+          "grid min-h-[3.55rem] min-w-0 grid-cols-[auto_minmax(0,1fr)] items-center gap-3 overflow-hidden rounded-[1.1rem] border bg-off-white px-4 py-1",
           !icon && "grid-cols-1",
           error ? "border-red-300 ring-2 ring-red-100" : "border-forest/15",
         )}
       >
-        {icon ? <span className="shrink-0 text-leaf">{icon}</span> : null}
+        {icon ? <span className="pointer-events-none shrink-0 text-leaf">{icon}</span> : null}
         <input
           aria-label={label}
           name={name}
@@ -881,7 +881,7 @@ function TextField({
           placeholder={placeholder}
           aria-invalid={Boolean(error)}
           aria-describedby={error ? errorId : undefined}
-          className="min-h-[3.25rem] w-full min-w-0 bg-transparent text-sm font-bold text-forest placeholder:text-forest/35 focus:outline-none"
+          className="min-h-[3.15rem] w-full min-w-0 bg-transparent text-sm font-bold leading-none text-forest placeholder:text-forest/35 focus:outline-none [&::-webkit-calendar-picker-indicator]:opacity-70"
         />
       </span>
       {error ? <FieldError id={errorId}>{error}</FieldError> : null}
