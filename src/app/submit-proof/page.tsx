@@ -15,8 +15,8 @@ export default function SubmitProofPage() {
   return (
     <section className="relative isolate px-4 py-6 sm:px-6 sm:py-10 lg:px-8">
       <LivingBackdrop />
-      <div className="product-page-shell mx-auto grid max-w-7xl gap-5 rounded-[1.75rem] p-4 sm:gap-7 sm:p-6 lg:grid-cols-[0.74fr_1.26fr] lg:items-start lg:rounded-[2rem] lg:p-7">
-        <div className="product-page-rail rounded-[1.4rem] p-4 sm:p-5 lg:sticky lg:top-28 lg:p-6">
+      <div className="product-page-shell mx-auto grid max-w-7xl gap-5 p-4 sm:gap-7 sm:p-6 lg:grid-cols-[0.68fr_1.32fr] lg:items-start lg:p-7">
+        <div className="product-page-rail p-4 sm:p-5 lg:sticky lg:top-28 lg:p-6">
           <span className="inline-flex rounded-full bg-lime/35 px-4 py-2 text-sm font-black text-forest">
             Submit Proof
           </span>
@@ -40,7 +40,7 @@ export default function SubmitProofPage() {
             ].map(([Icon, label]) => (
               <div
                 key={label as string}
-                className="living-card flex items-center gap-3 rounded-[1.15rem] p-4"
+                className="living-card flex items-center gap-3 p-4"
               >
                 <span className="grid h-10 w-10 place-items-center rounded-full bg-lime/35 text-forest">
                   <Icon aria-hidden="true" className="h-5 w-5" />

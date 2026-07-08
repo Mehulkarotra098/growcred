@@ -40,8 +40,8 @@ export function SectionHeader({
       <h2
         className={
           isDark
-            ? "text-3xl font-black tracking-tight text-white sm:text-4xl lg:text-5xl"
-            : "text-3xl font-black tracking-tight text-forest sm:text-4xl lg:text-5xl"
+            ? "text-3xl font-black leading-[1.12] tracking-tight text-white sm:text-4xl lg:text-5xl"
+            : "text-3xl font-black leading-[1.12] tracking-tight text-forest sm:text-4xl lg:text-5xl"
         }
       >
         {title}

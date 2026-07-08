@@ -65,6 +65,12 @@ body {
     color 220ms ease;
 }
 
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
 body::before {
   position: fixed;
   inset: 0;
@@ -136,6 +142,7 @@ main:focus {
 .dashboard-panel,
 .dashboard-soft-tile,
 .product-page-rail {
+  border-radius: 1.1rem;
   border: 1px solid var(--card-border);
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, transparent), color-mix(in srgb, var(--surface) 84%, var(--off-white))),
@@ -180,12 +187,42 @@ main:focus {
 .human-proof-board,
 .product-page-shell,
 .dashboard-app-shell {
+  border-radius: 1.35rem;
   border: 1px solid var(--card-border);
   background:
     radial-gradient(circle at 12% 0%, rgba(163, 255, 18, 0.11), transparent 32%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 251, 243, 0.9));
   box-shadow: 0 20px 54px var(--card-shadow);
   backdrop-filter: blur(18px);
+}
+
+@media (min-width: 640px) {
+  .living-card,
+  .human-card,
+  .dashboard-panel,
+  .dashboard-soft-tile,
+  .product-page-rail {
+    border-radius: 1.2rem;
+  }
+
+  .human-proof-board,
+  .product-page-shell,
+  .dashboard-app-shell {
+    border-radius: 1.5rem;
+  }
+}
+
+.designed-asset-frame {
+  border-radius: 1rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 251, 243, 0.94)),
+    #ffffff;
+}
+
+[data-theme="dark"] .designed-asset-frame {
+  background:
+    linear-gradient(180deg, rgba(239, 255, 241, 0.96), rgba(247, 251, 243, 0.92)),
+    #ffffff;
 }
 
 [data-theme="dark"] .human-proof-board,

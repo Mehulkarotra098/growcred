@@ -24,7 +24,7 @@ export default function CommunityPage() {
   return (
     <section className="relative isolate px-4 py-14 sm:px-6 lg:px-8">
       <LivingBackdrop />
-      <div className="product-page-shell mx-auto max-w-7xl rounded-[2rem] p-4 sm:p-6 lg:rounded-[2.5rem] lg:p-8">
+      <div className="product-page-shell mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
         <SectionHeader
           eyebrow="Community"
           title="Real trees. Real change."
@@ -59,7 +59,7 @@ export default function CommunityPage() {
           cities={cityStandings}
           challenges={challengeStandings}
         />
-        <p className="relaxed-copy mx-auto mt-8 max-w-3xl rounded-[1.25rem] bg-lime/20 p-4 text-center text-sm font-bold leading-6 text-forest/70">
+        <p className="relaxed-copy mx-auto mt-8 max-w-3xl rounded-[1rem] bg-lime/20 p-4 text-center text-sm font-bold leading-6 text-forest/70">
           {TREECOIN_DISCLAIMER}
         </p>
         <div className="mt-10 grid gap-5 md:grid-cols-3">
@@ -70,7 +70,7 @@ export default function CommunityPage() {
           ].map(([Icon, title, text]) => (
             <article
               key={title as string}
-              className="living-card rounded-[1.75rem] p-6"
+              className="living-card p-5 sm:p-6"
             >
               <Icon aria-hidden="true" className="h-7 w-7 text-leaf" />
               <h2 className="mt-5 text-2xl font-black text-forest">
@@ -85,7 +85,7 @@ export default function CommunityPage() {
         <div className="mt-10 flex justify-center">
           <Link
             href="/challenges"
-            className="inline-flex items-center gap-2 rounded-full bg-forest px-5 py-3 text-sm font-black text-white transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+            className="inline-flex items-center gap-2 rounded-[0.9rem] bg-forest px-5 py-3 text-sm font-black text-white transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
           >
             Join a Mission
             <ArrowRight aria-hidden="true" className="h-4 w-4" />

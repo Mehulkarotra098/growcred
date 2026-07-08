@@ -52,7 +52,7 @@ export function LocalImpactPanel() {
   const firstName = user.name.split(" ")[0] ?? "Your";
 
   return (
-    <section className="dashboard-panel rounded-[1.75rem] p-4 sm:p-5">
+    <section className="dashboard-panel p-4 sm:p-5">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.14em] text-leaf">
@@ -137,7 +137,7 @@ export function LocalImpactPanel() {
                 alt="No proof submissions yet"
                 width={96}
                 height={96}
-                className="h-16 w-16 rounded-2xl object-contain"
+                className="h-16 w-16 rounded-[0.9rem] object-contain"
               />
               <div>
                 <p className="text-sm font-black text-forest">
@@ -191,7 +191,7 @@ function LiveMetric({
             className="h-12 w-12 object-contain"
           />
         ) : (
-          <span className="grid h-12 w-12 place-items-center rounded-2xl bg-lime/28 text-forest">
+          <span className="grid h-12 w-12 place-items-center rounded-[0.9rem] bg-lime/28 text-forest">
             <Icon aria-hidden="true" className="h-5 w-5" />
           </span>
         )}

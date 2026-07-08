@@ -13,7 +13,7 @@ export function StatCard({ label, value, suffix, detail }: StatCardProps) {
 
   return (
     <HoverLift className="h-full">
-      <article className="living-card metric-glow h-full rounded-[1.75rem] p-5">
+      <article className="living-card metric-glow h-full p-5">
         <p className="text-sm font-black uppercase tracking-[0.12em] text-forest/50">
           {label}
         </p>

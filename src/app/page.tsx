@@ -147,7 +147,7 @@ export default function Home() {
           </div>
 
           <FadeIn className="mt-10 grid gap-5 lg:grid-cols-[0.82fr_1.18fr]">
-            <div className="forest-panel rounded-[2rem] p-7 text-white sm:p-9">
+            <div className="forest-panel rounded-[1.25rem] p-6 text-white sm:p-8">
               <p className="text-sm font-black uppercase tracking-[0.16em] text-lime">
                 Trust layer
               </p>
@@ -162,11 +162,11 @@ export default function Home() {
                 {TREECOIN_DISCLAIMER}
               </p>
             </div>
-            <div className="grid gap-3 rounded-[2rem] border border-forest/10 bg-white/78 p-5 shadow-xl shadow-forest/6">
+            <div className="grid gap-3 rounded-[1.2rem] border border-forest/10 bg-white/78 p-5 shadow-xl shadow-forest/6">
               {reviewSteps.map((step, index) => (
                 <div
                   key={step}
-                  className="flex items-center gap-4 rounded-[1.25rem] bg-off-white/82 p-4"
+                  className="flex items-center gap-4 rounded-[0.95rem] bg-off-white/82 p-4"
                 >
                   <span className="grid h-9 w-9 place-items-center rounded-full bg-lime/34 text-sm font-black text-forest">
                     {index + 1}
@@ -208,14 +208,14 @@ export default function Home() {
             <div className="mt-6 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/submit-proof"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-5 py-3 text-sm font-black text-white transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+                className="inline-flex items-center justify-center gap-2 rounded-[0.9rem] bg-forest px-5 py-3 text-sm font-black text-white transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
               >
                 Submit Proof
                 <ArrowRight aria-hidden="true" className="h-4 w-4" />
               </Link>
               <Link
                 href="/treecoin"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-forest/10 bg-white/78 px-5 py-3 text-sm font-black text-forest transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+                className="inline-flex items-center justify-center gap-2 rounded-[0.9rem] border border-forest/10 bg-white/78 px-5 py-3 text-sm font-black text-forest transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
               >
                 Explore TreeCoin
               </Link>
@@ -228,7 +228,7 @@ export default function Home() {
       <section className="relative isolate px-4 py-16 sm:px-6 lg:px-8">
         <LivingBackdrop />
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_0.82fr] lg:items-start">
-          <FadeIn className="human-card rounded-[2.1rem] p-6">
+          <FadeIn className="human-card p-5 sm:p-6">
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <p className="text-sm font-black uppercase tracking-[0.14em] text-leaf">
@@ -246,7 +246,7 @@ export default function Home() {
                 ["Evidence", Camera],
                 ["Permission", ShieldCheck],
               ].map(([item, Icon]) => (
-                <div key={item as string} className="rounded-2xl bg-off-white/82 p-4">
+                <div key={item as string} className="rounded-[0.95rem] bg-off-white/82 p-4">
                   <Icon aria-hidden="true" className="h-6 w-6 text-leaf" />
                   <p className="mt-3 text-sm font-black text-forest">
                     {item as string}
@@ -259,7 +259,7 @@ export default function Home() {
             </div>
             <Link
               href="/submit-proof"
-              className="mt-7 inline-flex items-center gap-2 rounded-full bg-forest px-5 py-3 text-sm font-black text-white transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+              className="mt-7 inline-flex items-center gap-2 rounded-[0.9rem] bg-forest px-5 py-3 text-sm font-black text-white transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
             >
               Submit Proof
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
@@ -360,12 +360,12 @@ export default function Home() {
               alt="GrowCred tree care guide visual for native planting and survival care"
               width={1536}
               height={1024}
-              className="mt-7 aspect-[4/3] w-full rounded-[2rem] object-cover shadow-2xl shadow-forest/10"
+              className="designed-asset-frame mt-7 aspect-[4/3] w-full object-contain p-3 shadow-2xl shadow-forest/10"
             />
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {learnPreview.map(([Icon, label, text]) => (
-              <div key={label} className="living-card rounded-[1.5rem] p-5">
+              <div key={label} className="living-card p-5">
                 <Icon aria-hidden="true" className="h-6 w-6 text-leaf" />
                 <p className="mt-4 text-base font-black text-forest">
                   {label}
@@ -401,7 +401,7 @@ export default function Home() {
       </section>
 
       <section className="px-4 pb-10 sm:px-6 lg:px-8">
-        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-3 rounded-full border border-forest/10 bg-white/78 px-5 py-4 shadow-sm shadow-forest/5 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-center gap-3 rounded-[1rem] border border-forest/10 bg-white/78 px-5 py-4 shadow-sm shadow-forest/5 backdrop-blur">
           <Users aria-hidden="true" className="h-5 w-5 text-leaf" />
           <p className="text-center text-sm font-black text-forest">
             Turn real tree care into real impact.

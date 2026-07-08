@@ -14,7 +14,7 @@ export default function ChallengesPage() {
   return (
     <section className="relative isolate px-4 py-14 sm:px-6 lg:px-8">
       <LivingBackdrop />
-      <div className="product-page-shell mx-auto max-w-7xl rounded-[2rem] p-4 sm:p-6 lg:rounded-[2.5rem] lg:p-8">
+      <div className="product-page-shell mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
         <SectionHeader
           eyebrow="Grow missions"
           title="Challenges that make care social."
@@ -22,7 +22,7 @@ export default function ChallengesPage() {
           align="center"
         />
         <ChallengeHub challenges={challenges} />
-        <p className="relaxed-copy mx-auto mt-8 max-w-3xl rounded-[1.25rem] bg-lime/20 p-4 text-center text-sm font-bold leading-6 text-forest/70">
+        <p className="relaxed-copy mx-auto mt-8 max-w-3xl rounded-[1rem] bg-lime/20 p-4 text-center text-sm font-bold leading-6 text-forest/70">
           {TREECOIN_DISCLAIMER}
         </p>
       </div>

@@ -70,7 +70,7 @@ export default function LearnPage() {
   return (
     <>
       <section className="px-4 py-14 sm:px-6 lg:px-8">
-        <div className="product-page-shell relative isolate mx-auto max-w-7xl rounded-[2rem] p-4 sm:p-6 lg:rounded-[2.5rem] lg:p-8">
+        <div className="product-page-shell relative isolate mx-auto max-w-7xl p-4 sm:p-6 lg:p-8">
           <LivingBackdrop />
           <SectionHeader
             eyebrow="Tree care guide"
@@ -82,7 +82,7 @@ export default function LearnPage() {
             {TREECOIN_DISCLAIMER}
           </p>
           <div className="mt-10 grid gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-            <div className="overflow-hidden rounded-[2rem] border border-forest/10 bg-white p-3 shadow-2xl shadow-forest/10">
+            <div className="designed-asset-frame overflow-hidden border border-forest/10 p-3 shadow-2xl shadow-forest/10">
               <Image
                 src={GROWCRED_ASSETS.site.treeCareGuide}
                 alt="GrowCred tree care guide visual explaining native planting and survival care"
@@ -90,7 +90,7 @@ export default function LearnPage() {
                 height={1024}
                 priority
                 sizes="(min-width: 1024px) 50vw, 92vw"
-                className="aspect-[4/3] w-full rounded-[1.5rem] object-cover"
+                className="aspect-[4/3] w-full rounded-[0.8rem] object-contain"
               />
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -116,7 +116,7 @@ export default function LearnPage() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="rounded-[1.5rem] border border-forest/10 bg-white/72 p-5 text-sm font-black leading-6 text-forest sm:col-span-2"
+                  className="rounded-[1rem] border border-forest/10 bg-white/72 p-5 text-sm font-black leading-6 text-forest sm:col-span-2"
                 >
                   {item}
                 </div>
@@ -127,9 +127,9 @@ export default function LearnPage() {
             {guide.map((item) => (
               <article
                 key={item.title}
-                className="living-card rounded-[1.75rem] p-6"
+                className="living-card p-5 sm:p-6"
               >
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-lime/35 text-forest">
+                <span className="grid h-12 w-12 place-items-center rounded-[0.9rem] bg-lime/35 text-forest">
                   <item.icon aria-hidden="true" className="h-6 w-6" />
                 </span>
                 <h2 className="mt-5 text-xl font-black text-forest">
@@ -146,14 +146,14 @@ export default function LearnPage() {
 
       <section className="bg-white/70 px-4 py-16 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
-          <div className="product-page-shell grid gap-10 rounded-[2rem] p-4 sm:p-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:rounded-[2.5rem] lg:p-8">
+          <div className="product-page-shell grid gap-10 p-4 sm:p-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-start lg:p-8">
           <div className="lg:sticky lg:top-28">
             <SectionHeader
               eyebrow="90-day care path"
               title="Turn a planting moment into survival proof."
               description="The reward loop teaches users what to do next, what to avoid, and what evidence makes review trustworthy."
             />
-            <div className="forest-panel mt-8 rounded-[2rem] p-6 text-white shadow-2xl shadow-forest/20">
+            <div className="forest-panel mt-8 rounded-[1.2rem] p-6 text-white shadow-2xl shadow-forest/20">
               <p className="text-sm font-black uppercase tracking-[0.14em] text-lime">
                 Key message
               </p>
@@ -166,7 +166,7 @@ export default function LearnPage() {
               </p>
               <Link
                 href="/submit-proof"
-                className="mt-6 inline-flex items-center gap-2 rounded-full bg-lime px-5 py-3 text-sm font-black text-forest transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime"
+                className="mt-6 inline-flex items-center gap-2 rounded-[0.9rem] bg-lime px-5 py-3 text-sm font-black text-forest transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime"
               >
                 Start with a native tree
                 <ArrowRight aria-hidden="true" className="h-4 w-4" />
@@ -178,7 +178,7 @@ export default function LearnPage() {
             {careGuideSteps.map((step) => (
               <article
                 key={step.id}
-                className="living-card grid gap-5 rounded-[2rem] p-6 md:grid-cols-[10rem_1fr]"
+                className="living-card grid gap-5 p-5 sm:p-6 md:grid-cols-[10rem_1fr]"
               >
                 <div>
                   <span className="inline-flex rounded-full bg-lime/40 px-4 py-2 text-sm font-black text-forest">
@@ -199,13 +199,13 @@ export default function LearnPage() {
                     {step.actions.map((action) => (
                       <div
                         key={action}
-                        className="rounded-[1.25rem] bg-off-white p-4 text-sm font-bold leading-6 text-forest/70"
+                        className="rounded-[0.95rem] bg-off-white p-4 text-sm font-bold leading-6 text-forest/70"
                       >
                         {action}
                       </div>
                     ))}
                   </div>
-                  <p className="mt-5 rounded-[1.25rem] bg-aqua/10 p-4 text-sm font-black leading-6 text-forest">
+                  <p className="mt-5 rounded-[0.95rem] bg-aqua/10 p-4 text-sm font-black leading-6 text-forest">
                     Proof tip: {step.proofTip}
                   </p>
                 </div>

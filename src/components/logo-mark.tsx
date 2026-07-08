@@ -5,16 +5,18 @@ import { cn } from "@/lib/utils";
 interface LogoMarkProps {
   className?: string;
   showWordmark?: boolean;
-  size?: "sm" | "md" | "lg";
+  size?: "xs" | "sm" | "md" | "lg";
 }
 
 const markSizeClassName = {
+  xs: "h-8 w-8",
   sm: "h-9 w-9",
   md: "h-11 w-11",
   lg: "h-16 w-16",
 };
 
 const lockupSizeClassName = {
+  xs: "h-7 w-auto max-w-[8.25rem] sm:h-8 sm:max-w-[9.75rem]",
   sm: "h-8 w-auto max-w-[9.75rem] sm:h-9 sm:max-w-[10.75rem]",
   md: "h-14 w-auto max-w-[17rem]",
   lg: "h-20 w-auto max-w-[24rem]",
@@ -42,7 +44,15 @@ export function LogoMark({
           width={2048}
           height={640}
           preload={size === "sm"}
-          sizes={size === "lg" ? "24rem" : size === "md" ? "17rem" : "11.5rem"}
+          sizes={
+            size === "lg"
+              ? "24rem"
+              : size === "md"
+                ? "17rem"
+                : size === "sm"
+                  ? "11.5rem"
+                  : "9rem"
+          }
           className={cn(
             "theme-logo-light object-contain",
             lockupSizeClassName[size],
@@ -55,7 +65,15 @@ export function LogoMark({
           width={2048}
           height={640}
           preload={size === "sm"}
-          sizes={size === "lg" ? "24rem" : size === "md" ? "17rem" : "11.5rem"}
+          sizes={
+            size === "lg"
+              ? "24rem"
+              : size === "md"
+                ? "17rem"
+                : size === "sm"
+                  ? "11.5rem"
+                  : "9rem"
+          }
           className={cn(
             "theme-logo-dark object-contain",
             lockupSizeClassName[size],
@@ -71,7 +89,15 @@ export function LogoMark({
       alt="GrowCred"
       width={512}
       height={512}
-      sizes={size === "lg" ? "4rem" : size === "md" ? "2.75rem" : "2.25rem"}
+      sizes={
+        size === "lg"
+          ? "4rem"
+          : size === "md"
+            ? "2.75rem"
+            : size === "sm"
+              ? "2.25rem"
+              : "2rem"
+      }
       className={cn("logo-breathe shrink-0 object-contain", markSizeClassName[size], className)}
     />
   );

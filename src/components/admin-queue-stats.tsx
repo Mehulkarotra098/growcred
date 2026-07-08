@@ -72,7 +72,7 @@ export function AdminQueueStats() {
   return (
     <div className="mt-8 grid grid-cols-2 gap-3 md:mt-10 md:grid-cols-4 md:gap-5">
       {statMeta.map(({ key, label, detail, icon: Icon }) => (
-        <article key={key} className="living-card rounded-[1.75rem] p-4 sm:p-5">
+        <article key={key} className="living-card p-4 sm:p-5">
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.11em] text-forest/50 sm:text-sm">
@@ -82,7 +82,7 @@ export function AdminQueueStats() {
                 {values[key]}
               </p>
             </div>
-            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-lime/45 text-forest shadow-inner sm:h-11 sm:w-11">
+            <span className="grid h-10 w-10 shrink-0 place-items-center rounded-[0.9rem] bg-lime/45 text-forest shadow-inner sm:h-11 sm:w-11">
               <Icon aria-hidden="true" className="h-5 w-5" />
             </span>
           </div>

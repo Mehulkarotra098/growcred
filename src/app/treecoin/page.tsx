@@ -123,23 +123,14 @@ export default function TreeCoinPage() {
   return (
     <section className="product-page-shell treecoin-launch-shell px-4 py-8 sm:px-6 lg:px-8">
       <section className="mx-auto grid max-w-7xl gap-5 xl:grid-cols-[1.02fr_0.98fr] xl:items-stretch">
-        <div className="relative overflow-hidden rounded-[2.25rem] border border-forest/10 bg-white/88 p-6 shadow-2xl shadow-forest/8 sm:p-8 lg:p-10">
-          <div
-            aria-hidden="true"
-            className="absolute -left-28 -top-28 h-72 w-72 rounded-full bg-lime/30 blur-3xl"
-          />
-          <div
-            aria-hidden="true"
-            className="absolute bottom-0 right-0 h-72 w-72 translate-x-24 translate-y-24 rounded-full bg-aqua/20 blur-3xl"
-          />
-
+        <div className="relative overflow-hidden rounded-[1.25rem] border border-forest/10 bg-white/88 p-5 shadow-2xl shadow-forest/8 sm:p-8 lg:p-10">
           <div className="relative">
             <div className="inline-flex items-center gap-2 rounded-full border border-leaf/15 bg-lime/24 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-forest">
               <Sparkles aria-hidden="true" className="h-4 w-4" />
               TreeCoin reward launch
             </div>
 
-            <h1 className="mt-6 max-w-4xl text-4xl font-black leading-[0.96] text-forest sm:text-6xl lg:text-7xl">
+            <h1 className="mt-6 max-w-4xl text-4xl font-black leading-[1.06] text-forest sm:text-6xl sm:leading-[1.02] lg:text-7xl">
               The reward layer for real tree care.
             </h1>
 
@@ -162,21 +153,21 @@ export default function TreeCoinPage() {
               )}
             </div>
 
-            <div className="mt-6 max-w-2xl rounded-[1.5rem] border border-aqua/25 bg-aqua/10 p-4 text-sm font-extrabold leading-6 text-forest">
+            <div className="mt-6 max-w-2xl rounded-[1rem] border border-aqua/25 bg-aqua/10 p-4 text-sm font-extrabold leading-6 text-forest">
               {TREECOIN_DISCLAIMER}
             </div>
 
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/submit-proof"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-5 py-3 text-sm font-black text-white shadow-lg shadow-forest/15 transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+                className="inline-flex items-center justify-center gap-2 rounded-[0.9rem] bg-forest px-5 py-3 text-sm font-black text-white shadow-lg shadow-forest/15 transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
               >
                 Submit Proof
                 <ArrowRight aria-hidden="true" className="h-4 w-4" />
               </Link>
               <Link
                 href="/dashboard"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-forest/10 bg-white px-5 py-3 text-sm font-black text-forest shadow-sm transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+                className="inline-flex items-center justify-center gap-2 rounded-[0.9rem] border border-forest/10 bg-white px-5 py-3 text-sm font-black text-forest shadow-sm transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
               >
                 View Reward Dashboard
               </Link>
@@ -186,7 +177,7 @@ export default function TreeCoinPage() {
               {launchStats.map(([value, label, detail]) => (
                 <div
                   key={label}
-                  className="rounded-[1.35rem] border border-forest/10 bg-white/72 p-4 shadow-sm shadow-forest/5"
+                  className="rounded-[0.95rem] border border-forest/10 bg-white/72 p-4 shadow-sm shadow-forest/5"
                 >
                   <p className="text-2xl font-black text-forest">{value}</p>
                   <p className="mt-1 text-xs font-black uppercase tracking-[0.12em] text-forest/52">
@@ -205,9 +196,9 @@ export default function TreeCoinPage() {
       </section>
 
       <section className="mx-auto mt-5 grid max-w-7xl gap-5 lg:grid-cols-[0.78fr_1.22fr]">
-        <article className="rounded-[2rem] border border-forest/10 bg-white/82 p-5 shadow-xl shadow-forest/5 sm:p-6">
+        <article className="rounded-[1.15rem] border border-forest/10 bg-white/82 p-5 shadow-xl shadow-forest/5 sm:p-6">
           <div className="flex items-center gap-3">
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-lime/24 text-forest">
+            <span className="grid h-12 w-12 place-items-center rounded-[0.9rem] bg-lime/24 text-forest">
               <Gauge aria-hidden="true" className="h-6 w-6" />
             </span>
             <div>
@@ -247,7 +238,7 @@ export default function TreeCoinPage() {
           </div>
         </article>
 
-        <article className="rounded-[2rem] border border-forest/10 bg-white/82 p-5 shadow-xl shadow-forest/5 sm:p-6">
+        <article className="rounded-[1.15rem] border border-forest/10 bg-white/82 p-5 shadow-xl shadow-forest/5 sm:p-6">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.18em] text-leaf">
@@ -272,7 +263,7 @@ export default function TreeCoinPage() {
                 key={`${item.name}-${item.action}`}
                 className="grid gap-4 rounded-[1.5rem] border border-forest/8 bg-off-white/72 p-4 sm:grid-cols-[auto_1fr_auto]"
               >
-                <span className="grid h-12 w-12 place-items-center rounded-2xl bg-lime/28 text-sm font-black text-forest">
+                <span className="grid h-12 w-12 place-items-center rounded-[0.9rem] bg-lime/28 text-sm font-black text-forest">
                   {item.name
                     .split(" ")
                     .map((part) => part[0])
@@ -308,10 +299,10 @@ export default function TreeCoinPage() {
         {rewardJourney.map((step, index) => (
           <article
             key={step.title}
-            className="group rounded-[1.75rem] border border-forest/10 bg-white/78 p-5 shadow-xl shadow-forest/5 transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-forest/10"
+            className="group rounded-[1.05rem] border border-forest/10 bg-white/78 p-5 shadow-xl shadow-forest/5 transition hover:-translate-y-1 hover:shadow-2xl hover:shadow-forest/10"
           >
             <div className="flex items-center justify-between gap-3">
-              <span className="grid h-11 w-11 place-items-center rounded-2xl bg-lime/22 text-forest">
+              <span className="grid h-11 w-11 place-items-center rounded-[0.85rem] bg-lime/22 text-forest">
                 <step.icon aria-hidden="true" className="h-5 w-5" />
               </span>
               <span className="text-xs font-black uppercase tracking-[0.18em] text-forest/40">
@@ -332,7 +323,7 @@ export default function TreeCoinPage() {
       </section>
 
       <section className="mx-auto mt-5 grid max-w-7xl gap-5 lg:grid-cols-[1.08fr_0.92fr]">
-        <article className="overflow-hidden rounded-[2rem] border border-forest/10 bg-white/84 shadow-xl shadow-forest/5">
+        <article className="overflow-hidden rounded-[1.15rem] border border-forest/10 bg-white/84 shadow-xl shadow-forest/5">
           <div className="grid min-h-full lg:grid-cols-[0.92fr_1.08fr]">
             <div className="forest-panel p-6 text-white sm:p-8">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-lime">
@@ -386,9 +377,9 @@ export default function TreeCoinPage() {
         </article>
 
         <div className="grid gap-5">
-          <article className="rounded-[2rem] border border-forest/10 bg-white/82 p-6 shadow-xl shadow-forest/5 sm:p-7">
+          <article className="rounded-[1.15rem] border border-forest/10 bg-white/82 p-6 shadow-xl shadow-forest/5 sm:p-7">
             <div className="flex items-center gap-3">
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-lime/24 text-forest">
+              <span className="grid h-12 w-12 place-items-center rounded-[0.9rem] bg-lime/24 text-forest">
                 <Trophy aria-hidden="true" className="h-6 w-6" />
               </span>
               <div>
@@ -421,7 +412,7 @@ export default function TreeCoinPage() {
             {trustCards.map((tile) => (
               <article
                 key={tile.title}
-                className="rounded-[1.75rem] border border-forest/10 bg-white/78 p-5 shadow-xl shadow-forest/5"
+                className="rounded-[1.05rem] border border-forest/10 bg-white/78 p-5 shadow-xl shadow-forest/5"
               >
                 <tile.icon aria-hidden="true" className="h-6 w-6 text-leaf" />
                 <h3 className="mt-4 text-base font-black text-forest">
@@ -441,16 +432,7 @@ export default function TreeCoinPage() {
 
 function LaunchPass() {
   return (
-    <aside className="relative overflow-hidden rounded-[2.25rem] border border-forest/10 bg-gradient-to-br from-forest via-[#075226] to-[#02180f] p-6 text-white shadow-2xl shadow-forest/18 sm:p-8">
-      <div
-        aria-hidden="true"
-        className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-lime/30 blur-3xl"
-      />
-      <div
-        aria-hidden="true"
-        className="absolute -bottom-28 left-8 h-56 w-56 rounded-full bg-aqua/18 blur-3xl"
-      />
-
+    <aside className="relative overflow-hidden rounded-[1.25rem] border border-forest/10 bg-gradient-to-br from-forest via-[#075226] to-[#02180f] p-6 text-white shadow-2xl shadow-forest/18 sm:p-8">
       <div className="relative">
         <div className="flex items-start justify-between gap-4">
           <div>
@@ -470,7 +452,7 @@ function LaunchPass() {
           />
         </div>
 
-        <div className="mt-8 rounded-[2rem] border border-white/12 bg-white/12 p-5 backdrop-blur">
+        <div className="mt-8 rounded-[1.05rem] border border-white/12 bg-white/12 p-5 backdrop-blur">
           <div className="flex items-end justify-between gap-4">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.18em] text-white/58">

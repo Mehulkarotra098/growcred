@@ -55,7 +55,7 @@ export function CommunityHub({
             aria-selected={activeTab === tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={cn(
-              "inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
+              "inline-flex items-center gap-2 rounded-[0.9rem] px-5 py-3 text-sm font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
               activeTab === tab.id
                 ? "bg-forest text-white shadow-lg shadow-forest/15"
                 : "border border-forest/10 bg-white text-forest hover:bg-lime/20",
@@ -82,13 +82,13 @@ function StandingCards({ items }: { items: CommunityStanding[] }) {
       {items.map((item, index) => (
         <article
           key={item.id}
-          className="rounded-[2rem] border border-forest/10 bg-white p-6 shadow-xl shadow-forest/5"
+          className="rounded-[1.1rem] border border-forest/10 bg-white p-6 shadow-xl shadow-forest/5"
         >
           <div className="flex items-start justify-between gap-4">
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-lime/40 text-forest">
+            <span className="grid h-12 w-12 place-items-center rounded-[0.9rem] bg-lime/40 text-forest">
               <Award aria-hidden="true" className="h-6 w-6" />
             </span>
-            <span className="rounded-full bg-forest px-3 py-1 text-xs font-black text-white">
+            <span className="rounded-[0.7rem] bg-forest px-3 py-1 text-xs font-black text-white">
               #{index + 1}
             </span>
           </div>
@@ -107,7 +107,7 @@ function StandingCards({ items }: { items: CommunityStanding[] }) {
             {item.badges.map((badge) => (
               <span
                 key={badge}
-                className="rounded-full bg-leaf/10 px-3 py-1 text-xs font-black text-forest"
+                className="rounded-[0.7rem] bg-leaf/10 px-3 py-1 text-xs font-black text-forest"
               >
                 {badge}
               </span>
@@ -121,7 +121,7 @@ function StandingCards({ items }: { items: CommunityStanding[] }) {
 
 function Metric({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-[1.25rem] bg-off-white p-3">
+    <div className="rounded-[0.9rem] bg-off-white p-3">
       <p className="text-lg font-black text-forest">{value}</p>
       <p className="text-xs font-bold text-forest/50">{label}</p>
     </div>

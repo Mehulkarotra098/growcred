@@ -15,7 +15,7 @@ export function ReminderCenter({ reminders }: ReminderCenterProps) {
   const [completed, setCompleted] = useState<Record<string, boolean>>({});
 
   return (
-    <div className="living-card rounded-[2rem] p-6">
+    <div className="living-card p-5 sm:p-6">
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="text-sm font-black uppercase tracking-[0.14em] text-leaf">
@@ -25,7 +25,7 @@ export function ReminderCenter({ reminders }: ReminderCenterProps) {
             Care reminders are ready.
           </h2>
         </div>
-        <span className="grid h-12 w-12 place-items-center rounded-2xl bg-lime/35 text-forest">
+        <span className="grid h-12 w-12 place-items-center rounded-[0.9rem] bg-lime/35 text-forest">
           <Bell aria-hidden="true" className="h-6 w-6" />
         </span>
       </div>

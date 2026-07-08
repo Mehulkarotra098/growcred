@@ -13,7 +13,7 @@ const rewards = [
 
 export function RewardTable() {
   return (
-    <FadeIn className="living-card overflow-hidden rounded-[2rem]">
+    <FadeIn className="living-card overflow-hidden">
       <div className="forest-panel flex items-center justify-between gap-4 border-b border-white/10 p-5 text-white">
         <div>
           <p className="text-sm font-black uppercase tracking-[0.14em] text-lime">
@@ -41,12 +41,12 @@ export function RewardTable() {
             className="grid grid-cols-[1fr_auto] items-center gap-4 px-5 py-4"
           >
             <span className="flex items-center gap-3 font-bold text-forest">
-              <span className="grid h-8 w-8 place-items-center rounded-full bg-lime/40 text-xs font-black">
+              <span className="grid h-8 w-8 place-items-center rounded-[0.65rem] bg-lime/40 text-xs font-black">
                 {index + 1}
               </span>
               {action}
             </span>
-            <span className="inline-flex items-center gap-1 rounded-full bg-leaf/15 px-3 py-1 text-sm font-black text-forest">
+            <span className="inline-flex items-center gap-1 rounded-[0.75rem] bg-leaf/15 px-3 py-1 text-sm font-black text-forest">
               +{amount} TreeCoins
             </span>
           </div>

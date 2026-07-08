@@ -9,7 +9,7 @@ export function LeaderboardTable({ users }: LeaderboardTableProps) {
   const sorted = [...users].sort((a, b) => b.totalTreeCoins - a.totalTreeCoins);
 
   return (
-    <div className="living-card overflow-hidden rounded-[1.75rem]">
+    <div className="living-card overflow-hidden">
       <div className="hidden md:block">
         <div className="forest-panel grid grid-cols-[72px_1.3fr_1fr_1fr_1fr_1fr] gap-4 px-5 py-4 text-sm font-black text-white">
           <span>Rank</span>

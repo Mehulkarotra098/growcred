@@ -59,7 +59,7 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
 
   return (
     <div className="mt-10 grid gap-8">
-      <section className="forest-panel grid gap-6 overflow-hidden rounded-[2.25rem] p-6 text-white shadow-2xl shadow-forest/20 lg:grid-cols-[1.1fr_0.9fr] lg:p-8">
+      <section className="forest-panel grid gap-6 overflow-hidden rounded-[1.35rem] p-5 text-white shadow-2xl shadow-forest/20 sm:p-6 lg:grid-cols-[1.1fr_0.9fr] lg:p-8">
         <div>
           <p className="flex items-center gap-2 text-sm font-black uppercase tracking-[0.14em] text-lime">
             <Flame aria-hidden="true" className="h-4 w-4" />
@@ -89,7 +89,7 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
             />
           </div>
         </div>
-        <div className="order-first rounded-[1.75rem] bg-white/10 p-3 lg:order-none">
+        <div className="order-first rounded-[1.1rem] bg-white/10 p-3 lg:order-none">
           {featuredBanner ? (
             <Image
               src={featuredBanner}
@@ -99,7 +99,7 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
               priority
               loading="eager"
               sizes="(min-width: 1024px) 38vw, 92vw"
-              className="mb-4 aspect-[16/9] w-full rounded-[1.35rem] object-cover"
+              className="designed-asset-frame mb-4 aspect-[16/9] w-full object-contain p-2"
             />
           ) : null}
           <div className="flex items-start justify-between gap-4">
@@ -125,7 +125,7 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
             onClick={() =>
               setJoined((current) => ({ ...current, [featured.id]: true }))
             }
-            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-lime px-5 py-3 text-sm font-black text-forest transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime"
+            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-[0.9rem] bg-lime px-5 py-3 text-sm font-black text-forest transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime"
           >
             {joined[featured.id] ? "Joined" : "Join Featured Mission"}
             {joined[featured.id] ? (
@@ -162,7 +162,7 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
 
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {filteredChallenges.length === 0 ? (
-          <div className="living-card rounded-[2rem] p-8 text-center md:col-span-2 xl:col-span-3">
+          <div className="living-card p-8 text-center md:col-span-2 xl:col-span-3">
             <Image
               src={GROWCRED_ASSETS.states.noChallenges}
               alt="No challenges empty state illustration"
@@ -181,7 +181,7 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
           filteredChallenges.map((challenge) => (
             <article
               key={challenge.id}
-              className="living-card flex min-h-[24rem] flex-col overflow-hidden rounded-[2rem]"
+              className="living-card flex min-h-[24rem] flex-col overflow-hidden"
             >
               {challengeBanners[challenge.id] ? (
                 <Image
@@ -191,12 +191,12 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
                   height={1024}
                   loading={challenge.id === featured.id ? "eager" : "lazy"}
                   sizes="(min-width: 1280px) 31vw, (min-width: 768px) 48vw, 92vw"
-                  className="aspect-[16/9] w-full object-cover"
+                  className="designed-asset-frame m-2.5 aspect-[16/9] w-[calc(100%-1.25rem)] object-contain p-1.5 ring-1 ring-forest/10"
                 />
               ) : null}
               <div className="flex flex-1 flex-col p-6">
                 <div className="flex items-start justify-between gap-4">
-                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-lime/45 text-forest">
+                  <span className="grid h-12 w-12 place-items-center rounded-[0.9rem] bg-lime/45 text-forest">
                     <Trophy aria-hidden="true" className="h-6 w-6" />
                   </span>
                   {challengeStickers[challenge.id] ? (
@@ -227,7 +227,7 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
                 <p className="mt-3 flex-1 text-sm leading-6 text-forest/70">
                   {challenge.description}
                 </p>
-                <div className="mt-5 grid gap-3 rounded-[1.5rem] bg-off-white p-4 text-sm font-bold text-forest/70">
+                <div className="mt-5 grid gap-3 rounded-[1rem] bg-off-white p-4 text-sm font-bold text-forest/70">
                   <p className="flex items-center gap-2">
                     <Users aria-hidden="true" className="h-4 w-4 text-leaf" />
                     {formatNumber(challenge.participants)} participants
@@ -264,7 +264,7 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
                     }))
                   }
                   className={cn(
-                    "mt-6 inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
+                    "mt-6 inline-flex items-center justify-center gap-2 rounded-[0.9rem] px-4 py-3 text-sm font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
                     joined[challenge.id]
                       ? "bg-lime text-forest"
                       : "bg-forest text-white hover:bg-leaf",
@@ -296,7 +296,7 @@ function Metric({
   detail: string;
 }) {
   return (
-    <div className="rounded-[1.25rem] bg-white/10 p-3 sm:p-4">
+    <div className="rounded-[0.95rem] bg-white/10 p-3 sm:p-4">
       <p className="text-xs font-black uppercase tracking-[0.12em] text-white/55">
         {label}
       </p>

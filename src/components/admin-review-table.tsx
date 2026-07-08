@@ -198,7 +198,7 @@ export function AdminReviewTable({
 
   return (
     <div className="grid gap-6">
-      <div className="living-card rounded-[2rem] p-5">
+      <div className="living-card p-5">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
             <p className="text-sm font-black uppercase tracking-[0.14em] text-leaf">
@@ -244,7 +244,7 @@ export function AdminReviewTable({
       </div>
 
       <div className="grid gap-6 2xl:grid-cols-[minmax(0,1fr)_24rem]">
-        <div className="living-card min-w-0 overflow-hidden rounded-[1.75rem]">
+        <div className="living-card min-w-0 overflow-hidden">
           <div className="hidden max-w-full overflow-x-auto xl:block">
             <table className="min-w-[76rem] border-collapse text-left">
               <thead className="forest-panel text-sm font-black text-white">
@@ -366,7 +366,7 @@ export function AdminReviewTable({
         </div>
 
         {selectedRow ? (
-          <aside className="living-card hidden rounded-[2rem] p-5 2xl:sticky 2xl:top-28 2xl:block 2xl:self-start">
+          <aside className="living-card hidden p-5 2xl:sticky 2xl:top-28 2xl:block 2xl:self-start">
             <div className="flex items-start justify-between gap-4">
               <div>
                 <p className="text-sm font-black uppercase tracking-[0.14em] text-leaf">

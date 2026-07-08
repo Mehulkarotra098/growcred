@@ -153,7 +153,7 @@ export default function DashboardPage() {
     <section className="relative isolate px-3 py-8 sm:px-6 lg:px-8 lg:py-10">
       <LivingBackdrop />
       <div className="mx-auto max-w-[92rem]">
-        <div className="dashboard-app-shell overflow-hidden rounded-[2rem] lg:rounded-[2.5rem]">
+        <div className="dashboard-app-shell overflow-hidden">
           <div className="grid min-h-[calc(100vh-9rem)] lg:grid-cols-[18.5rem_minmax(0,1fr)]">
             <DashboardSidebar />
 
@@ -204,13 +204,13 @@ function DashboardSidebar() {
         <Link
           href="/"
           aria-label="GrowCred home"
-          className="inline-flex rounded-2xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-leaf"
+          className="inline-flex rounded-[0.9rem] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-leaf"
         >
           <LogoMark showWordmark size="sm" className="px-1.5" />
         </Link>
         <Link
           href="/submit-proof"
-          className="inline-flex items-center gap-2 rounded-full bg-leaf px-4 py-2.5 text-xs font-black text-white shadow-lg shadow-leaf/20 transition hover:bg-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf lg:hidden"
+          className="inline-flex items-center gap-2 rounded-[0.85rem] bg-leaf px-4 py-2.5 text-xs font-black text-white shadow-lg shadow-leaf/20 transition hover:bg-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf lg:hidden"
         >
           <Plus aria-hidden="true" className="h-4 w-4" />
           Add Tree
@@ -243,8 +243,8 @@ function DashboardSidebar() {
         })}
       </nav>
 
-      <div className="mt-6 hidden rounded-[1.75rem] border border-forest/10 bg-white/70 p-5 shadow-sm shadow-forest/5 lg:block">
-        <div className="inline-flex rounded-2xl bg-lime/35 p-3 text-forest">
+      <div className="mt-6 hidden rounded-[1.05rem] border border-forest/10 bg-white/70 p-5 shadow-sm shadow-forest/5 lg:block">
+        <div className="inline-flex rounded-[0.9rem] bg-lime/35 p-3 text-forest">
           <Users aria-hidden="true" className="h-6 w-6" />
         </div>
         <h2 className="mt-5 text-lg font-black text-forest">
@@ -313,7 +313,7 @@ function TopChip({
     <div className="dashboard-panel flex items-center gap-3 rounded-[1.35rem] p-3">
       <span
         className={cn(
-          "grid h-11 w-11 shrink-0 place-items-center rounded-2xl",
+          "grid h-11 w-11 shrink-0 place-items-center rounded-[0.9rem]",
           tone === "fire" ? "bg-orange-100 text-orange-600" : "bg-lime/30 text-forest",
         )}
       >
@@ -365,9 +365,9 @@ function MetricCard({
   imageAlt = "",
 }: MetricCardProps) {
   return (
-    <article className="dashboard-panel rounded-[1.75rem] p-5">
+    <article className="dashboard-panel p-5">
       <div className="flex items-center gap-4">
-        <span className="grid h-16 w-16 shrink-0 place-items-center rounded-[1.35rem] bg-lime/22 text-forest">
+        <span className="grid h-16 w-16 shrink-0 place-items-center rounded-[0.95rem] bg-lime/22 text-forest">
           {image ? (
             <Image
               src={image}
@@ -395,7 +395,7 @@ function MetricCard({
 
 function MyTreesPanel() {
   return (
-    <section id="trees" className="dashboard-panel rounded-[2rem] p-4 sm:p-5">
+    <section id="trees" className="dashboard-panel p-4 sm:p-5">
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.12em] text-leaf">
@@ -405,14 +405,14 @@ function MyTreesPanel() {
         </div>
         <Link
           href="/submit-proof"
-          className="inline-flex items-center gap-1 rounded-full px-3 py-2 text-sm font-black text-leaf transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+          className="inline-flex items-center gap-1 rounded-[0.75rem] px-3 py-2 text-sm font-black text-leaf transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
         >
           View all
           <ArrowRight aria-hidden="true" className="h-4 w-4" />
         </Link>
       </div>
 
-      <div className="mt-5 overflow-hidden rounded-[1.55rem] border border-forest/10 bg-white/55">
+      <div className="mt-5 overflow-hidden rounded-[1rem] border border-forest/10 bg-white/55">
         {treeRows.map((tree, index) => (
           <article
             key={tree.name}
@@ -421,7 +421,7 @@ function MyTreesPanel() {
               index > 0 && "border-t border-forest/10",
             )}
           >
-            <div className="relative h-20 overflow-hidden rounded-[1.35rem] bg-lime/15 ring-1 ring-forest/10">
+            <div className="relative h-20 overflow-hidden rounded-[0.9rem] bg-lime/15 ring-1 ring-forest/10">
               <Image
                 src={tree.image}
                 alt={tree.imageAlt}
@@ -457,7 +457,7 @@ function MyTreesPanel() {
 
       <Link
         href="/submit-proof"
-        className="mt-5 flex items-center justify-center gap-2 rounded-[1.35rem] border border-dashed border-leaf/40 bg-lime/12 px-4 py-4 text-sm font-black text-leaf transition hover:bg-lime/22 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+        className="mt-5 flex items-center justify-center gap-2 rounded-[0.95rem] border border-dashed border-leaf/40 bg-lime/12 px-4 py-4 text-sm font-black text-leaf transition hover:bg-lime/22 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
       >
         <Plus aria-hidden="true" className="h-4 w-4" />
         Add New Tree
@@ -470,7 +470,7 @@ function ImpactPanel() {
   const progress = 72;
 
   return (
-    <section className="dashboard-panel rounded-[2rem] p-5">
+    <section className="dashboard-panel p-5">
       <div>
         <p className="text-xs font-black uppercase tracking-[0.12em] text-leaf">
           Impact this month
@@ -503,7 +503,7 @@ function ImpactPanel() {
 
       <Link
         href="/submit-proof"
-        className="mt-6 flex items-center justify-center gap-2 rounded-[1.35rem] border border-leaf/20 bg-lime/10 px-4 py-4 text-sm font-black text-forest transition hover:bg-lime/22 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+        className="mt-6 flex items-center justify-center gap-2 rounded-[0.95rem] border border-leaf/20 bg-lime/10 px-4 py-4 text-sm font-black text-forest transition hover:bg-lime/22 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
       >
         Upload Care Proof
         <ArrowRight aria-hidden="true" className="h-4 w-4" />
@@ -522,7 +522,7 @@ function ImpactMini({
   label: string;
 }) {
   return (
-    <div className="dashboard-soft-tile rounded-[1.25rem] p-3">
+    <div className="dashboard-soft-tile rounded-[0.9rem] p-3">
       <Icon aria-hidden="true" className="mx-auto h-5 w-5 text-leaf" />
       <p className="mt-2 text-lg font-black text-forest">{value}</p>
       <p className="mt-1 text-[0.68rem] font-bold leading-4 text-forest/55">
@@ -536,7 +536,7 @@ function BadgeProgressPanel({ badges: badgeList }: { badges: Badge[] }) {
   const progress = 65;
 
   return (
-    <section id="badges" className="dashboard-panel rounded-[2rem] p-5">
+    <section id="badges" className="dashboard-panel p-5">
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.12em] text-leaf">
@@ -546,7 +546,7 @@ function BadgeProgressPanel({ badges: badgeList }: { badges: Badge[] }) {
         </div>
         <Link
           href="/dashboard#badges"
-          className="rounded-full px-3 py-2 text-sm font-black text-leaf transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+          className="rounded-[0.75rem] px-3 py-2 text-sm font-black text-leaf transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
         >
           View all
         </Link>
@@ -603,7 +603,7 @@ function BadgeToken({ badge, unlocked }: { badge: Badge; unlocked: boolean }) {
     >
       <span
         className={cn(
-          "mx-auto grid h-12 w-12 place-items-center rounded-2xl",
+          "mx-auto grid h-12 w-12 place-items-center rounded-[0.9rem]",
           unlocked ? "bg-lime/35 text-forest" : "bg-forest/10 text-forest/55",
         )}
       >
@@ -633,7 +633,7 @@ function CareRemindersPanel() {
   const nextReminder = scheduledReminders[0];
 
   return (
-    <section className="dashboard-panel rounded-[2rem] p-5">
+    <section className="dashboard-panel p-5">
       <div className="flex items-center justify-between gap-4">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.12em] text-leaf">
@@ -647,9 +647,9 @@ function CareRemindersPanel() {
       </div>
 
       {nextReminder ? (
-        <div className="mt-5 overflow-hidden rounded-[1.55rem] border border-leaf/18 bg-gradient-to-br from-forest via-[#075226] to-[#02180f] p-4 text-white shadow-lg shadow-forest/12">
+        <div className="mt-5 overflow-hidden rounded-[1rem] border border-leaf/18 bg-gradient-to-br from-forest via-[#075226] to-[#02180f] p-4 text-white shadow-lg shadow-forest/12">
           <div className="flex items-start gap-3">
-            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-lime text-forest">
+            <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[0.9rem] bg-lime text-forest">
               <Droplets aria-hidden="true" className="h-5 w-5" />
             </span>
             <div className="min-w-0">
@@ -665,10 +665,10 @@ function CareRemindersPanel() {
             </div>
           </div>
           <div className="mt-4 grid grid-cols-2 gap-2 text-xs font-black">
-            <span className="rounded-full bg-white/12 px-3 py-2">
+            <span className="rounded-[0.7rem] bg-white/12 px-3 py-2">
               Tomorrow, 9 AM
             </span>
-            <span className="rounded-full bg-white/12 px-3 py-2 capitalize">
+            <span className="rounded-[0.7rem] bg-white/12 px-3 py-2 capitalize">
               {formatReminderChannel(nextReminder.channel)}
             </span>
           </div>
@@ -683,7 +683,7 @@ function CareRemindersPanel() {
           return (
             <div
               key={reminder.id}
-              className="dashboard-soft-tile grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-[1.25rem] p-3"
+              className="dashboard-soft-tile grid grid-cols-[auto_1fr_auto] items-center gap-3 rounded-[0.9rem] p-3"
             >
               <span
                 className={cn(
@@ -712,7 +712,7 @@ function CareRemindersPanel() {
       </div>
 
       {scheduledReminders.length === 0 ? (
-        <div className="mt-5 rounded-[1.35rem] border border-dashed border-leaf/25 bg-lime/10 p-4 text-sm font-bold leading-6 text-forest/62">
+        <div className="mt-5 rounded-[0.95rem] border border-dashed border-leaf/25 bg-lime/10 p-4 text-sm font-bold leading-6 text-forest/62">
           No care reminders are waiting. Add a tree or upload proof to create
           the next care milestone.
         </div>
@@ -720,7 +720,7 @@ function CareRemindersPanel() {
 
       <Link
         href="/submit-proof"
-        className="mt-5 flex items-center justify-center gap-2 rounded-[1.35rem] border border-leaf/20 bg-white/72 px-4 py-3 text-sm font-black text-forest transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+        className="mt-5 flex items-center justify-center gap-2 rounded-[0.95rem] border border-leaf/20 bg-white/72 px-4 py-3 text-sm font-black text-forest transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
       >
         <Sprout aria-hidden="true" className="h-4 w-4" />
         Log Care Activity
@@ -753,7 +753,7 @@ function TreeCoinActionPanel({
   challengeTitle: string;
 }) {
   return (
-    <section className="forest-panel overflow-hidden rounded-[2rem] p-5 text-white shadow-xl shadow-forest/20">
+    <section className="forest-panel overflow-hidden rounded-[1.1rem] p-5 text-white shadow-xl shadow-forest/20">
       <div className="flex items-start gap-4">
         <Image
           src={brandAssets.treeCoin}
@@ -773,7 +773,7 @@ function TreeCoinActionPanel({
         </div>
       </div>
 
-      <div className="mt-5 rounded-[1.35rem] bg-white/10 p-4">
+      <div className="mt-5 rounded-[0.95rem] bg-white/10 p-4">
         <p className="text-sm font-black text-lime">Active challenge</p>
         <p className="mt-1 text-sm font-semibold leading-6 text-white/78">
           {challengeTitle}
@@ -798,7 +798,7 @@ function TreeCoinActionPanel({
 
       <Link
         href="/challenges"
-        className="mt-5 flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-black text-forest transition hover:bg-lime focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime"
+        className="mt-5 flex items-center justify-center gap-2 rounded-[0.9rem] bg-white px-5 py-3 text-sm font-black text-forest transition hover:bg-lime focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime"
       >
         <Trophy aria-hidden="true" className="h-4 w-4" />
         Explore Challenges
@@ -809,7 +809,7 @@ function TreeCoinActionPanel({
 
 function CommunityImpactPanel() {
   return (
-    <section className="dashboard-panel rounded-[2rem] p-5">
+    <section className="dashboard-panel p-5">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.12em] text-leaf">
@@ -821,7 +821,7 @@ function CommunityImpactPanel() {
         </div>
         <Link
           href="/community"
-          className="inline-flex items-center gap-2 rounded-full bg-lime/18 px-4 py-2 text-sm font-black text-forest transition hover:bg-lime/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+          className="inline-flex items-center gap-2 rounded-[0.85rem] bg-lime/18 px-4 py-2 text-sm font-black text-forest transition hover:bg-lime/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
         >
           Join a Mission
           <ArrowRight aria-hidden="true" className="h-4 w-4" />

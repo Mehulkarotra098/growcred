@@ -28,21 +28,21 @@ export function ChallengeCard({ challenge }: ChallengeCardProps) {
 
   return (
     <HoverLift className="h-full">
-      <article className="living-card flex h-full flex-col overflow-hidden rounded-[2rem]">
+      <article className="living-card flex h-full flex-col overflow-hidden">
         {banner ? (
-          <div className="relative aspect-[16/9] bg-lime/15">
+          <div className="designed-asset-frame relative aspect-[16/9] m-2.5 overflow-hidden ring-1 ring-forest/10">
             <Image
               src={banner}
               alt={`${challenge.title} GrowCred challenge banner`}
               fill
               sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-              className="object-cover"
+              className="object-contain p-1.5"
             />
           </div>
         ) : null}
-        <div className="flex flex-1 flex-col p-6">
+        <div className="flex flex-1 flex-col p-5 sm:p-6">
           <div className="flex items-start justify-between gap-4">
-            <span className="grid h-12 w-12 place-items-center rounded-2xl bg-lime/45 text-forest shadow-inner">
+            <span className="grid h-12 w-12 place-items-center rounded-[0.9rem] bg-lime/45 text-forest shadow-inner">
               <Trophy aria-hidden="true" className="h-6 w-6" />
             </span>
             {sticker ? (
@@ -79,7 +79,7 @@ export function ChallengeCard({ challenge }: ChallengeCardProps) {
             </p>
             <button
               type="button"
-              className="inline-flex items-center gap-2 rounded-full bg-forest px-4 py-2 text-sm font-black text-white transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+              className="inline-flex items-center gap-2 rounded-[0.85rem] bg-forest px-4 py-2 text-sm font-black text-white transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
             >
               Join
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
