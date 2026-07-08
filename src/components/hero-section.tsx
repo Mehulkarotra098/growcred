@@ -31,7 +31,7 @@ export function HeroSection() {
   return (
     <section className="relative isolate overflow-hidden px-4 pb-10 pt-7 sm:px-6 sm:pb-16 sm:pt-12 lg:px-8">
       <LivingBackdrop />
-      <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
+      <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.88fr_1.12fr] lg:items-center">
         <FadeIn className="max-w-3xl lg:py-12">
           <StickerBadge className="gap-1.5">
             <span>GrowCred</span>
@@ -43,7 +43,7 @@ export function HeroSection() {
             {BRAND_TAGLINE}
           </p>
 
-          <h1 className="mt-4 max-w-4xl text-4xl font-black leading-[1.03] tracking-tight text-forest sm:text-6xl sm:leading-[1.02] lg:text-7xl">
+          <h1 className="mt-4 max-w-4xl text-4xl font-black leading-[1.04] tracking-tight text-forest sm:text-6xl sm:leading-[1.03] lg:text-7xl">
             Grow good. Earn green.
           </h1>
 
@@ -55,14 +55,14 @@ export function HeroSection() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/submit-proof"
-              className="inline-flex items-center justify-center gap-2 rounded-[1rem] bg-forest px-5 py-3.5 text-sm font-black text-white shadow-xl shadow-forest/18 transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf sm:px-6 sm:py-4"
+              className="inline-flex items-center justify-center gap-2 rounded-[0.85rem] bg-forest px-5 py-3.5 text-sm font-black text-white shadow-lg shadow-forest/15 transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf sm:px-6 sm:py-4"
             >
               Start Planting
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
             </Link>
             <Link
               href="/dashboard"
-              className="inline-flex items-center justify-center rounded-[1rem] border border-forest/12 bg-white/78 px-5 py-3.5 text-sm font-black text-forest shadow-sm transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf sm:px-6 sm:py-4"
+              className="inline-flex items-center justify-center rounded-[0.85rem] border border-forest/12 bg-white/78 px-5 py-3.5 text-sm font-black text-forest shadow-sm transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf sm:px-6 sm:py-4"
             >
               View Dashboard
             </Link>
@@ -70,19 +70,18 @@ export function HeroSection() {
         </FadeIn>
 
         <FadeIn delay={0.12}>
-          <figure className="human-proof-board overflow-hidden p-2.5 sm:p-3.5">
-            <div className="designed-asset-frame relative overflow-hidden shadow-inner ring-1 ring-forest/10">
+          <figure className="human-proof-board overflow-hidden p-2.5 sm:p-3">
+            <div className="gc-media-frame relative aspect-[16/9]">
               <Image
                 src={GROWCRED_ASSETS.site.heroLanding}
                 alt="GrowCred app preview showing tree proof, verified care, and TreeCoin rewards"
-                width={1672}
-                height={941}
+                fill
                 priority
                 sizes="(min-width: 1024px) 52vw, 94vw"
-                className="block h-auto w-full object-contain"
+                className="object-cover"
               />
             </div>
-            <figcaption className="grid gap-3 px-1 pb-1 pt-4 sm:grid-cols-[minmax(0,0.9fr)_minmax(15rem,0.8fr)] sm:items-stretch sm:px-2">
+            <figcaption className="grid gap-3 px-1 pb-1 pt-4 sm:grid-cols-[minmax(0,0.9fr)_minmax(14rem,0.8fr)] sm:items-stretch sm:px-2">
               <div>
                 <p className="text-sm font-black text-forest">
                   Real tree care, reviewed before rewards.
@@ -92,7 +91,7 @@ export function HeroSection() {
                   first upload to the next survival check-in.
                 </p>
               </div>
-              <p className="rounded-[0.9rem] bg-lime/18 px-4 py-3 text-xs font-black leading-5 text-forest">
+              <p className="rounded-[0.75rem] bg-lime/18 px-4 py-3 text-xs font-black leading-5 text-forest">
                 {TREECOIN_DISCLAIMER}
               </p>
             </figcaption>
@@ -103,7 +102,7 @@ export function HeroSection() {
       <div className="mx-auto mt-8 grid max-w-7xl gap-3 lg:mt-7 lg:grid-cols-[0.92fr_1.08fr]">
         <div className="grid gap-3 sm:grid-cols-3">
           {trustNotes.map(([title, text]) => (
-            <article key={title} className="human-card rounded-[1.2rem] p-4">
+            <article key={title} className="human-card p-4">
               <p className="text-sm font-black text-forest">{title}</p>
               <p className="mt-2 text-xs font-bold leading-5 text-forest/58">
                 {text}
@@ -116,7 +115,7 @@ export function HeroSection() {
           {proofSignals.map((signal) => (
             <div
               key={signal.label}
-              className="flex items-center gap-3 rounded-[0.95rem] border border-forest/10 bg-white/68 px-4 py-3 text-sm font-black text-forest shadow-sm shadow-forest/5"
+              className="flex items-center gap-3 rounded-[0.8rem] border border-forest/10 bg-white/68 px-4 py-3 text-sm font-black text-forest shadow-sm shadow-forest/5"
             >
               <span className="grid h-8 w-8 place-items-center rounded-full bg-lime/32 text-forest">
                 <signal.icon aria-hidden="true" className="h-4 w-4" />

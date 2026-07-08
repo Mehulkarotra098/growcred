@@ -31,7 +31,7 @@ export function Footer() {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-[0.75rem] px-3 py-2 text-sm font-bold text-forest/62 transition hover:bg-lime/18 hover:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+              className="rounded-[0.65rem] px-3 py-2 text-sm font-bold text-forest/62 transition hover:bg-lime/18 hover:text-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
             >
               {link.label}
             </Link>

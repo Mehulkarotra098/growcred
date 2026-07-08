@@ -437,8 +437,8 @@ export function ProofUploadForm() {
       onSubmit={handleSubmit}
       className="living-card min-w-0 p-4 sm:p-6 lg:p-7"
     >
-      <div className="grid gap-6 2xl:grid-cols-[16rem_minmax(0,1fr)]">
-        <aside className="order-2 rounded-[1rem] border border-forest/10 bg-white/70 p-4 2xl:order-none">
+      <div className="grid gap-6 xl:grid-cols-[13.5rem_minmax(0,1fr)]">
+        <aside className="order-2 rounded-[0.85rem] border border-forest/10 bg-white/70 p-4 xl:order-none">
           <div className="flex items-center gap-3 rounded-[0.9rem] bg-lime/18 p-4">
             <span className="grid h-10 w-10 place-items-center rounded-full bg-white text-forest shadow-sm">
               <ShieldCheck aria-hidden="true" className="h-5 w-5" />
@@ -468,7 +468,7 @@ export function ProofUploadForm() {
                     onClick={() => jumpToStep(index)}
                     aria-current={isActive ? "step" : undefined}
                     className={cn(
-                      "grid w-full grid-cols-[2rem_1fr] items-start gap-3 rounded-[0.9rem] p-3 text-left transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
+                      "grid w-full grid-cols-[2rem_1fr] items-start gap-3 rounded-[0.75rem] p-3 text-left transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
                       isActive
                         ? "bg-forest text-white"
                         : isComplete
@@ -512,7 +512,7 @@ export function ProofUploadForm() {
           </ol>
         </aside>
 
-        <div className="order-1 min-w-0 2xl:order-none">
+        <div className="order-1 min-w-0 xl:order-none">
           <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
             <div>
               <p className="text-sm font-black uppercase tracking-[0.14em] text-leaf">
@@ -522,7 +522,7 @@ export function ProofUploadForm() {
                 {steps[activeStep].title}
               </h2>
             </div>
-            <div className="inline-flex items-center gap-2 rounded-[0.85rem] bg-lime/25 px-4 py-2 text-sm font-black text-forest">
+            <div className="inline-flex items-center gap-2 rounded-[0.75rem] bg-lime/25 px-4 py-2 text-sm font-black text-forest">
               <Coins aria-hidden="true" className="h-4 w-4" />
               +10 TreeCoins after approval
             </div>
@@ -553,7 +553,7 @@ export function ProofUploadForm() {
 
           <div className="grid gap-5">
             <StepPanel active={activeStep === 0}>
-              <div className="grid gap-4 2xl:grid-cols-2">
+              <div className="grid gap-4 lg:grid-cols-2">
                 <TextField
                   label="Tree nickname"
                   name="nickname"
@@ -578,6 +578,7 @@ export function ProofUploadForm() {
                   onChange={(value) => updateValue("plantedAt", value)}
                   error={errors.plantedAt}
                   icon={<Calendar aria-hidden="true" className="h-4 w-4" />}
+                  className="lg:col-span-2"
                 />
                 <TextField
                   label="Location/city"
@@ -587,6 +588,7 @@ export function ProofUploadForm() {
                   placeholder="School garden, Delhi"
                   error={errors.locationName}
                   icon={<MapPin aria-hidden="true" className="h-4 w-4" />}
+                  className="lg:col-span-2"
                 />
               </div>
             </StepPanel>
@@ -834,7 +836,7 @@ function StepPanel({
   children: ReactNode;
 }) {
   return (
-    <section hidden={!active} className="rounded-[1rem] bg-white/55 p-4 sm:p-5">
+    <section hidden={!active} className="rounded-[0.85rem] bg-white/55 p-4 sm:p-5">
       {children}
     </section>
   );
@@ -849,6 +851,7 @@ function TextField({
   type = "text",
   error,
   icon,
+  className,
 }: {
   label: string;
   name: keyof ProofFormValues;
@@ -858,15 +861,16 @@ function TextField({
   type?: string;
   error?: string;
   icon?: ReactNode;
+  className?: string;
 }) {
   const errorId = `${name}-error`;
 
   return (
-    <label className="grid min-w-0 gap-2 text-sm font-black text-forest">
+    <label className={cn("grid min-w-0 gap-2 text-sm font-black text-forest", className)}>
       {label}
       <span
         className={cn(
-          "grid min-h-[3.25rem] min-w-0 grid-cols-[auto_minmax(0,1fr)] items-center gap-3 overflow-hidden rounded-[0.85rem] border bg-off-white px-4 py-1",
+          "grid min-h-[3.35rem] min-w-0 grid-cols-[auto_minmax(0,1fr)] items-center gap-2 rounded-[0.75rem] border bg-off-white px-3 py-1 sm:gap-3 sm:px-4",
           !icon && "grid-cols-1",
           error ? "border-red-300 ring-2 ring-red-100" : "border-forest/15",
         )}
@@ -945,7 +949,7 @@ function UploadCard({
         onDragOver={(event) => event.preventDefault()}
         onDrop={handleDrop}
         className={cn(
-          "group grid min-h-56 cursor-pointer place-items-center rounded-[1rem] border-2 border-dashed bg-off-white p-5 text-center transition hover:border-leaf hover:bg-lime/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
+          "group grid min-h-56 cursor-pointer place-items-center rounded-[0.85rem] border-2 border-dashed bg-off-white p-5 text-center transition hover:border-leaf hover:bg-lime/15 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
           error ? "border-red-300 ring-2 ring-red-100" : "border-forest/15",
         )}
       >
@@ -962,7 +966,7 @@ function UploadCard({
           className="sr-only"
         />
         <span className="grid justify-items-center">
-          <span className="grid h-14 w-14 place-items-center rounded-[0.95rem] bg-lime/40 text-forest">
+          <span className="grid h-14 w-14 place-items-center rounded-[0.75rem] bg-lime/40 text-forest">
             {file ? (
               <CheckCircle2 aria-hidden="true" className="h-6 w-6" />
             ) : (
@@ -973,7 +977,7 @@ function UploadCard({
           <span className="mt-2 max-w-xs text-sm font-bold leading-6 text-forest/60">
             {description}
           </span>
-          <span className="mt-4 inline-flex items-center gap-2 rounded-[0.8rem] bg-white px-4 py-2 text-xs font-black text-forest shadow-sm ring-1 ring-forest/10">
+          <span className="mt-4 inline-flex items-center gap-2 rounded-[0.7rem] bg-white px-4 py-2 text-xs font-black text-forest shadow-sm ring-1 ring-forest/10">
             <UploadCloud aria-hidden="true" className="h-4 w-4 text-leaf" />
             Drag and drop or choose file
           </span>
@@ -986,7 +990,7 @@ function UploadCard({
       </label>
 
       {file ? (
-        <div className="mt-3 overflow-hidden rounded-[0.9rem] bg-white/75 p-3 text-sm font-bold text-forest ring-1 ring-forest/10">
+        <div className="mt-3 overflow-hidden rounded-[0.75rem] bg-white/75 p-3 text-sm font-bold text-forest ring-1 ring-forest/10">
           <div className="grid gap-3">
             <FilePreview file={file} label={title} />
             <div className="min-w-0">
@@ -1006,7 +1010,7 @@ function UploadCard({
           </div>
         </div>
       ) : (
-        <div className="mt-3 rounded-[0.9rem] bg-white/70 p-3 text-sm font-bold text-forest/55">
+        <div className="mt-3 rounded-[0.75rem] bg-white/70 p-3 text-sm font-bold text-forest/55">
           Image/video preview appears here after upload.
         </div>
       )}
@@ -1061,7 +1065,7 @@ function ConsentBox({
   return (
     <label
       className={cn(
-        "flex cursor-pointer items-start gap-3 rounded-[0.9rem] border bg-white/70 p-4 transition hover:bg-lime/15",
+        "flex cursor-pointer items-start gap-3 rounded-[0.8rem] border bg-white/70 p-4 transition hover:bg-lime/15",
         error ? "border-red-300 ring-2 ring-red-100" : "border-forest/10",
       )}
     >

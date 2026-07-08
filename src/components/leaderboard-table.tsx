@@ -46,7 +46,7 @@ export function LeaderboardTable({ users }: LeaderboardTableProps) {
         {sorted.map((user, index) => (
           <article
             key={user.id}
-            className="rounded-[1.25rem] border border-forest/10 bg-white/70 p-4"
+            className="rounded-[0.9rem] border border-forest/10 bg-white/70 p-4"
           >
             <div className="flex items-start justify-between gap-3">
               <div>
@@ -113,7 +113,7 @@ function BadgeLabel({ user }: { user: User }) {
 
 function MobileMetric({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-[1.1rem] bg-off-white p-3">
+    <div className="rounded-[0.8rem] bg-off-white p-3">
       <p className="text-[0.65rem] font-black uppercase tracking-[0.1em] text-forest/45">
         {label}
       </p>

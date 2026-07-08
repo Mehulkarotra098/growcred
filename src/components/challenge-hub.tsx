@@ -15,6 +15,7 @@ import type { Challenge } from "@/lib/types";
 import { brandAssets } from "@/lib/brand-assets";
 import { GROWCRED_ASSETS } from "@/lib/assets";
 import { cn, formatDate, formatNumber } from "@/lib/utils";
+import { ChallengeBannerMedia } from "./challenge-banner-media";
 
 const filters = [
   { label: "All", value: "all" },
@@ -59,7 +60,7 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
 
   return (
     <div className="mt-10 grid gap-8">
-      <section className="forest-panel grid gap-6 overflow-hidden rounded-[1.35rem] p-5 text-white shadow-2xl shadow-forest/20 sm:p-6 lg:grid-cols-[1.1fr_0.9fr] lg:p-8">
+      <section className="forest-panel grid gap-6 overflow-hidden rounded-[1rem] p-5 text-white shadow-xl shadow-forest/18 sm:p-6 lg:grid-cols-[1.08fr_0.92fr] lg:p-8">
         <div>
           <p className="flex items-center gap-2 text-sm font-black uppercase tracking-[0.14em] text-lime">
             <Flame aria-hidden="true" className="h-4 w-4" />
@@ -89,20 +90,15 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
             />
           </div>
         </div>
-        <div className="rounded-[1.1rem] bg-white/10 p-3">
+        <div className="rounded-[0.9rem] bg-white/10 p-3">
           {featuredBanner ? (
-            <div className="designed-asset-frame mb-4 overflow-hidden p-1.5">
-              <Image
-                src={featuredBanner}
-                alt={`${featured.title} GrowCred challenge banner`}
-                width={1672}
-                height={941}
-                priority
-                loading="eager"
-                sizes="(min-width: 1024px) 38vw, 92vw"
-                className="block h-auto w-full rounded-[0.75rem] object-contain"
-              />
-            </div>
+            <ChallengeBannerMedia
+              src={featuredBanner}
+              alt={`${featured.title} GrowCred challenge banner`}
+              priority
+              sizes="(min-width: 1024px) 38vw, 92vw"
+              className="gc-media-frame mb-4"
+            />
           ) : null}
           <div className="mb-4 grid gap-2 lg:hidden">
             <Metric
@@ -129,7 +125,7 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
               aria-hidden="true"
               width={260}
               height={180}
-              className="float-soft hidden h-auto w-24 shrink-0 object-contain sm:block"
+              className="gc-sticker float-soft hidden h-auto w-20 shrink-0 object-contain sm:block"
             />
           </div>
           <p className="mt-3 text-lg font-black">{featured.proofNeeded}</p>
@@ -144,7 +140,7 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
             onClick={() =>
               setJoined((current) => ({ ...current, [featured.id]: true }))
             }
-            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-[0.9rem] bg-lime px-5 py-3 text-sm font-black text-forest transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime"
+            className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-[0.8rem] bg-lime px-5 py-3 text-sm font-black text-forest transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime"
           >
             {joined[featured.id] ? "Joined" : "Join Featured Mission"}
             {joined[featured.id] ? (
@@ -200,24 +196,20 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
           filteredChallenges.map((challenge) => (
             <article
               key={challenge.id}
-              className="living-card flex min-h-[24rem] flex-col overflow-hidden"
+              className="living-card flex min-h-[23rem] flex-col overflow-hidden"
             >
               {challengeBanners[challenge.id] ? (
-                <div className="designed-asset-frame m-2.5 overflow-hidden p-1.5 ring-1 ring-forest/10">
-                  <Image
-                    src={challengeBanners[challenge.id]}
-                    alt={`${challenge.title} GrowCred challenge banner`}
-                    width={1672}
-                    height={941}
-                    loading={challenge.id === featured.id ? "eager" : "lazy"}
-                    sizes="(min-width: 1280px) 31vw, (min-width: 768px) 48vw, 92vw"
-                    className="block h-auto w-full rounded-[0.75rem] object-contain"
-                  />
-                </div>
+                <ChallengeBannerMedia
+                  src={challengeBanners[challenge.id]}
+                  alt={`${challenge.title} GrowCred challenge banner`}
+                  eager={challenge.id === featured.id}
+                  sizes="(min-width: 1280px) 31vw, (min-width: 768px) 48vw, 92vw"
+                  className="border-b border-forest/10"
+                />
               ) : null}
               <div className="flex flex-1 flex-col p-6">
                 <div className="flex items-start justify-between gap-4">
-                  <span className="grid h-12 w-12 place-items-center rounded-[0.9rem] bg-lime/45 text-forest">
+                  <span className="grid h-11 w-11 place-items-center rounded-[0.75rem] bg-lime/35 text-forest">
                     <Trophy aria-hidden="true" className="h-6 w-6" />
                   </span>
                   {challengeStickers[challenge.id] ? (
@@ -227,10 +219,10 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
                       aria-hidden="true"
                       width={160}
                       height={160}
-                      className="float-soft hidden h-14 w-14 object-contain sm:block"
+                      className="gc-sticker float-soft hidden h-12 w-12 object-contain sm:block"
                     />
                   ) : null}
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-leaf/15 px-3 py-1 text-xs font-black text-forest">
+                  <span className="inline-flex items-center gap-1.5 rounded-[0.7rem] bg-leaf/12 px-3 py-1.5 text-xs font-black text-forest">
                     <Image
                       src={brandAssets.treeCoin}
                       alt=""
@@ -248,7 +240,7 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
                 <p className="mt-3 flex-1 text-sm leading-6 text-forest/70">
                   {challenge.description}
                 </p>
-                <div className="mt-5 grid gap-3 rounded-[1rem] bg-off-white p-4 text-sm font-bold text-forest/70">
+                <div className="mt-5 grid gap-3 rounded-[0.85rem] bg-off-white p-4 text-sm font-bold text-forest/70">
                   <p className="flex items-center gap-2">
                     <Users aria-hidden="true" className="h-4 w-4 text-leaf" />
                     {formatNumber(challenge.participants)} participants
@@ -285,7 +277,7 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
                     }))
                   }
                   className={cn(
-                    "mt-6 inline-flex items-center justify-center gap-2 rounded-[0.9rem] px-4 py-3 text-sm font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
+                    "mt-6 inline-flex items-center justify-center gap-2 rounded-[0.8rem] px-4 py-3 text-sm font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
                     joined[challenge.id]
                       ? "bg-lime text-forest"
                       : "bg-forest text-white hover:bg-leaf",

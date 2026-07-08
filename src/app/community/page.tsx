@@ -39,7 +39,7 @@ export default function CommunityPage() {
             width={360}
             height={240}
             loading="eager"
-            className="float-soft h-auto w-36 sm:w-44"
+            className="gc-sticker float-soft h-auto w-32 sm:w-40"
           />
           <Image
             src={GROWCRED_ASSETS.stickers.smallActionsBigFuture}
@@ -47,7 +47,7 @@ export default function CommunityPage() {
             aria-hidden="true"
             width={220}
             height={220}
-            className="float-soft-delay h-auto w-24 sm:w-28"
+            className="gc-sticker float-soft-delay h-auto w-20 sm:w-24"
           />
         </div>
         <div className="mt-8">

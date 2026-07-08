@@ -31,11 +31,11 @@ export function TreeCard({ tree }: TreeCardProps) {
           {tree.locationName}
         </p>
         <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
-          <div className="rounded-[0.9rem] bg-lime/25 p-3">
+          <div className="rounded-[0.75rem] bg-lime/25 p-3">
             <p className="font-black text-forest">{tree.treeCoinsEarned}</p>
             <p className="font-bold text-forest/55">TreeCoins</p>
           </div>
-          <div className="rounded-[0.9rem] bg-leaf/10 p-3">
+          <div className="rounded-[0.75rem] bg-leaf/10 p-3">
             <p className="font-black text-forest">{formatDate(tree.plantedAt)}</p>
             <p className="font-bold text-forest/55">Planted</p>
           </div>

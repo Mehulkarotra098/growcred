@@ -43,7 +43,7 @@ const recentProofs = proofSubmissions
 
 export function HumanProofBoard() {
   return (
-    <div className="human-proof-board p-4 shadow-2xl shadow-forest/10 sm:p-5">
+    <div className="human-proof-board p-4 shadow-xl shadow-forest/8 sm:p-5">
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.16em] text-leaf">
@@ -60,7 +60,7 @@ export function HumanProofBoard() {
       </div>
 
       <div className="mt-5 grid gap-5 lg:grid-cols-[1.02fr_0.98fr]">
-        <article className="overflow-hidden rounded-[1rem] border border-forest/10 bg-white/72">
+        <article className="overflow-hidden rounded-[0.9rem] border border-forest/10 bg-white/72">
           <div className="relative aspect-[4/3]">
             <Image
               src={featuredSubmission.photoUrl}
@@ -84,7 +84,7 @@ export function HumanProofBoard() {
                   {featuredTree.species} in {featuredUser.city}
                 </p>
               </div>
-              <span className="inline-flex items-center gap-1.5 rounded-[0.75rem] bg-lime/24 px-3 py-1.5 text-xs font-black text-forest">
+              <span className="inline-flex items-center gap-1.5 rounded-[0.7rem] bg-lime/24 px-3 py-1.5 text-xs font-black text-forest">
                 <Coins aria-hidden="true" className="h-3.5 w-3.5 text-leaf" />
                 +10 after review
               </span>
@@ -99,7 +99,7 @@ export function HumanProofBoard() {
           {recentProofs.map(({ proof, tree, user }) => (
             <article
               key={proof.id}
-              className="rounded-[0.95rem] border border-forest/10 bg-white/72 p-4"
+              className="rounded-[0.85rem] border border-forest/10 bg-white/72 p-4"
             >
               <div className="flex items-start gap-3">
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-lime/32 text-xs font-black text-forest">
@@ -127,7 +127,7 @@ export function HumanProofBoard() {
         {proofChecks.map((check) => (
           <div
             key={check.label}
-            className="rounded-[0.9rem] border border-forest/10 bg-off-white/72 p-4"
+            className="rounded-[0.8rem] border border-forest/10 bg-off-white/72 p-4"
           >
             <check.icon aria-hidden="true" className="h-5 w-5 text-leaf" />
             <p className="mt-3 text-sm font-black text-forest">{check.label}</p>
@@ -135,7 +135,7 @@ export function HumanProofBoard() {
         ))}
       </div>
 
-      <div className="mt-4 flex flex-col gap-3 rounded-[0.95rem] border border-leaf/15 bg-lime/14 p-4 sm:flex-row sm:items-center">
+      <div className="mt-4 flex flex-col gap-3 rounded-[0.85rem] border border-leaf/15 bg-lime/14 p-4 sm:flex-row sm:items-center">
         <Image
           src={GROWCRED_ASSETS.brand.treeCoin}
           alt="TreeCoin gold reward point"
@@ -160,7 +160,7 @@ export function HumanActivityStrip() {
           className="human-card p-4 sm:p-5"
         >
           <div className="flex items-start gap-4">
-            <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-[0.9rem] bg-off-white ring-1 ring-forest/10">
+            <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-[0.75rem] bg-off-white ring-1 ring-forest/10">
               <Image
                 src={proof.photoUrl}
                 alt={`${tree.nickname} tree proof thumbnail`}
@@ -181,7 +181,7 @@ export function HumanActivityStrip() {
           </div>
           <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
             <StatusPill status={proof.status} />
-            <span className="inline-flex items-center gap-1.5 rounded-[0.75rem] bg-lime/22 px-3 py-1 text-xs font-black text-forest">
+            <span className="inline-flex items-center gap-1.5 rounded-[0.7rem] bg-lime/22 px-3 py-1 text-xs font-black text-forest">
               <Coins aria-hidden="true" className="h-3.5 w-3.5 text-leaf" />
               {proof.status === "verified" ? "+10 earned" : "+10 after review"}
             </span>
@@ -196,7 +196,7 @@ export function ProofPacketMini() {
   return (
     <div className="human-card p-5">
       <div className="flex items-center gap-3">
-        <span className="grid h-11 w-11 place-items-center rounded-[0.9rem] bg-lime/28 text-forest">
+        <span className="grid h-11 w-11 place-items-center rounded-[0.75rem] bg-lime/28 text-forest">
           <Sprout aria-hidden="true" className="h-5 w-5" />
         </span>
         <div>
@@ -212,7 +212,7 @@ export function ProofPacketMini() {
         {proofChecks.map((check) => (
           <div
             key={`mini-${check.label}`}
-            className="flex items-center gap-3 rounded-[0.85rem] bg-off-white/82 p-3"
+            className="flex items-center gap-3 rounded-[0.75rem] bg-off-white/82 p-3"
           >
             <CheckCircle2 aria-hidden="true" className="h-4 w-4 shrink-0 text-leaf" />
             <span className="text-sm font-black text-forest">{check.label}</span>

@@ -40,7 +40,7 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-forest/10 bg-off-white/80 backdrop-blur-2xl">
+    <header className="sticky top-0 z-50 border-b border-forest/10 bg-off-white/86 backdrop-blur-2xl">
       <nav
         aria-label="Primary navigation"
         className="mx-auto flex max-w-[90rem] items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8"
@@ -48,7 +48,7 @@ export function Header() {
         <Link
           href="/"
           aria-label="GrowCred home"
-          className="rounded-[0.9rem] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-leaf"
+          className="rounded-[0.75rem] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-leaf"
         >
           <LogoMark showWordmark size="xs" />
         </Link>
@@ -63,7 +63,7 @@ export function Header() {
                 href={item.href}
                 aria-current={isActive ? "page" : undefined}
                 className={cn(
-                  "whitespace-nowrap rounded-[0.85rem] px-2.5 py-2 text-sm font-extrabold text-forest/70 transition hover:bg-white hover:text-forest hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
+                  "whitespace-nowrap rounded-[0.7rem] px-2.5 py-2 text-sm font-extrabold text-forest/70 transition hover:bg-white hover:text-forest hover:shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
                   isActive && "bg-white text-forest",
                 )}
               >
@@ -77,13 +77,13 @@ export function Header() {
           <ThemeToggle />
           <Link
             href="/auth"
-            className="whitespace-nowrap rounded-[0.9rem] border border-forest/10 bg-white/80 px-4 py-3 text-sm font-black text-forest transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+            className="whitespace-nowrap rounded-[0.75rem] border border-forest/10 bg-white/80 px-4 py-3 text-sm font-black text-forest transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
           >
             Sign in
           </Link>
           <Link
             href="/submit-proof"
-            className="kinetic-border whitespace-nowrap rounded-[0.9rem] bg-forest px-4 py-3 text-sm font-black text-white shadow-lg shadow-forest/15 transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+            className="kinetic-border whitespace-nowrap rounded-[0.75rem] bg-forest px-4 py-3 text-sm font-black text-white shadow-lg shadow-forest/15 transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
           >
             Start Planting
           </Link>
@@ -96,7 +96,7 @@ export function Header() {
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={open}
             onClick={() => setOpen((value) => !value)}
-            className="grid h-11 w-11 place-items-center rounded-[0.9rem] bg-white text-forest shadow-sm ring-1 ring-forest/10 transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+            className="grid h-11 w-11 place-items-center rounded-[0.75rem] bg-white text-forest shadow-sm ring-1 ring-forest/10 transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-leaf"
           >
             {open ? (
               <X aria-hidden="true" className="h-5 w-5" />
@@ -119,10 +119,10 @@ export function Header() {
           role="dialog"
           aria-modal="true"
           aria-label="Mobile navigation"
-          className="fixed inset-x-4 top-[5.1rem] z-50 max-h-[calc(100vh-6rem)] overflow-y-auto rounded-[1.15rem] border border-forest/10 bg-off-white/95 px-4 py-4 shadow-2xl shadow-forest/20 xl:hidden"
+          className="fixed inset-x-4 top-[5.1rem] z-50 max-h-[calc(100vh-6rem)] overflow-y-auto rounded-[0.95rem] border border-forest/10 bg-off-white/95 px-4 py-4 shadow-2xl shadow-forest/20 xl:hidden"
         >
           <div className="mx-auto grid max-w-7xl gap-2">
-            <div className="flex items-center justify-between rounded-[0.9rem] bg-white/70 p-3">
+            <div className="flex items-center justify-between rounded-[0.75rem] bg-white/70 p-3">
               <span className="text-sm font-black text-forest">
                 Site theme
               </span>
@@ -138,7 +138,7 @@ export function Header() {
                   aria-current={isActive ? "page" : undefined}
                   onClick={() => setOpen(false)}
                   className={cn(
-                    "rounded-[0.9rem] px-4 py-3 text-sm font-black text-forest transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
+                    "rounded-[0.75rem] px-4 py-3 text-sm font-black text-forest transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
                     isActive && "bg-white shadow-sm",
                   )}
                 >
@@ -149,14 +149,14 @@ export function Header() {
             <Link
               href="/auth"
               onClick={() => setOpen(false)}
-              className="rounded-[0.9rem] px-4 py-3 text-sm font-black text-forest transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+              className="rounded-[0.75rem] px-4 py-3 text-sm font-black text-forest transition hover:bg-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
             >
               Sign in
             </Link>
             <Link
               href="/submit-proof"
               onClick={() => setOpen(false)}
-              className="mt-2 rounded-[0.9rem] bg-forest px-4 py-3 text-center text-sm font-black text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+              className="mt-2 rounded-[0.75rem] bg-forest px-4 py-3 text-center text-sm font-black text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
             >
               Start Planting
             </Link>

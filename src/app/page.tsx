@@ -285,7 +285,7 @@ export default function Home() {
               aria-hidden="true"
               width={300}
               height={220}
-              className="float-soft h-auto w-32 sm:w-36"
+              className="gc-sticker float-soft h-auto w-28 sm:w-32"
             />
             <Image
               src={brandAssets.betterTogether}
@@ -293,7 +293,7 @@ export default function Home() {
               aria-hidden="true"
               width={360}
               height={240}
-              className="float-soft-delay h-auto w-36 sm:w-44"
+              className="gc-sticker float-soft-delay h-auto w-32 sm:w-40"
             />
           </div>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
@@ -355,13 +355,15 @@ export default function Home() {
               title="Do not just plant it. Grow it."
               description="GrowCred guides users toward native trees, legal locations, and practical care during the first 90 days."
             />
-            <Image
-              src={GROWCRED_ASSETS.site.treeCareGuide}
-              alt="GrowCred tree care guide visual for native planting and survival care"
-              width={1536}
-              height={1024}
-              className="designed-asset-frame mt-7 aspect-[4/3] w-full object-contain p-3 shadow-2xl shadow-forest/10"
-            />
+            <div className="gc-media-frame relative mt-7 aspect-[4/3]">
+              <Image
+                src={GROWCRED_ASSETS.site.treeCareGuide}
+                alt="GrowCred tree care guide visual for native planting and survival care"
+                fill
+                sizes="(min-width: 1024px) 38vw, 92vw"
+                className="object-contain p-3"
+              />
+            </div>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {learnPreview.map(([Icon, label, text]) => (

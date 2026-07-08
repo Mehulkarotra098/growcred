@@ -82,7 +82,7 @@ function StandingCards({ items }: { items: CommunityStanding[] }) {
       {items.map((item, index) => (
         <article
           key={item.id}
-          className="rounded-[1.1rem] border border-forest/10 bg-white p-6 shadow-xl shadow-forest/5"
+          className="rounded-[0.95rem] border border-forest/10 bg-white p-6 shadow-lg shadow-forest/5"
         >
           <div className="flex items-start justify-between gap-4">
             <span className="grid h-12 w-12 place-items-center rounded-[0.9rem] bg-lime/40 text-forest">
@@ -121,7 +121,7 @@ function StandingCards({ items }: { items: CommunityStanding[] }) {
 
 function Metric({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-[0.9rem] bg-off-white p-3">
+    <div className="rounded-[0.75rem] bg-off-white p-3">
       <p className="text-lg font-black text-forest">{value}</p>
       <p className="text-xs font-bold text-forest/50">{label}</p>
     </div>

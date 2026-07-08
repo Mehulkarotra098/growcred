@@ -236,7 +236,7 @@ export function AdminReviewTable({
         {actionMessage ? (
           <p
             role="status"
-            className="mt-4 rounded-[1.25rem] bg-lime/20 p-4 text-sm font-black text-forest"
+            className="mt-4 rounded-[0.85rem] bg-lime/20 p-4 text-sm font-black text-forest"
           >
             {actionMessage}
           </p>
@@ -318,13 +318,13 @@ export function AdminReviewTable({
             {filteredRows.map((row) => (
               <article
                 key={row.submission.id}
-                className="rounded-[1.25rem] border border-forest/10 bg-white/75 p-3 shadow-sm shadow-forest/5"
+                className="rounded-[0.9rem] border border-forest/10 bg-white/75 p-3 shadow-sm shadow-forest/5"
               >
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <UserCell row={row} />
                   <StatusPill status={row.status} />
                 </div>
-                <div className="mt-3 rounded-[1rem] bg-off-white/72 p-3">
+                <div className="mt-3 rounded-[0.8rem] bg-off-white/72 p-3">
                   <EvidenceCell row={row} compact />
                 </div>
                 <div className="mt-3 grid gap-3 sm:grid-cols-2">
@@ -382,7 +382,7 @@ export function AdminReviewTable({
               <StatusPill status={selectedRow.status} />
             </div>
 
-            <div className="mt-5 overflow-hidden rounded-[1.5rem] border border-forest/10 bg-off-white">
+            <div className="mt-5 overflow-hidden rounded-[0.9rem] border border-forest/10 bg-off-white">
               <div className="relative aspect-[4/3]">
                 <Image
                   src={selectedRow.submission.photoUrl}
@@ -413,7 +413,7 @@ export function AdminReviewTable({
               ].map(([label, Icon]) => (
                 <div
                   key={label as string}
-                  className="flex items-center gap-3 rounded-[1.25rem] bg-white/70 p-3 text-sm font-black text-forest"
+                  className="flex items-center gap-3 rounded-[0.8rem] bg-white/70 p-3 text-sm font-black text-forest"
                 >
                   <Icon aria-hidden="true" className="h-4 w-4 text-leaf" />
                   {label as string}
@@ -429,7 +429,7 @@ export function AdminReviewTable({
                   disabled={isPending}
                   onClick={() => handleReview(selectedRow, action)}
                   className={cn(
-                    "inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-black transition disabled:cursor-wait disabled:opacity-65 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
+                    "inline-flex items-center justify-center gap-2 rounded-[0.8rem] px-4 py-3 text-sm font-black transition disabled:cursor-wait disabled:opacity-65 focus-visible:outline focus-visible:outline-2 focus-visible:outline-leaf",
                     action.className,
                   )}
                 >

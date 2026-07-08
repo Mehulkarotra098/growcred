@@ -82,15 +82,14 @@ export default function LearnPage() {
             {TREECOIN_DISCLAIMER}
           </p>
           <div className="mt-10 grid gap-5 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-            <div className="designed-asset-frame overflow-hidden border border-forest/10 p-3 shadow-2xl shadow-forest/10">
+            <div className="gc-media-frame relative aspect-[4/3]">
               <Image
                 src={GROWCRED_ASSETS.site.treeCareGuide}
                 alt="GrowCred tree care guide visual explaining native planting and survival care"
-                width={1536}
-                height={1024}
+                fill
                 priority
                 sizes="(min-width: 1024px) 50vw, 92vw"
-                className="aspect-[4/3] w-full rounded-[0.8rem] object-contain"
+                className="object-contain p-3"
               />
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -100,7 +99,7 @@ export default function LearnPage() {
                 aria-hidden="true"
                 width={720}
                 height={720}
-                className="float-soft hidden h-auto w-full max-w-44 justify-self-end object-contain sm:block"
+                className="gc-sticker float-soft hidden h-auto w-full max-w-36 justify-self-end object-contain sm:block"
               />
               <Image
                 src={GROWCRED_ASSETS.stickers.proofBeatsPromises}
@@ -108,7 +107,7 @@ export default function LearnPage() {
                 aria-hidden="true"
                 width={720}
                 height={720}
-                className="float-soft-delay hidden h-auto w-full max-w-44 object-contain sm:block"
+                className="gc-sticker float-soft-delay hidden h-auto w-full max-w-36 object-contain sm:block"
               />
               {[
                 "Do not plant on protected or unsafe public land.",
@@ -116,7 +115,7 @@ export default function LearnPage() {
               ].map((item) => (
                 <div
                   key={item}
-                  className="rounded-[1rem] border border-forest/10 bg-white/72 p-5 text-sm font-black leading-6 text-forest sm:col-span-2"
+                    className="rounded-[0.85rem] border border-forest/10 bg-white/72 p-5 text-sm font-black leading-6 text-forest sm:col-span-2"
                 >
                   {item}
                 </div>
@@ -153,7 +152,7 @@ export default function LearnPage() {
               title="Turn a planting moment into survival proof."
               description="The reward loop teaches users what to do next, what to avoid, and what evidence makes review trustworthy."
             />
-            <div className="forest-panel mt-8 rounded-[1.2rem] p-6 text-white shadow-2xl shadow-forest/20">
+            <div className="forest-panel mt-8 rounded-[0.95rem] p-6 text-white shadow-xl shadow-forest/18">
               <p className="text-sm font-black uppercase tracking-[0.14em] text-lime">
                 Key message
               </p>

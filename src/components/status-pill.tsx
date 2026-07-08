@@ -10,7 +10,7 @@ export function StatusPill({ status, className }: StatusPillProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center whitespace-nowrap rounded-full px-3 py-1 text-xs font-extrabold ring-1",
+        "inline-flex max-w-full shrink-0 items-center justify-center rounded-[0.65rem] px-3 py-1 text-center text-xs font-extrabold leading-4 ring-1 sm:whitespace-nowrap",
         statusClassName(status),
         className,
       )}

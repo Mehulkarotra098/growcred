@@ -18,7 +18,7 @@ const themeInitScript = `
     const stored = localStorage.getItem("growcred-theme");
     const theme = stored === "dark" || stored === "light"
       ? stored
-      : (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      : "light";
     document.documentElement.dataset.theme = theme;
     document.documentElement.style.colorScheme = theme;
   } catch (_) {

@@ -29,7 +29,7 @@ export default function AboutPage() {
             title="Youth-powered climate action with proof."
             description="GrowCred is a youth-powered climate action platform that rewards verified tree care. We believe the future will not be saved by empty promises, but by real actions people can prove, track, and grow."
           />
-          <div className="forest-panel rounded-[1.25rem] p-8 text-white shadow-2xl shadow-forest/20">
+          <div className="forest-panel rounded-[0.95rem] p-8 text-white shadow-xl shadow-forest/18">
             <p className="text-sm font-black uppercase tracking-[0.14em] text-lime">
               Mission
             </p>
@@ -44,7 +44,7 @@ export default function AboutPage() {
               ].map(([Icon, label]) => (
                 <div
                   key={label as string}
-                  className="rounded-[0.95rem] bg-white/10 p-4"
+                  className="rounded-[0.8rem] bg-white/10 p-4"
                 >
                   <Icon aria-hidden="true" className="h-6 w-6 text-lime" />
                   <p className="mt-3 font-black">{label as string}</p>

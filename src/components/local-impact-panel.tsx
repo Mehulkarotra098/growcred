@@ -68,7 +68,7 @@ export function LocalImpactPanel() {
         </div>
         <Link
           href="/submit-proof"
-          className="inline-flex items-center justify-center gap-2 rounded-full bg-forest px-4 py-3 text-sm font-black text-white transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+          className="inline-flex items-center justify-center gap-2 rounded-[0.8rem] bg-forest px-4 py-3 text-sm font-black text-white transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
         >
           Upload Care Proof
           <ArrowRight aria-hidden="true" className="h-4 w-4" />
@@ -98,10 +98,10 @@ export function LocalImpactPanel() {
           />
         </div>
 
-        <article className="rounded-[1.5rem] border border-forest/10 bg-off-white/72 p-3">
+        <article className="rounded-[0.9rem] border border-forest/10 bg-off-white/72 p-3">
           {recentProof && recentTree ? (
             <div className="grid gap-3 sm:grid-cols-[5.5rem_1fr]">
-              <div className="relative aspect-square overflow-hidden rounded-[1.25rem] bg-white ring-1 ring-forest/10">
+              <div className="relative aspect-square overflow-hidden rounded-[0.8rem] bg-white ring-1 ring-forest/10">
                 <Image
                   src={recentProof.photoUrl}
                   alt={`${recentTree.nickname} uploaded proof photo`}
@@ -137,7 +137,7 @@ export function LocalImpactPanel() {
                 alt="No proof submissions yet"
                 width={96}
                 height={96}
-                className="h-16 w-16 rounded-[0.9rem] object-contain"
+                className="h-16 w-16 rounded-[0.75rem] object-contain"
               />
               <div>
                 <p className="text-sm font-black text-forest">
@@ -152,7 +152,7 @@ export function LocalImpactPanel() {
         </article>
       </div>
 
-      <p className="relaxed-copy mt-4 rounded-[1.15rem] bg-lime/16 p-3 text-sm font-bold leading-6 text-forest/62">
+      <p className="relaxed-copy mt-4 rounded-[0.85rem] bg-lime/16 p-3 text-sm font-bold leading-6 text-forest/62">
         {TREECOIN_DISCLAIMER}
       </p>
     </section>

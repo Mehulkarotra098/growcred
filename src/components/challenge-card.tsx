@@ -4,6 +4,7 @@ import type { Challenge } from "@/lib/types";
 import { brandAssets } from "@/lib/brand-assets";
 import { GROWCRED_ASSETS } from "@/lib/assets";
 import { formatNumber } from "@/lib/utils";
+import { ChallengeBannerMedia } from "./challenge-banner-media";
 import { HoverLift } from "./motion";
 
 interface ChallengeCardProps {
@@ -30,20 +31,16 @@ export function ChallengeCard({ challenge }: ChallengeCardProps) {
     <HoverLift className="h-full">
       <article className="living-card flex h-full flex-col overflow-hidden">
         {banner ? (
-          <div className="designed-asset-frame m-2.5 overflow-hidden p-1.5 ring-1 ring-forest/10">
-            <Image
-              src={banner}
-              alt={`${challenge.title} GrowCred challenge banner`}
-              width={1672}
-              height={941}
-              sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-              className="block h-auto w-full rounded-[0.75rem] object-contain"
-            />
-          </div>
+          <ChallengeBannerMedia
+            src={banner}
+            alt={`${challenge.title} GrowCred challenge banner`}
+            sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+            className="border-b border-forest/10"
+          />
         ) : null}
         <div className="flex flex-1 flex-col p-5 sm:p-6">
           <div className="flex items-start justify-between gap-4">
-            <span className="grid h-12 w-12 place-items-center rounded-[0.9rem] bg-lime/45 text-forest shadow-inner">
+            <span className="grid h-11 w-11 place-items-center rounded-[0.75rem] bg-lime/35 text-forest shadow-inner">
               <Trophy aria-hidden="true" className="h-6 w-6" />
             </span>
             {sticker ? (
@@ -53,10 +50,10 @@ export function ChallengeCard({ challenge }: ChallengeCardProps) {
                 aria-hidden="true"
                 width={160}
                 height={160}
-                className="float-soft hidden h-14 w-14 object-contain sm:block"
+                className="gc-sticker float-soft hidden h-12 w-12 object-contain sm:block"
               />
             ) : null}
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-leaf/15 px-3 py-1 text-xs font-black text-forest">
+            <span className="inline-flex items-center gap-1.5 rounded-[0.7rem] bg-leaf/12 px-3 py-1.5 text-xs font-black text-forest">
               <Image
                 src={brandAssets.treeCoin}
                 alt=""
@@ -80,7 +77,7 @@ export function ChallengeCard({ challenge }: ChallengeCardProps) {
             </p>
             <button
               type="button"
-              className="inline-flex items-center gap-2 rounded-[0.85rem] bg-forest px-4 py-2 text-sm font-black text-white transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+              className="inline-flex items-center gap-2 rounded-[0.75rem] bg-forest px-4 py-2 text-sm font-black text-white transition hover:bg-leaf focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
             >
               Join
               <ArrowRight aria-hidden="true" className="h-4 w-4" />
