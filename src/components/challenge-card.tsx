@@ -30,13 +30,14 @@ export function ChallengeCard({ challenge }: ChallengeCardProps) {
     <HoverLift className="h-full">
       <article className="living-card flex h-full flex-col overflow-hidden">
         {banner ? (
-          <div className="designed-asset-frame relative aspect-[16/9] m-2.5 overflow-hidden ring-1 ring-forest/10">
+          <div className="designed-asset-frame m-2.5 overflow-hidden p-1.5 ring-1 ring-forest/10">
             <Image
               src={banner}
               alt={`${challenge.title} GrowCred challenge banner`}
-              fill
+              width={1672}
+              height={941}
               sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
-              className="object-contain p-1.5"
+              className="block h-auto w-full rounded-[0.75rem] object-contain"
             />
           </div>
         ) : null}

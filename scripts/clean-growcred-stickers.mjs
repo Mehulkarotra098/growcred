@@ -94,6 +94,80 @@ function clearAllCheckerboardPixels(data) {
   }
 }
 
+function isNeutralLightPixel(data, index) {
+  const red = data[index];
+  const green = data[index + 1];
+  const blue = data[index + 2];
+  const max = Math.max(red, green, blue);
+  const min = Math.min(red, green, blue);
+
+  return max > 214 && max - min < 24;
+}
+
+function isStickerArtworkPixel(data, index) {
+  const red = data[index];
+  const green = data[index + 1];
+  const blue = data[index + 2];
+  const max = Math.max(red, green, blue);
+  const min = Math.min(red, green, blue);
+  const saturation = max - min;
+
+  return (
+    saturation > 24 ||
+    max < 178 ||
+    (green > red + 16 && green > blue + 8) ||
+    (blue > red + 16 && blue > green + 8)
+  );
+}
+
+function preserveStickerPaperAndClearBackground(data, width, height) {
+  const totalPixels = width * height;
+  const keep = new Uint8Array(totalPixels);
+  const queue = [];
+  const preserveRadius = Math.max(24, Math.round(width * 0.053));
+
+  for (let pixel = 0; pixel < totalPixels; pixel += 1) {
+    if (isStickerArtworkPixel(data, pixel * 4)) {
+      keep[pixel] = 1;
+      queue.push([pixel, 0]);
+    }
+  }
+
+  for (let cursor = 0; cursor < queue.length; cursor += 1) {
+    const [pixel, distance] = queue[cursor];
+    if (distance >= preserveRadius) continue;
+
+    const x = pixel % width;
+    const candidates = [pixel + 1, pixel - 1, pixel + width, pixel - width];
+
+    for (const candidate of candidates) {
+      if (candidate < 0 || candidate >= totalPixels || keep[candidate]) {
+        continue;
+      }
+
+      const nextX = candidate % width;
+      if (Math.abs(nextX - x) > 1) continue;
+
+      keep[candidate] = 1;
+      queue.push([candidate, distance + 1]);
+    }
+  }
+
+  for (let pixel = 0; pixel < totalPixels; pixel += 1) {
+    const offset = pixel * 4;
+    if (!isNeutralLightPixel(data, offset)) continue;
+
+    if (keep[pixel]) {
+      data[offset] = 255;
+      data[offset + 1] = 255;
+      data[offset + 2] = 255;
+      data[offset + 3] = 255;
+    } else {
+      data[offset + 3] = 0;
+    }
+  }
+}
+
 async function cleanImageFile({
   fileName,
   sourceDir,
@@ -111,6 +185,8 @@ async function cleanImageFile({
 
   if (backgroundMode === "all") {
     clearAllCheckerboardPixels(cleanData);
+  } else if (backgroundMode === "sticker-paper") {
+    preserveStickerPaperAndClearBackground(cleanData, info.width, info.height);
   } else {
     clearEdgeConnectedBackground(cleanData, info.width, info.height);
   }
@@ -193,7 +269,13 @@ const files = (await fs.readdir(inputDir))
 
 await Promise.all(
   files.map((fileName) =>
-    cleanImageFile({ fileName, sourceDir: inputDir, targetDir: outputDir, width: 640 }),
+    cleanImageFile({
+      fileName,
+      sourceDir: inputDir,
+      targetDir: outputDir,
+      width: 640,
+      backgroundMode: "sticker-paper",
+    }),
   ),
 );
 

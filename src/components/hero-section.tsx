@@ -33,7 +33,10 @@ export function HeroSection() {
       <LivingBackdrop />
       <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
         <FadeIn className="max-w-3xl lg:py-12">
-          <StickerBadge>GrowCred community</StickerBadge>
+          <StickerBadge className="gap-1.5">
+            <span>GrowCred</span>
+            <span>community</span>
+          </StickerBadge>
 
           <p className="mt-6 inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.16em] text-leaf sm:text-sm sm:tracking-[0.18em]">
             <Sparkles aria-hidden="true" className="h-4 w-4" />
@@ -72,11 +75,11 @@ export function HeroSection() {
               <Image
                 src={GROWCRED_ASSETS.site.heroLanding}
                 alt="GrowCred app preview showing tree proof, verified care, and TreeCoin rewards"
-                width={1680}
-                height={960}
+                width={1672}
+                height={941}
                 priority
                 sizes="(min-width: 1024px) 52vw, 94vw"
-                className="aspect-[16/10] w-full object-contain"
+                className="block h-auto w-full object-contain"
               />
             </div>
             <figcaption className="grid gap-3 px-1 pb-1 pt-4 sm:grid-cols-[minmax(0,0.9fr)_minmax(15rem,0.8fr)] sm:items-stretch sm:px-2">

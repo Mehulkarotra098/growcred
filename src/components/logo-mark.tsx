@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 
 interface LogoMarkProps {
   className?: string;
+  framed?: boolean;
   showWordmark?: boolean;
   size?: "xs" | "sm" | "md" | "lg";
 }
@@ -24,6 +25,7 @@ const lockupSizeClassName = {
 
 export function LogoMark({
   className,
+  framed = false,
   showWordmark = false,
   size = "md",
 }: LogoMarkProps) {
@@ -33,7 +35,9 @@ export function LogoMark({
         role="img"
         aria-label="GrowCred - Plant. Prove. Protect."
         className={cn(
-          "brand-lockup-shell logo-breathe inline-flex shrink-0 items-center rounded-2xl px-2.5 py-1.5 backdrop-blur",
+          "logo-breathe inline-flex shrink-0 items-center",
+          framed &&
+            "brand-lockup-shell rounded-[0.9rem] px-2.5 py-1.5 backdrop-blur",
           className,
         )}
       >

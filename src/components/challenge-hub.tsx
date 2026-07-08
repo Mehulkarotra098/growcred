@@ -71,7 +71,7 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
           <p className="mt-3 max-w-2xl text-sm font-semibold leading-7 text-white/72">
             {featured.description}
           </p>
-          <div className="mt-6 grid gap-3 sm:grid-cols-3">
+          <div className="mt-6 hidden gap-3 lg:grid lg:grid-cols-3">
             <Metric
               label="Reward"
               value={`+${featured.reward}`}
@@ -89,19 +89,38 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
             />
           </div>
         </div>
-        <div className="order-first rounded-[1.1rem] bg-white/10 p-3 lg:order-none">
+        <div className="rounded-[1.1rem] bg-white/10 p-3">
           {featuredBanner ? (
-            <Image
-              src={featuredBanner}
-              alt={`${featured.title} GrowCred challenge banner`}
-              width={1536}
-              height={1024}
-              priority
-              loading="eager"
-              sizes="(min-width: 1024px) 38vw, 92vw"
-              className="designed-asset-frame mb-4 aspect-[16/9] w-full object-contain p-2"
-            />
+            <div className="designed-asset-frame mb-4 overflow-hidden p-1.5">
+              <Image
+                src={featuredBanner}
+                alt={`${featured.title} GrowCred challenge banner`}
+                width={1672}
+                height={941}
+                priority
+                loading="eager"
+                sizes="(min-width: 1024px) 38vw, 92vw"
+                className="block h-auto w-full rounded-[0.75rem] object-contain"
+              />
+            </div>
           ) : null}
+          <div className="mb-4 grid gap-2 lg:hidden">
+            <Metric
+              label="Reward"
+              value={`+${featured.reward}`}
+              detail="TreeCoins"
+            />
+            <Metric
+              label="Participants"
+              value={formatNumber(featured.participants)}
+              detail={featured.teamType}
+            />
+            <Metric
+              label="Progress"
+              value={`${featured.progress}%`}
+              detail="Verified path"
+            />
+          </div>
           <div className="flex items-start justify-between gap-4">
             <p className="text-sm font-black text-lime">Proof needed</p>
             <Image
@@ -184,15 +203,17 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
               className="living-card flex min-h-[24rem] flex-col overflow-hidden"
             >
               {challengeBanners[challenge.id] ? (
-                <Image
-                  src={challengeBanners[challenge.id]}
-                  alt={`${challenge.title} GrowCred challenge banner`}
-                  width={1536}
-                  height={1024}
-                  loading={challenge.id === featured.id ? "eager" : "lazy"}
-                  sizes="(min-width: 1280px) 31vw, (min-width: 768px) 48vw, 92vw"
-                  className="designed-asset-frame m-2.5 aspect-[16/9] w-[calc(100%-1.25rem)] object-contain p-1.5 ring-1 ring-forest/10"
-                />
+                <div className="designed-asset-frame m-2.5 overflow-hidden p-1.5 ring-1 ring-forest/10">
+                  <Image
+                    src={challengeBanners[challenge.id]}
+                    alt={`${challenge.title} GrowCred challenge banner`}
+                    width={1672}
+                    height={941}
+                    loading={challenge.id === featured.id ? "eager" : "lazy"}
+                    sizes="(min-width: 1280px) 31vw, (min-width: 768px) 48vw, 92vw"
+                    className="block h-auto w-full rounded-[0.75rem] object-contain"
+                  />
+                </div>
               ) : null}
               <div className="flex flex-1 flex-col p-6">
                 <div className="flex items-start justify-between gap-4">
