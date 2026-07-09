@@ -144,16 +144,34 @@ The current app can run locally with mock data. To connect persistence and authe
    - `SUPABASE_SERVICE_ROLE_KEY`
    - `SUPABASE_STORAGE_BUCKET=tree-proof-media`
    - `REMINDER_WEBHOOK_SECRET`
+   - `GROWCRED_ADMIN_EMAILS` as a comma-separated allowlist for proof reviewers
 5. Restart `npm.cmd run dev`.
 
 Backend-ready surfaces:
 
 - `/auth` supports Supabase Auth when credentials are configured.
+- `/auth/callback` exchanges Supabase OAuth and magic-link codes.
 - `/submit-proof` uses a server action and can upload media to Supabase Storage.
 - `/admin` review actions can persist through the service-role server action.
 - Approved TreeCoin ledger entries can be queued in `treecoin_mint_requests` for controlled devnet reward testing.
+- `/api/treecoin/mint-requests` lets a signed-in user view reward mint requests and register a Solana recipient address.
+- `/api/admin/treecoin/process-mints` is a secret-protected queue check for the controlled TreeCoin mint worker.
 - `/api/cron/reminders` can queue due care reminders into `notification_outbox`.
 - `/api/health/backend` reports backend connection readiness for technical checks.
+
+For the mint processor, set these only after the devnet mint and operational process
+are ready:
+
+```powershell
+TREECOIN_MINT_WEBHOOK_SECRET=
+TREECOIN_SOLANA_MINT_ADDRESS=
+SOLANA_CLUSTER=devnet
+SOLANA_RPC_URL=
+```
+
+Keep the Solana authority key outside the public web runtime. The current
+operator path uses the local `.secrets/` keypair created by
+`npm.cmd run treecoin:create` and mints through the controlled scripts.
 
 ## Asset Pipeline
 

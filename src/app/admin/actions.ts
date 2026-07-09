@@ -1,8 +1,12 @@
 "use server";
 
-import { createHash } from "node:crypto";
 import { revalidatePath } from "next/cache";
 import type { ProofStatus } from "@/lib/types";
+import { requireAdminReviewer } from "@/lib/backend/authz";
+import {
+  buildVerifiedMintRequests,
+  isRewardReleaseDecision,
+} from "@/lib/backend/rewards";
 import { getSupabaseAdminClient } from "@/lib/supabase/admin";
 
 interface ReviewProofInput {
@@ -13,6 +17,15 @@ interface ReviewProofInput {
 }
 
 export async function reviewProofAction(input: ReviewProofInput) {
+  const authorization = await requireAdminReviewer();
+  if (!authorization.ok) {
+    return {
+      ok: false,
+      mode: authorization.mode,
+      message: authorization.message,
+    };
+  }
+
   const supabase = getSupabaseAdminClient();
 
   if (!supabase) {
@@ -44,6 +57,7 @@ export async function reviewProofAction(input: ReviewProofInput) {
     .update({
       status: input.decision,
       reviewed_at: reviewedAt,
+      reviewer_id: authorization.userId ?? null,
     })
     .eq("id", input.proofSubmissionId);
 
@@ -53,6 +67,7 @@ export async function reviewProofAction(input: ReviewProofInput) {
 
   await supabase.from("admin_reviews").insert({
     proof_submission_id: input.proofSubmissionId,
+    reviewer_id: authorization.userId ?? null,
     decision: input.decision,
     notes: input.notes ?? "",
     fraud_flags: input.fraudFlags ?? [],
@@ -64,7 +79,7 @@ export async function reviewProofAction(input: ReviewProofInput) {
     .update({ status: input.decision })
     .eq("id", proof.tree_id);
 
-  if (input.decision === "verified") {
+  if (isRewardReleaseDecision(input.decision)) {
     const { data: ledgerEntries } = await supabase
       .from("treecoin_ledger")
       .update({ status: "verified" })
@@ -72,15 +87,15 @@ export async function reviewProofAction(input: ReviewProofInput) {
       .select("id,user_id,amount");
 
     if (ledgerEntries && ledgerEntries.length > 0) {
-      const mintRequests = ledgerEntries.map((entry) => ({
-        ledger_id: entry.id,
-        user_id: entry.user_id,
-        proof_submission_id: input.proofSubmissionId,
-        amount: entry.amount,
-        proof_hash: createTreeCoinProofHash(input.proofSubmissionId, entry.id),
-        status: "recipient_needed",
+      const mintRequests = buildVerifiedMintRequests({
+        proofSubmissionId: input.proofSubmissionId,
+        ledgerEntries: ledgerEntries.map((entry) => ({
+          id: entry.id,
+          userId: entry.user_id,
+          amount: entry.amount,
+        })),
         network: "devnet",
-      }));
+      });
 
       const { error: mintQueueError } = await supabase
         .from("treecoin_mint_requests")
@@ -100,10 +115,4 @@ export async function reviewProofAction(input: ReviewProofInput) {
     mode: "supabase" as const,
     message: "Review decision saved.",
   };
-}
-
-function createTreeCoinProofHash(proofSubmissionId: string, ledgerId: string) {
-  return `0x${createHash("sha256")
-    .update(`${proofSubmissionId}:${ledgerId}`)
-    .digest("hex")}`;
 }

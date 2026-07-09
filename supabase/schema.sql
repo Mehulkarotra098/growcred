@@ -89,6 +89,7 @@ create table if not exists public.treecoin_mint_requests (
   mint_address text,
   recipient_token_account text,
   transaction_signature text,
+  mint_error text,
   created_at timestamptz not null default now(),
   minted_at timestamptz
 );
@@ -161,10 +162,25 @@ create policy "users manage their trees"
   using (auth.uid() = user_id)
   with check (auth.uid() = user_id);
 
-create policy "users manage their proof submissions"
-  on public.proof_submissions for all
-  using (auth.uid() = user_id)
+drop policy if exists "users manage their proof submissions" on public.proof_submissions;
+
+create policy "users read their proof submissions"
+  on public.proof_submissions for select
+  using (auth.uid() = user_id);
+
+create policy "users create their proof submissions"
+  on public.proof_submissions for insert
   with check (auth.uid() = user_id);
+
+create policy "admins read proof submissions"
+  on public.proof_submissions for select
+  using (
+    exists (
+      select 1 from public.profiles
+      where profiles.id = auth.uid()
+        and profiles.role in ('admin', 'reviewer')
+    )
+  );
 
 create policy "users read their ledger"
   on public.treecoin_ledger for select
@@ -173,6 +189,11 @@ create policy "users read their ledger"
 create policy "users read their mint requests"
   on public.treecoin_mint_requests for select
   using (auth.uid() = user_id);
+
+create policy "users register recipient addresses"
+  on public.treecoin_mint_requests for update
+  using (auth.uid() = user_id and status in ('recipient_needed', 'failed'))
+  with check (auth.uid() = user_id and status in ('queued', 'recipient_needed'));
 
 create policy "users read their reminders"
   on public.care_reminders for select

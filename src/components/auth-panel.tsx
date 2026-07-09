@@ -1,7 +1,8 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
-import { LogIn, LogOut, Mail, UserPlus } from "lucide-react";
+import { Globe2, LogIn, LogOut, Mail, Send, UserPlus } from "lucide-react";
+import { buildAuthCallbackUrl } from "@/lib/backend/auth";
 import {
   signOutLocalAccount,
   upsertLocalAccount,
@@ -72,6 +73,53 @@ export function AuthPanel() {
     );
   }
 
+  async function signInWithGoogle() {
+    setMessage("");
+    const supabase = getBrowserSupabaseClient();
+
+    if (!supabase) {
+      setMessage("Preview the proof flow now. Connect Supabase to use Google sign in.");
+      return;
+    }
+
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: buildAuthCallbackUrl({ nextPath: "/dashboard" }),
+      },
+    });
+
+    if (error) setMessage(error.message);
+  }
+
+  async function sendMagicLink() {
+    setMessage("");
+
+    if (!email.trim()) {
+      setMessage("Enter your email first.");
+      return;
+    }
+
+    const supabase = getBrowserSupabaseClient();
+    if (!supabase) {
+      const user = upsertLocalAccount({ name, email });
+      setCurrentEmail(user.email);
+      setMessage("Signed in locally. Your proof flow is ready.");
+      return;
+    }
+
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: buildAuthCallbackUrl({ nextPath: "/dashboard" }),
+      },
+    });
+
+    setMessage(
+      error ? error.message : "Check your email for a secure GrowCred sign-in link.",
+    );
+  }
+
   async function signOut() {
     const supabase = getBrowserSupabaseClient();
     if (supabase) await supabase.auth.signOut();
@@ -115,6 +163,25 @@ export function AuthPanel() {
           </button>
         </div>
       ) : null}
+
+      <div className="mt-6 grid gap-3 sm:grid-cols-2">
+        <button
+          type="button"
+          onClick={signInWithGoogle}
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[0.78rem] border border-forest/10 bg-white px-4 py-3 text-sm font-black text-forest shadow-sm transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+        >
+          <Globe2 aria-hidden="true" className="h-4 w-4" />
+          Continue with Google
+        </button>
+        <button
+          type="button"
+          onClick={sendMagicLink}
+          className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[0.78rem] border border-forest/10 bg-white px-4 py-3 text-sm font-black text-forest shadow-sm transition hover:bg-lime/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+        >
+          <Send aria-hidden="true" className="h-4 w-4" />
+          Email sign-in link
+        </button>
+      </div>
 
       <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
         {mode === "sign-up" ? (
