@@ -2,6 +2,10 @@
 artifacts
 .codex
 .codex-*
+.secrets
+.env*
+!.env.example
+*.tsbuildinfo
 public/assets/brand
 public/assets/growcred/03_genz_sticker_pack
 coverage
