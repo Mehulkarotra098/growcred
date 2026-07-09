@@ -15,6 +15,7 @@ import {
   Sprout,
   Trophy,
 } from "lucide-react";
+import { LivingBackdrop } from "@/components/living-backdrop";
 import { GROWCRED_ASSETS } from "@/lib/assets";
 import { BRAND_SLOGAN, BRAND_TAGLINE, TREECOIN_DISCLAIMER } from "@/lib/copy";
 import { TREECOIN_REWARD_RULES } from "@/lib/treecoin/token";
@@ -121,16 +122,17 @@ const proofQueue = [
 
 export default function TreeCoinPage() {
   return (
-    <section className="product-page-shell treecoin-launch-shell px-4 py-8 sm:px-6 lg:px-8">
-      <section className="mx-auto grid max-w-7xl gap-5 xl:grid-cols-[1.02fr_0.98fr] xl:items-stretch">
-        <div className="relative overflow-hidden rounded-[1rem] border border-forest/10 bg-white/88 p-5 shadow-xl shadow-forest/8 sm:p-8 lg:p-10">
+    <section className="relative isolate px-4 py-10 sm:px-6 lg:px-8">
+      <LivingBackdrop />
+      <section className="relative mx-auto grid max-w-7xl gap-5 xl:grid-cols-[1.02fr_0.98fr] xl:items-stretch">
+        <div className="relative overflow-hidden rounded-[0.9rem] border border-forest/10 bg-white/88 p-5 shadow-xl shadow-forest/8 sm:p-8 lg:p-10">
           <div className="relative">
             <div className="inline-flex items-center gap-2 rounded-full border border-leaf/15 bg-lime/24 px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-forest">
               <Sparkles aria-hidden="true" className="h-4 w-4" />
               TreeCoin reward launch
             </div>
 
-            <h1 className="mt-6 max-w-4xl text-4xl font-black leading-[1.06] text-forest sm:text-6xl sm:leading-[1.02] lg:text-7xl">
+            <h1 className="mt-6 max-w-4xl text-4xl font-black leading-[1.06] text-forest sm:text-6xl sm:leading-[1.02] lg:text-6xl">
               The reward layer for real tree care.
             </h1>
 

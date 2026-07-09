@@ -173,7 +173,7 @@ function LiveMetric({
   coin?: boolean;
 }) {
   return (
-    <article className="dashboard-soft-tile rounded-[1.35rem] p-4">
+    <article className="dashboard-soft-tile rounded-[0.85rem] p-4">
       <div className="flex items-center justify-between gap-3">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.1em] text-forest/45">

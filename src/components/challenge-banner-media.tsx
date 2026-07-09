@@ -32,7 +32,7 @@ export function ChallengeBannerMedia({
         priority={priority}
         loading={priority ? undefined : eager ? "eager" : "lazy"}
         sizes={sizes}
-        className="object-cover scale-[1.075] transform-gpu"
+        className="object-contain"
       />
     </div>
   );

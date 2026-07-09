@@ -51,7 +51,7 @@ export default function SubmitProofPage() {
               </div>
             ))}
           </div>
-          <p className="mt-5 hidden rounded-[1.15rem] bg-lime/16 p-4 text-xs font-bold leading-6 text-forest/70 lg:block">
+          <p className="mt-5 hidden rounded-[0.85rem] bg-lime/16 p-4 text-xs font-bold leading-6 text-forest/70 lg:block">
             {TREECOIN_DISCLAIMER}
           </p>
         </div>

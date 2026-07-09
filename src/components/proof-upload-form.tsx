@@ -411,7 +411,7 @@ export function ProofUploadForm() {
               </button>
             </div>
           </div>
-          <div className="forest-panel rounded-[1.1rem] p-6 text-white">
+          <div className="forest-panel rounded-[0.9rem] p-6 text-white">
             <p className="text-sm font-black uppercase tracking-[0.14em] text-lime">
               Next action
             </p>
@@ -449,7 +449,7 @@ export function ProofUploadForm() {
               </p>
               <Link
                 href="/auth"
-                className="mt-1 inline-flex text-xs font-black text-leaf underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+                className="mt-1 inline-flex min-h-8 items-center rounded-[0.55rem] pr-2 text-xs font-black text-leaf underline-offset-4 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
               >
                 Sign in to track your impact.
               </Link>

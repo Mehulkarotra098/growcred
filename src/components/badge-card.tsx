@@ -18,7 +18,7 @@ export function BadgeCard({ badge }: BadgeCardProps) {
   const Icon = iconMap[badge.icon as keyof typeof iconMap] ?? BadgeCheck;
 
   return (
-    <article className="living-card rounded-[1.5rem] p-5">
+    <article className="living-card rounded-[0.85rem] p-5">
       <span className="grid h-12 w-12 place-items-center rounded-[0.9rem] bg-lime/45 text-forest">
         <Icon aria-hidden="true" className="h-6 w-6" />
       </span>

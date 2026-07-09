@@ -18,16 +18,16 @@
 }
 
 [data-theme="dark"] {
-  --background: #08100c;
+  --background: #0a100d;
   --foreground: #f1fff2;
   --forest: #effff1;
   --leaf: #4ade80;
   --lime: #a3ff12;
   --aqua: #22e6e9;
   --earth: #caa06d;
-  --off-white: #0c1712;
-  --surface: #101915;
-  --surface-soft: rgba(16, 25, 21, 0.92);
+  --off-white: #0d1511;
+  --surface: #111a15;
+  --surface-soft: rgba(17, 26, 21, 0.94);
   --grid-line: rgba(234, 255, 236, 0.015);
   --card-border: rgba(234, 255, 236, 0.13);
   --card-shadow: rgba(0, 0, 0, 0.28);
@@ -142,7 +142,7 @@ main:focus {
 .dashboard-panel,
 .dashboard-soft-tile,
 .product-page-rail {
-  border-radius: 0.9rem;
+  border-radius: 0.78rem;
   border: 1px solid var(--card-border);
   background:
     linear-gradient(180deg, color-mix(in srgb, var(--surface) 92%, transparent), color-mix(in srgb, var(--surface) 84%, var(--off-white))),
@@ -187,7 +187,8 @@ main:focus {
 .human-proof-board,
 .product-page-shell,
 .dashboard-app-shell {
-  border-radius: 1rem;
+  overflow: hidden;
+  border-radius: 0.9rem;
   border: 1px solid var(--card-border);
   background:
     radial-gradient(circle at 12% 0%, rgba(163, 255, 18, 0.11), transparent 32%),
@@ -202,13 +203,13 @@ main:focus {
   .dashboard-panel,
   .dashboard-soft-tile,
   .product-page-rail {
-    border-radius: 0.95rem;
+    border-radius: 0.85rem;
   }
 
   .human-proof-board,
   .product-page-shell,
   .dashboard-app-shell {
-    border-radius: 1.1rem;
+    border-radius: 0.95rem;
   }
 }
 
@@ -228,7 +229,7 @@ main:focus {
 
 .gc-media-frame {
   overflow: hidden;
-  border-radius: 0.85rem;
+  border-radius: 0.72rem;
   border: 1px solid rgba(13, 43, 30, 0.09);
   background: #ffffff;
   box-shadow: 0 12px 30px rgba(13, 43, 30, 0.08);
@@ -249,9 +250,9 @@ main:focus {
 [data-theme="dark"] .product-page-shell,
 [data-theme="dark"] .dashboard-app-shell {
   background:
-    radial-gradient(circle at 12% 0%, rgba(163, 255, 18, 0.055), transparent 28%),
-    linear-gradient(180deg, rgba(14, 25, 20, 0.98), rgba(8, 15, 12, 0.98));
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.36);
+    radial-gradient(circle at 12% 0%, rgba(163, 255, 18, 0.035), transparent 26%),
+    linear-gradient(180deg, rgba(17, 26, 21, 0.98), rgba(10, 16, 13, 0.98));
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.32);
 }
 
 .dashboard-sidebar {
@@ -259,7 +260,7 @@ main:focus {
 }
 
 [data-theme="dark"] .dashboard-sidebar {
-  background: rgba(8, 24, 17, 0.9);
+  background: rgba(13, 21, 17, 0.92);
 }
 
 .dashboard-main-surface {
@@ -270,8 +271,8 @@ main:focus {
 
 [data-theme="dark"] .dashboard-main-surface {
   background:
-    radial-gradient(circle at 78% 0%, rgba(163, 255, 18, 0.04), transparent 22%),
-    rgba(8, 15, 12, 0.78);
+    radial-gradient(circle at 78% 0%, rgba(163, 255, 18, 0.03), transparent 22%),
+    rgba(10, 16, 13, 0.82);
 }
 
 .dashboard-topbar {
@@ -282,7 +283,7 @@ main:focus {
 
 [data-theme="dark"] .dashboard-topbar {
   border-bottom-color: rgba(234, 255, 236, 0.12);
-  background: rgba(12, 23, 18, 0.9);
+  background: rgba(15, 24, 19, 0.92);
 }
 
 .metric-glow {
@@ -432,7 +433,7 @@ main:focus {
 }
 
 [data-theme="dark"] .bg-white {
-  background-color: rgba(16, 40, 29, 0.92);
+  background-color: rgba(18, 28, 23, 0.94);
 }
 
 [data-theme="dark"] .bg-white\/95,
@@ -450,11 +451,11 @@ main:focus {
 [data-theme="dark"] .bg-white\/72,
 [data-theme="dark"] .bg-white\/70,
 [data-theme="dark"] .bg-white\/68 {
-  background-color: rgba(16, 40, 29, 0.76);
+  background-color: rgba(18, 28, 23, 0.78);
 }
 
 [data-theme="dark"] .bg-white\/55 {
-  background-color: rgba(16, 40, 29, 0.58);
+  background-color: rgba(18, 28, 23, 0.62);
 }
 
 [data-theme="dark"] .bg-off-white,

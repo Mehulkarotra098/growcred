@@ -183,7 +183,7 @@ export function ChallengeHub({ challenges }: ChallengeHubProps) {
               alt="No challenges empty state illustration"
               width={720}
               height={720}
-              className="mx-auto h-auto w-44 rounded-[1.5rem] object-contain"
+              className="mx-auto h-auto w-44 rounded-[0.85rem] object-contain"
             />
             <h3 className="mt-4 text-2xl font-black text-forest">
               No missions in this filter.

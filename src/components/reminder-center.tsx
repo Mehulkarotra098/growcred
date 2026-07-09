@@ -32,13 +32,13 @@ export function ReminderCenter({ reminders }: ReminderCenterProps) {
 
       <div className="mt-6 grid gap-3">
         {reminders.length === 0 ? (
-          <div className="rounded-[1.5rem] border border-dashed border-forest/15 bg-off-white p-5 text-center">
+          <div className="rounded-[0.85rem] border border-dashed border-forest/15 bg-off-white p-5 text-center">
             <Image
               src={GROWCRED_ASSETS.states.noReminders}
               alt="No care reminders empty state illustration"
               width={720}
               height={720}
-              className="mx-auto h-auto w-36 rounded-[1.25rem] object-contain"
+              className="mx-auto h-auto w-36 rounded-[0.85rem] object-contain"
             />
             <p className="mt-4 text-lg font-black text-forest">
               No reminders yet.
@@ -54,7 +54,7 @@ export function ReminderCenter({ reminders }: ReminderCenterProps) {
             <article
               key={reminder.id}
               className={cn(
-                "rounded-[1.5rem] border p-4 transition",
+                "rounded-[0.85rem] border p-4 transition",
                 isCompleted
                   ? "border-leaf/30 bg-leaf/10"
                   : "border-forest/10 bg-off-white",

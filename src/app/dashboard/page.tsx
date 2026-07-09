@@ -200,26 +200,31 @@ export default function DashboardPage() {
 function DashboardSidebar() {
   return (
     <aside className="dashboard-sidebar border-b border-forest/10 p-4 sm:p-5 lg:border-b-0 lg:border-r lg:p-6">
-      <div className="flex items-center justify-between gap-4 lg:block">
+      <div className="flex items-center justify-between gap-3 lg:block">
         <Link
           href="/"
           aria-label="GrowCred home"
-          className="inline-flex rounded-[0.9rem] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-leaf"
+          className="hidden rounded-[0.78rem] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-leaf lg:inline-flex"
         >
           <LogoMark showWordmark size="sm" className="px-1.5" />
         </Link>
-        <Link
-          href="/submit-proof"
-          className="inline-flex items-center gap-2 rounded-[0.85rem] bg-leaf px-4 py-2.5 text-xs font-black text-white shadow-lg shadow-leaf/20 transition hover:bg-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf lg:hidden"
-        >
-          <Plus aria-hidden="true" className="h-4 w-4" />
-          Add Tree
-        </Link>
+        <div className="flex min-w-0 flex-1 items-center justify-between gap-3 lg:hidden">
+          <span className="min-w-0 rounded-[0.7rem] bg-lime/25 px-3 py-2 text-sm font-black text-forest">
+            Dashboard
+          </span>
+          <Link
+            href="/submit-proof"
+            className="inline-flex shrink-0 items-center gap-2 rounded-[0.72rem] bg-leaf px-3 py-2 text-xs font-black text-white shadow-lg shadow-leaf/20 transition hover:bg-forest focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+          >
+            <Plus aria-hidden="true" className="h-4 w-4" />
+            Add Tree
+          </Link>
+        </div>
       </div>
 
       <nav
         aria-label="Dashboard navigation"
-        className="no-scrollbar -mx-1 mt-5 flex gap-2 overflow-x-auto pb-1 lg:mx-0 lg:grid lg:overflow-visible lg:pb-0"
+        className="mt-5 grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-1"
       >
         {dashboardNav.map((item) => {
           const isActive = "active" in item && item.active;
@@ -230,20 +235,20 @@ function DashboardSidebar() {
               href={item.href}
               aria-current={isActive ? "page" : undefined}
               className={cn(
-                "flex shrink-0 items-center gap-3 rounded-[1.25rem] px-4 py-3 text-sm font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf",
+                "flex min-w-0 items-center gap-2 rounded-[0.78rem] px-3 py-2.5 text-sm font-black transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf sm:gap-3 sm:px-4 sm:py-3",
                 isActive
                   ? "bg-lime/25 text-forest shadow-sm ring-1 ring-leaf/10"
                   : "text-forest/70 hover:bg-white/70 hover:text-forest",
               )}
             >
-              <item.icon aria-hidden="true" className="h-5 w-5" />
-              {item.label}
+              <item.icon aria-hidden="true" className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
+              <span className="truncate">{item.label}</span>
             </Link>
           );
         })}
       </nav>
 
-      <div className="mt-6 hidden rounded-[1.05rem] border border-forest/10 bg-white/70 p-5 shadow-sm shadow-forest/5 lg:block">
+      <div className="mt-6 hidden rounded-[0.85rem] border border-forest/10 bg-white/70 p-5 shadow-sm shadow-forest/5 lg:block">
         <div className="inline-flex rounded-[0.9rem] bg-lime/35 p-3 text-forest">
           <Users aria-hidden="true" className="h-6 w-6" />
         </div>
@@ -310,7 +315,7 @@ function TopChip({
   tone: "fire" | "leaf";
 }) {
   return (
-    <div className="dashboard-panel flex items-center gap-3 rounded-[1.35rem] p-3">
+    <div className="dashboard-panel flex items-center gap-3 rounded-[0.85rem] p-3">
       <span
         className={cn(
           "grid h-11 w-11 shrink-0 place-items-center rounded-[0.9rem]",
@@ -333,7 +338,7 @@ function ProfileChip() {
   return (
     <Link
       href="/auth"
-      className="dashboard-panel flex items-center gap-3 rounded-[1.35rem] p-3 transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
+      className="dashboard-panel flex items-center gap-3 rounded-[0.85rem] p-3 transition hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf"
     >
       <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-forest text-sm font-black text-white">
         GC
@@ -597,7 +602,7 @@ function BadgeToken({ badge, unlocked }: { badge: Badge; unlocked: boolean }) {
   return (
     <div
       className={cn(
-        "dashboard-soft-tile rounded-[1.25rem] p-3 text-center",
+        "dashboard-soft-tile rounded-[0.85rem] p-3 text-center",
         !unlocked && "opacity-60",
       )}
     >
@@ -753,7 +758,7 @@ function TreeCoinActionPanel({
   challengeTitle: string;
 }) {
   return (
-    <section className="forest-panel overflow-hidden rounded-[1.1rem] p-5 text-white shadow-xl shadow-forest/20">
+    <section className="forest-panel overflow-hidden rounded-[0.9rem] p-5 text-white shadow-xl shadow-forest/20">
       <div className="flex items-start gap-4">
         <Image
           src={brandAssets.treeCoin}
@@ -832,7 +837,7 @@ function CommunityImpactPanel() {
         {communityStats.map((stat) => (
           <div
             key={stat.label}
-            className="dashboard-soft-tile flex items-center gap-3 rounded-[1.25rem] p-4"
+            className="dashboard-soft-tile flex items-center gap-3 rounded-[0.85rem] p-4"
           >
             <stat.icon aria-hidden="true" className="h-7 w-7 shrink-0 text-leaf" />
             <div>
@@ -843,7 +848,7 @@ function CommunityImpactPanel() {
         ))}
       </div>
 
-      <div className="mt-5 flex items-center gap-3 rounded-[1.35rem] bg-lime/16 p-4">
+      <div className="mt-5 flex items-center gap-3 rounded-[0.85rem] bg-lime/16 p-4">
         <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-forest text-xs font-black text-white">
           MR
         </span>

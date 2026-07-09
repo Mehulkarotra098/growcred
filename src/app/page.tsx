@@ -147,7 +147,7 @@ export default function Home() {
           </div>
 
           <FadeIn className="mt-10 grid gap-5 lg:grid-cols-[0.82fr_1.18fr]">
-            <div className="forest-panel rounded-[1.25rem] p-6 text-white sm:p-8">
+            <div className="forest-panel rounded-[0.95rem] p-6 text-white sm:p-8">
               <p className="text-sm font-black uppercase tracking-[0.16em] text-lime">
                 Trust layer
               </p>
@@ -158,11 +158,11 @@ export default function Home() {
                 TreeCoins unlock only after evidence, permission, species fit,
                 and care intent are checked by review.
               </p>
-              <p className="mt-6 rounded-[1.25rem] border border-lime/24 bg-lime/10 p-4 text-xs font-bold leading-6 text-white/76">
+              <p className="mt-6 rounded-[0.85rem] border border-lime/24 bg-lime/10 p-4 text-xs font-bold leading-6 text-white/76">
                 {TREECOIN_DISCLAIMER}
               </p>
             </div>
-            <div className="grid gap-3 rounded-[1.2rem] border border-forest/10 bg-white/78 p-5 shadow-xl shadow-forest/6">
+            <div className="grid gap-3 rounded-[0.9rem] border border-forest/10 bg-white/78 p-5 shadow-xl shadow-forest/6">
               {reviewSteps.map((step, index) => (
                 <div
                   key={step}
